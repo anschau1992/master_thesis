@@ -6,11 +6,6 @@
 \usepackage{graphicx}
 \renewcommand{\sfdefault}{phv}
 
-\def\@ifiplace{Z\"{u}rich}
-\def\@ifiland{Schweiz}
-\def\@uniname{Universit\"{a}t Z\"{u}rich}
-\def\@ifiname{Institut f{\"u}r Informatik}
-
 \def\@uzhlogo{%
   \parbox[c]{100mm}{\includegraphics[height=20mm]{logo_uzh}}%
   }
@@ -23,7 +18,7 @@
 	\fontfamily{phv}\selectfont\bfseries%
     \large\raggedleft%
     \vspace*{-2mm}
-    Department of Informatics
+    Institute of Computational Linguistics
    	\hspace*{46.5mm}
     \rule{52.5mm}{2pt}
   }
@@ -33,17 +28,16 @@
     \fontfamily{phv}\selectfont%
     \small\raggedleft%
     ~\\[30mm]
-    Binzm\"uhlestrasse 14 \\
+    Andreasstrasse 15 \\
     CH-8050 Z\"urich-Oerlikon\\
     Switzerland \\
     \vspace{5mm}
-    \textbf{Prof. Dr. Harald C. Gall}\\
-	Software Evolution and\\ Architecture Lab\\
+    \textbf{Prof. Dr. Martin Volk}\\
+	Institute of \\ Computational Linguistics\\
 	\vspace{2mm}
-	Phone +41 44 635 43 35\\
-	Fax +41 44 635 68 09\\
-	gall@ifi.uzh.ch\\
-	http://seal.ifi.uzh.ch\\
+	Phone +41 44 635 43 17\\
+	volk@cl.uzh.ch\\
+	https://www.cl.uzh.ch\\
   }
 }
 
