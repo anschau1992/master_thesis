@@ -7,7 +7,7 @@
 \hfill\parbox[t]{65mm}{
 
 Andreas Schaufelb\"uhl\\
-Binzm\"uhlestrasse 41\\
+Binzm\"uhlestrasse 14\\
 8050 Z\"urich\\[5mm]
 Matrikel-Nr. 12-918-843\\
 andreas.schaufelbuehl@uzh.com\\[15mm]
@@ -17,43 +17,40 @@ andreas.schaufelbuehl@uzh.com\\[15mm]
 \subsection*{Master's Thesis Specification}
 %
 
-\section*{Titel}
+\section*{Titel: ???}
 
 
 %
 \subsection*{Introduction}
 %
-
 % Context
-% Problem to solve
-
-% What is already done in this area, what is still open?
-% Show a work, which is pretty near --> one of the readings
-% but also mention the lack it has
-
+Natural machine translation [NMT] play a paramount role in the daily life of human beings. The usability of computational translated phrases is strictly bound to correctly and naturally translation close to these of professional human translator. Consequently, researcher put enormous effort in improving the state-of-the-art translation technologies, with the goal of producing natural accurate sentences. As it has the potential to support manual translation by increasing efficiency and reduce the amount of work drastic being done by humans in this area. \\
+In recent years, the research of NMT have presented many different, novel models using Deep learning technologies. Using state of the art machine learning technologies, machine translation are able to produce more precise and natural translation and outperform existing stale models. Hokamp and Liu\cite{Hokamp} introduces the model of Grid Beam Search, allowing lexically constrained decoding of text, which improves the translation quality in interactive scenarios. Using constraints models are able to generate more context near output or generate translation, which must include the given lexically constraints within its output translation\\
+Post and Vilar\cite{post} extends the Grid Beam Search model and introduces the Dynamic Beam Allocation, which improves the efficiency for lexically constrained decoding with beam search. Further Vaswani et al. \cite{vaswani} present their simple neural network architecture, called Tramsformer, based solely on attention mechanism. The transformer also achieves remarkable performance in NMT in terms of scoring, but also time efficiency.\\
+These models show already very good performance in lexically constrained translation. However, non of the current research in this area is concerning about adaptive word endings in the process of sequence-to-sequence translation. As translation of the corresponding base word is done often correctly, we examine a lack of translating the correct word ending.
 \newpage
 
 \subsection*{The goals of this master's thesis}
-% explain what we argue and what we think could be make better
-We argue that complement topic extraction from reviews with the capability of cluster similar reviews (assigning them to a well defined task of maintenance/evolution) and
-  determining the corresponding parts of source code that need to be maintained/changed (in according to the suggested change tasks),  will concretely help developers planning app improvements and meeting market requirements.
-  
-% high level goals of thesis
-% show a itemization with RQ's
-      
-      
+We argue that using state of the art technologies in NMT and extend existing models (e.g. \cite{libovick}) with additional processes focusing on word endings can improve the quality of translated text. Focusing on ending of single tokens, we hope to detect patterns for generalizing endings of words better with respect to their context. Thus the high level goal of this thesis is to extend existing Decoder with a lemmatizing-approach and investigate their benefit in terms of performance improvement. The research questions that guiding this thesis are:
 
+\begin{itemize}
+	\item \textit{RQ1: To what extend is it possible to improve existing state of the art NMT by adding lemmatizer for token translation in a sequence-to-sequence model?}
+	\item \textit{RQ2: Is it possible to design an approach, which can use these improvements in practise?}
+\end{itemize}  
+
+%
 \subsection*{Task description}
 %
 
-% TODO write other main tasks
 The main tasks of this thesis are:
 
 \begin{enumerate}
-\item Read up on the current state of the art in industry and research in the areas relevant to the thesis, including AR-Miner. %TODO: add more areas
-\item Write a software program able to gather user reviews and save them into a database.
-\item Extend the program, so it is capable to link clustered reviews with the corresponding source code.
-\item Writing an academic report summarizing the results from the work on items 1 to 3.
+	\item Read up on the current state of the art in industry and research in the areas relevant to the thesis, including Attention-based models, Natural machine translator and Lexically Constrained Decoding.
+	\item Get familiar with currently existing open-source solutions in the area of Multi-Source Transformer Decoding.
+	\item Setup up an environment using one of these solution and integrate an score testing approach. 
+	\item Develop and implement the model extension in code.
+	\item Perform empirical test in order to identify research results.
+	\item Writing an academic report explaining and summarizing the results from the work on items 1 to 5.	
 \end{enumerate}
 
 
@@ -69,11 +66,13 @@ The major milestones of the project are as follows:
 \begin{tabular}{lp{10cm}}
 When & What \\
 \hline\noalign{\smallskip}
-$1^{\mathit{st}}$ month & State of the Art review is finished. Tools are picked and learned. \\
-$2^{\mathit{nd}}$ month & Database is set up and collecting user reviews. \\
-$4^{\mathit{rd}}$ month &  Implementation of the Linking is finished. \\
+$1^{\mathit{st}}$ and $2^{\mathit{st}}$ week & State of the Art review is finished. Open Source tools are examined in-depth, so the student understands them. \\
+$3^{\mathit{st}}$ and $4^{\mathit{st}}$ week & Basis tool for development is extended with the testing environment and ready for implementation of the model. The model is planned more in detail.\\
+$2^{\mathit{st}}$ month & First approach of proof-of-concept is implemented. \\
+$3^{\mathit{nd}}$ month & Evaluation and adjustment of first version model is done. \\
+$4^{\mathit{rd}}$ month & Second approach with experiments is implemented. \\
 $5^{\mathit{th}}$month & The proof-of-concept implementation is finished.\\
-$6^{\mathit{th}}$month & Thesis is written, proof-of-concept is fully functional and delivered.
+$6^{\mathit{th}}$month & Thesis is written, proof-of-concept is fully functional, documented and delivered.
 \end{tabular}
 
 \newpage
@@ -85,7 +84,7 @@ There is no need of special provided resources to realise this thesis
 \subsection*{General thesis guidelines}
 
 The typical rules of academic work must be followed. In
-\cite{Bernstein:8} Bernstein describes a number of guidelines which
+\cite{Bernstein} Bernstein describes a number of guidelines which
 must be followed. At the end of the thesis, a final report has to be
 written. The report should clearly be organized, follow the usual academic
 report structure, and has to be written in English. As implementing software is also part of this thesis, state-of-the-art
@@ -103,7 +102,7 @@ design, coding, and documentation standards for the software have to be obeyed.
 \noindent\textbf{Signatures:}
 
 \vspace{3\baselineskip}
-\noindent Andreasl Schaufelb\"uhl\hfill Prof. Dr. Martin Volk
+\noindent Andreas Schaufelb\"uhl\hfill Prof. Dr. Martin Volk
 \clearpage
 \bibliographystyle{abbrv}
 \bibliography{refs}

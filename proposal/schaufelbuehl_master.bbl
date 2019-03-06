@@ -1,130 +1,34 @@
-\begin{thebibliography}{10}
+\begin{thebibliography}{1}
 
-\bibitem{Bernstein:8}
+\bibitem{Bernstein}
 A.~Bernstein.
 \newblock So what is a (diploma) thesis? a few thoughts for first-timers.
 \newblock Technical report, Dynamic and Distribution Information System Group,
   University of Zurich, 2005.
 
-\bibitem{ChenICSE2014}
-N.~Chen, J.~Lin, S.~C.~H. Hoi, X.~Xiao, and B.~Zhang.
-\newblock Ar-miner: Mining informative reviews for developers from mobile app
-  marketplace.
-\newblock In {\em Proceedings of the 36th International Conference on Software
-  Engineering}, ICSE 2014, pages 767--778, New York, NY, USA, 2014. ACM.
+\bibitem{Hokamp}
+C.~Hokamp and Q.~Liu.
+\newblock Lexically constrained decoding for sequence generation using grid
+  beam search.
+\newblock In {\em Proceedings of the 55th Annual Meeting of the Association for
+  Computational Linguistics (Volume 1: Long Papers)}, pages 1535--1546.
+  Association for Computational Linguistics, 2017".
 
-\bibitem{Fu2013}
-B.~Fu, J.~Lin, L.~Li, C.~Faloutsos, J.~Hong, and N.~Sadeh.
-\newblock Why people hate your app: Making sense of user feedback in a mobile
-  app store.
-\newblock In {\em Proceedings of the 19th ACM SIGKDD International Conference
-  on Knowledge Discovery and Data Mining}, KDD '13, pages 1276--1284, New York,
-  NY, USA, 2013. ACM.
+\bibitem{libovick}
+J.~Libovick{\'{y}}, J.~Helcl, and D.~Marecek.
+\newblock Input combination strategies for multi-source transformer decoder.
+\newblock {\em CoRR}, abs/1811.04716, 2018.
 
-\bibitem{GalvisCarrenoICSE2013}
-L.~V. Galvis Carre\~{n}o and K.~Winbladh.
-\newblock Analysis of user comments: An approach for software requirements
-  evolution.
-\newblock In {\em Proceedings of the 2013 International Conference on Software
-  Engineering}, ICSE '13, pages 582--591, Piscataway, NJ, USA, 2013. IEEE
-  Press.
+\bibitem{post}
+M.~Post and D.~Vilar.
+\newblock Fast lexically constrained decoding with dynamic beam allocation for
+  neural machine translation.
+\newblock {\em CoRR}, abs/1804.06609, 2018.
 
-\bibitem{Gu2015}
-X.~Gu and S.~Kim.
-\newblock What parts of your apps are loved by users? {(T)}.
-\newblock In {\em 30th {IEEE/ACM} International Conference on Automated
-  Software Engineering, {ASE} 2015, Lincoln, NE, USA, November 9-13, 2015},
-  pages 760--770, 2015.
-
-\bibitem{GuzmanRE2014}
-E.~Guzman and W.~Maalej.
-\newblock How do users like this feature? a fine grained sentiment analysis of
-  app reviews.
-\newblock In {\em Requirements Engineering Conference (RE), 2014 IEEE 22nd
-  International}, pages 153--162, Aug 2014.
-
-\bibitem{Ha2013}
-E.~Ha and D.~Wagner.
-\newblock Do android users write about electric sheep? examining consumer
-  reviews in google play.
-\newblock In {\em Consumer Communications and Networking Conference (CCNC),
-  2013 IEEE}, pages 149--157, Jan 2013.
-
-\bibitem{IacobMSR2013}
-C.~Iacob and R.~Harrison.
-\newblock Retrieving and analyzing mobile apps feature requests from online
-  reviews.
-\newblock In {\em Proceedings of the 10th Working Conference on Mining Software
-  Repositories}, MSR '13, pages 41--44, Piscataway, NJ, USA, 2013. IEEE Press.
-
-\bibitem{Iacob2014}
-C.~Iacob, R.~Harrison, and S.~Faily.
-\newblock Online reviews as first class artifacts in mobile app development.
-\newblock In G.~Memmi and U.~Blanke, editors, {\em Mobile Computing,
-  Applications, and Services}, volume 130 of {\em Lecture Notes of the
-  Institute for Computer Sciences, Social Informatics and Telecommunications
-  Engineering}, pages 47--53. Springer International Publishing, 2014.
-
-\bibitem{Krusche2014}
-S.~Krusche and B.~Bruegge.
-\newblock User feedback in mobile development.
-\newblock In {\em Proceedings of the 2Nd International Workshop on Mobile
-  Development Lifecycle}, MobileDeLi '14, pages 25--26, New York, NY, USA,
-  2014. ACM.
-
-\bibitem{Licorish2015}
-S.~A. Licorish, A.~Tehir, M.~F. Bosu, and S.~G. MacDonell.
-\newblock On satisfying the android os community: User feedback still central
-  to developers' portfolios.
-\newblock In {\em 2015 24th Australasian Software Engineering Conference
-  (ASWEC}, pages 78--87, 2015.
-
-\bibitem{MaalejRE2015}
-W.~Maalej and H.~Nabil.
-\newblock Bug report, feature request, or simply praise? on automatically
-  classifying app reviews.
-\newblock In {\em Requirements Engineering Conference (RE), 2015 IEEE 23rd
-  International}, pages 116--125, Aug 2015.
-
-\bibitem{Oh2013}
-J.~Oh, D.~Kim, U.~Lee, J.-G. Lee, and J.~Song.
-\newblock Facilitating developer-user interactions with mobile app review
-  digests.
-\newblock In {\em CHI '13 Extended Abstracts on Human Factors in Computing
-  Systems}, CHI EA '13, pages 1809--1814, New York, NY, USA, 2013. ACM.
-
-\bibitem{PaganoRE2013}
-D.~Pagano and W.~Maalej.
-\newblock User feedback in the appstore: An empirical study.
-\newblock In {\em In Proceedings of the 21st IEEE International Requirements
-  Engineering Conference (RE 2013)}, pages 125--134. IEEE Computer Society,
-  2013.
-
-\bibitem{PalombaICSME2015}
-F.~Palomba, M.~Linares-Vasquez, G.~Bavota, R.~Oliveto, M.~Di~Penta,
-  D.~Poshyvanyk, and A.~De~Lucia.
-\newblock User reviews matter! tracking crowdsourced reviews to support
-  evolution of successful apps.
-\newblock In {\em Software Maintenance and Evolution (ICSME), 2015 IEEE
-  International Conference on}, pages 291--300, Sept 2015.
-
-\bibitem{PanichellaICSME2015}
-S.~Panichella, A.~Di~Sorbo, E.~Guzman, C.~Visaggio, G.~Canfora, and H.~Gall.
-\newblock How can i improve my app? classifying user reviews for software
-  maintenance and evolution.
-\newblock In {\em Software Maintenance and Evolution (ICSME), 2015 IEEE
-  International Conference on}, pages 281--290, Sept 2015.
-
-\bibitem{Vithani2014}
-T.~Vithani.
-\newblock Modeling the mobile application development lifecycle.
-\newblock In {\em Proceedings of the International MultiConference of Engineers
-  and Computer Scientists 2014, Vol. I}, IMECS 2014, pages 596--600, 2014.
-
-\bibitem{Vu2015}
-P.~M. Vu, T.~T. Nguyen, H.~V. Pham, and T.~T. Nguyen.
-\newblock Mining user opinions in mobile app reviews: {A} keyword-based
-  approach.
-\newblock {\em CoRR}, abs/1505.04657, 2015.
+\bibitem{vaswani}
+A.~Vaswani, N.~Shazeer, N.~Parmar, J.~Uszkoreit, L.~Jones, A.~N. Gomez,
+  L.~Kaiser, and I.~Polosukhin.
+\newblock Attention is all you need.
+\newblock {\em CoRR}, abs/1706.03762, 2017.
 
 \end{thebibliography}
