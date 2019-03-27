@@ -1,3 +1,4 @@
 daily/*
 src/venv
 training/*
+*.log
