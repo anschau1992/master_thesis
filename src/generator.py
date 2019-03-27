@@ -3,7 +3,6 @@ import logging
 import os.path
 import spacy
 from spacy.tokenizer import Tokenizer
-from trainingEntry import TrainingEntry
 
 nlp = spacy.load("de")
 tokenizer = Tokenizer(nlp.vocab)
@@ -49,26 +48,6 @@ def generate_train_data(fp_en, fp_de, training_path):
 
                     line_de = fp_de.readline()
                     line_en = fp_en.readline()
-
-
-
-
-# def write_training_data_out(training_data, fp):
-#     print('Writing data')
-#     with open(fp + "/train.src.en", "a+") as sourcefile_en:
-#         with open(fp + "/train.src.de", "a+") as sourcefile_de:
-#             with
-#     targetfile_de = open(fp + "/train.trg.de", "w+")
-#
-#     for entry in training_data:
-#         sourcefile_en.write(entry.sentence)
-#         sourcefile_de.write(entry.token)
-#         targetfile_de.write(entry.lemma)
-#
-#     sourcefile_en.close()
-#     sourcefile_de.close()
-#     targetfile_de.close()
-#     print('FInished')
 
 
 def Main():
