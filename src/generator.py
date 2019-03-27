@@ -7,8 +7,9 @@ from spacy.tokenizer import Tokenizer
 nlp = spacy.load("de")
 tokenizer = Tokenizer(nlp.vocab)
 
-EN_FILE_PATH = "./data/Ubuntu.de-en.en"
-DE_FILE_PATH = "./data/Ubuntu.de-en.de"
+DEFAULT_DATA_PATH_EN = "./data/Ubuntu.de-en.en"
+DEFAULT_DATA_PATH_DE = "./data/Ubuntu.de-en.de"
+DEFAULT_TRAINING_PATH = "./training"
 
 
 def is_valid_file(parser, arg):
@@ -16,6 +17,12 @@ def is_valid_file(parser, arg):
         parser.error("The file %s does not exist!" % arg)
     else:
         return open(arg, 'r')  # return the open file handle
+
+
+def check_and_create_folder(path):
+    if not os.path.exists(path):
+        os.makedirs(path)
+    return path
 
 
 def read_in_file(fp):
@@ -49,19 +56,29 @@ def generate_train_data(fp_en, fp_de, training_path):
                     line_de = fp_de.readline()
                     line_en = fp_en.readline()
 
+    sourcefile_en.close()
+    sourcefile_de.close()
+    targetfile_de.close()
+
 
 def Main():
     parser = argparse.ArgumentParser()
     parser.add_argument("-ien", "--inputEn",
-                        dest="file_en", default=EN_FILE_PATH, help="input file with english sentences", metavar="FILE",
+                        dest="file_en", default=DEFAULT_DATA_PATH_EN, help="input file with english sentences",
+                        metavar="FILE",
                         type=lambda x: is_valid_file(parser, x))
     parser.add_argument("-ide", "--inputDe",
-                        dest="file_de", default=DE_FILE_PATH, help="input file with german sentences", metavar="FILE",
+                        dest="file_de", default=DEFAULT_DATA_PATH_DE, help="input file with german sentences",
+                        metavar="FILE",
                         type=lambda x: is_valid_file(parser, x))
+    parser.add_argument("-o", "--output",
+                        dest="output", default=DEFAULT_TRAINING_PATH, help="training data folder location",
+                        metavar="DIR",
+                        type=lambda x: check_and_create_folder(x))
     args = parser.parse_args()
-    #read_in_file(args.file_de)
 
-    training_data = generate_train_data(args.file_en, args.file_de, './training')
+    generate_train_data(args.file_en, args.file_de, str(args.output))
+
 
 if __name__ == '__main__':
     Main()
