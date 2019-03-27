@@ -1,14 +1,11 @@
 import argparse
 import os.path
-import nltk
-from nltk.tokenize import word_tokenizepi
-from germalemma import GermaLemma
+import spacy
+from spacy.tokenizer import Tokenizer
 
-#lemmatizer = WordNetLemmatizer()
-lemmatizer = GermaLemma()
-german_tokenizer = nltk.data.load('tokenizers/punkt/german.pickle')
-nltk.download('punkt')
-nltk.download('wordnet')
+nlp = spacy.load("de")
+tokenizer = Tokenizer(nlp.vocab)
+
 
 
 EN_FILE_PATH = "./data/Ubuntu.de-en.en"
@@ -37,12 +34,14 @@ def generate_train_data(fp_en, fp_de):
 
     training_data = []
     while line_en and line_de:
-        tokens = word_tokenize(line_de)
-        #tokens = german_tokenizer(line_de)
+        tokens = nlp(line_de)
         for token in tokens:
-            print(token + ": " + lemmatizer.find_lemma(token))
+            lemma = token.lemma_
+            print(str(token) + ": " +  lemma)
+
         line_de = fp_de.readline()
         line_en = fp_en.readline()
+
 
 
 def Main():
