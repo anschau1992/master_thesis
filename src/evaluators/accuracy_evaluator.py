@@ -4,6 +4,8 @@ from src.evaluators.evaluator_base import Evaluator
 
 class AccuracyEvaluator(Evaluator):
     def evaluate(self, resultsPath, targetsPath):
+        self._check_proper_files(resultsPath,targetsPath)
+
         logging.info('Evaluation of Accuracy')
 
         correct_count = 0
@@ -23,8 +25,13 @@ class AccuracyEvaluator(Evaluator):
                     result = resultsfile_de.readline()
                     target = targetsfile_de.readline()
 
-
-
         resultsfile_de.close()
         targetsfile_de.close()
         return correct_count / total_count
+
+
+if __name__ == '__main__':
+    print('Subclass:', issubclass(AccuracyEvaluator,
+                                  Evaluator))
+    print('Instance:', isinstance(AccuracyEvaluator(),
+                                  Evaluator))

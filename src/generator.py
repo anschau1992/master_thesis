@@ -4,6 +4,7 @@ import logging
 import os.path
 import spacy
 from spacy.tokenizer import Tokenizer
+from .config import TRAIN_SOURCE_FILE_DE, TRAIN_SOURCE_FILE_EN, TRAIN_TARGET_FILE_DE
 
 module = sys.modules['__main__'].__file__
 log = logging.getLogger(module)
@@ -72,9 +73,9 @@ def generate_train_data(fp_en, fp_de, training_path):
     line_en = fp_en.readline()
     line_de = fp_de.readline()
 
-    with open(training_path + "/train.src.en", "w+") as sourcefile_en:
-        with open(training_path + "/train.src.de", "w+") as sourcefile_de:
-            with open(training_path + "/train.trg.de", "w+") as targetfile_de:
+    with open(training_path + TRAIN_SOURCE_FILE_EN, "w+") as sourcefile_en:
+        with open(training_path + TRAIN_SOURCE_FILE_DE, "w+") as sourcefile_de:
+            with open(training_path + TRAIN_TARGET_FILE_DE, "w+") as targetfile_de:
                 training_data = []
                 while line_en and line_de:
                     tokens = nlp(line_de)
