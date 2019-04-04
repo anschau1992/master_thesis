@@ -18,14 +18,15 @@ class AccuracyEvaluator(Evaluator):
         if list_length != second_length:
             raise Exception('List provided as parameters are not of the same length.')
 
-
-        correct_count = 0
+        scoring = []
         for i in range(0, list_length):
             if results[i] == targets[i]:
-                correct_count += 1
+                scoring.append(1)
+            else:
+                scoring.append(0)
 
         logging.info('Accuracy evaluator: Finished evaluating')
-        return correct_count / list_length
+        return scoring
     pass
 
 
