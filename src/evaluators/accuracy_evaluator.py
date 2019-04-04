@@ -6,20 +6,10 @@ class AccuracyEvaluator(Evaluator):
 
     def evaluate(self, results: list, targets: list):
         logging.info('Accuracy evaluator: Start evaluating')
-
-        if not isinstance(results, list) or not isinstance(targets, list):
-            raise Exception('Parameters provided are not of type `list`.')
-
-        list_length = len(results)
-        second_length = len(targets)
-        if list_length == 0 or second_length == 0:
-            raise Exception('List provided as parameter must not be empty.')
-
-        if list_length != second_length:
-            raise Exception('List provided as parameters are not of the same length.')
+        self._check_params(results, targets)
 
         scoring = []
-        for i in range(0, list_length):
+        for i in range(0, len(results)):
             if results[i] == targets[i]:
                 scoring.append(1)
             else:
