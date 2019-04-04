@@ -1,6 +1,6 @@
 import unittest
 from src.moses_file_reader import read_moses_files
-from src.config import TRAIN_TARGET_FILE_DE, TRAIN_SOURCE_FILE_DE, TRAIN_SOURCE_FILE_EN, RESULT_FILE_DE
+from src.config import TRAIN_TARGET_FILE_DE, RESULT_FILE_DE
 
 resultPath_t = "./test_result" + RESULT_FILE_DE
 targetPath_t = "./test_training" + TRAIN_TARGET_FILE_DE

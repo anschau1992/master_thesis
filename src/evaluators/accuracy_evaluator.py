@@ -3,31 +3,30 @@ from src.evaluators.evaluator_base import Evaluator
 
 
 class AccuracyEvaluator(Evaluator):
-    def evaluate(self, resultsPath, targetsPath):
-        self._check_proper_files(resultsPath,targetsPath)
 
-        logging.info('Evaluation of Accuracy')
+    def evaluate(self, results: list, targets: list):
+        logging.info('Accuracy evaluator: Start evaluating')
+
+        if not isinstance(results, list) or not isinstance(targets, list):
+            raise Exception('Parameters provided are not of type `list`.')
+
+        list_length = len(results)
+        second_length = len(targets)
+        if list_length == 0 or second_length == 0:
+            raise Exception('List provided as parameter must not be empty.')
+
+        if list_length != second_length:
+            raise Exception('List provided as parameters are not of the same length.')
+
 
         correct_count = 0
-        total_count = 0
+        for i in range(0, list_length):
+            if results[i] == targets[i]:
+                correct_count += 1
 
-        with open(resultsPath + "/result.de", "r") as resultsfile_de:
-            with open(targetsPath + "/train.trg.de", "r") as targetsfile_de:
-
-                result = resultsfile_de.readline()
-                target = targetsfile_de.readline()
-
-                while result and target:
-                    if result == target:
-                        correct_count = correct_count + 1
-                    total_count = total_count + 1
-
-                    result = resultsfile_de.readline()
-                    target = targetsfile_de.readline()
-
-        resultsfile_de.close()
-        targetsfile_de.close()
-        return correct_count / total_count
+        logging.info('Accuracy evaluator: Finished evaluating')
+        return correct_count / list_length
+    pass
 
 
 if __name__ == '__main__':
