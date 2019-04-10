@@ -1,0 +1,41 @@
+import sys
+import logging
+import spacy
+from spacy.tokenizer import Tokenizer
+
+module = sys.modules['__main__'].__file__
+log = logging.getLogger(module)
+nlp = spacy.load("de")
+tokenizer = Tokenizer(nlp.vocab)
+
+
+def generate_train_data(lines_en, lines_de):
+    logging.info('Generator: Start generating training data')
+
+    sources_en = []
+    sources_de = []
+    targets_de = []
+
+    for i in range(0, len(lines_en)):
+        line_en = lines_en[i]
+        line_de = lines_de[i]
+
+        tokens = nlp(line_de)
+        for token in tokens:
+            line_en = assure_line_break(line_en)
+            sources_en.append(line_en)
+
+            lemma = assure_line_break(token.lemma_)
+            sources_de.append(lemma)
+
+            token_string = assure_line_break(str(token))
+            targets_de.append(token_string)
+
+    logging.debug("Finish generate training data. Number of entries: %s " % len(lines_de))
+    return sources_en, sources_de, targets_de
+
+
+def assure_line_break(line):
+    if not '\n' in line:
+        return line + '\n'
+    return line
