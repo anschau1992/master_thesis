@@ -3,6 +3,7 @@ import argparse
 import logging
 import os.path
 import spacy
+from pathlib import Path
 from spacy.tokenizer import Tokenizer
 from config import TRAIN_SOURCE_FILE_DE, TRAIN_SOURCE_FILE_EN, TRAIN_TARGET_FILE_DE
 
@@ -11,29 +12,41 @@ log = logging.getLogger(module)
 nlp = spacy.load("de")
 tokenizer = Tokenizer(nlp.vocab)
 
-DEFAULT_DATA_PATH_EN = "./data/Ubuntu.de-en.en"
-DEFAULT_DATA_PATH_DE = "./data/Ubuntu.de-en.de"
-DEFAULT_TRAINING_PATH = "./training"
+DEFAULT_DATA_PATH_EN = "../data/Ubuntu.de-en.en"
+DEFAULT_DATA_PATH_DE = "../data/Ubuntu.de-en.de"
+DEFAULT_TRAINING_PATH = "../training"
+
+root_path = Path(__file__).parent
 
 """
 Parse command line argument.
  See -h option
 :param argv: arguments on the command line must include caller file name.
 """
+
+
 def parse_command_line(argv):
+    root_path = Path(__file__).parent
+
+    default_data_file_en = str((root_path / DEFAULT_DATA_PATH_EN).resolve())
+    default_data_file_de = str((root_path / DEFAULT_DATA_PATH_DE).resolve())
+    default_training_file = str((root_path / DEFAULT_TRAINING_PATH).resolve())
+
     parser = argparse.ArgumentParser()
     parser.add_argument("-v", "--verbose", dest="verbose", action="count",
                         default=0, help="increase output verbosity (e.g., -vv is more than -v)")
     parser.add_argument("-ien", "--inputEn",
-                        dest="file_en", default=DEFAULT_DATA_PATH_EN, help="input file with english sentences",
+                        dest="file_en", default=default_data_file_en,
+                        help="input file with english sentences",
                         metavar="FILE",
                         type=lambda x: is_valid_file(parser, x))
     parser.add_argument("-ide", "--inputDe",
-                        dest="file_de", default=DEFAULT_DATA_PATH_DE, help="input file with german sentences",
+                        dest="file_de", default=default_data_file_de,
+                        help="input file with german sentences",
                         metavar="FILE",
                         type=lambda x: is_valid_file(parser, x))
     parser.add_argument("-o", "--output",
-                        dest="output", default=DEFAULT_TRAINING_PATH, help="training data folder location",
+                        dest="output", default=default_training_file, help="training data folder location",
                         metavar="DIR",
                         type=lambda x: check_and_create_folder(x))
 
@@ -53,9 +66,11 @@ def is_valid_file(parser, arg):
 
 
 def check_and_create_folder(path):
-    if not os.path.exists(path):
-        os.makedirs(path)
-    return path
+    file_path = str((root_path.parent / path).resolve())
+    print(file_path)
+    if not os.path.exists(file_path):
+        os.makedirs(file_path)
+    return file_path
 
 
 def read_in_file(fp):
@@ -98,8 +113,8 @@ def generate_train_data(fp_en, fp_de, training_path):
     targetfile_de.close()
     logging.debug('Finish generate training data')
 
-def Main():
 
+def Main():
     args = parse_command_line(sys.argv)
     generate_train_data(args.file_en, args.file_de, str(args.output))
 
