@@ -4,7 +4,7 @@ import logging
 import os.path
 import spacy
 from spacy.tokenizer import Tokenizer
-from .config import TRAIN_SOURCE_FILE_DE, TRAIN_SOURCE_FILE_EN, TRAIN_TARGET_FILE_DE
+from config import TRAIN_SOURCE_FILE_DE, TRAIN_SOURCE_FILE_EN, TRAIN_TARGET_FILE_DE
 
 module = sys.modules['__main__'].__file__
 log = logging.getLogger(module)
