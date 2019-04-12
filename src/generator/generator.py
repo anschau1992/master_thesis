@@ -10,7 +10,17 @@ tokenizer = Tokenizer(nlp.vocab)
 
 
 def generate_train_data(lines_en, lines_de):
+    """
+    Generates the training data in lists.
+    Entries with the same position are considered a tuple
+    :param lines_en:
+    :param lines_de:
+    :return: three lists - source english, source german, target german
+    """
     logging.info('Generator: Start generating training data')
+
+    if len(lines_en) != len(lines_de):
+        raise Exception('Length of the list parameters are not equal')
 
     sources_en = []
     sources_de = []

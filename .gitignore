@@ -3,3 +3,4 @@ daily/*
 src/venv
 training/*
 *.log
+src/__pycache__/*
