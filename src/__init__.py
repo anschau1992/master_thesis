@@ -1,7 +1,7 @@
 import sys
-from src.generator.command_line_parser import parse_command_line
+from generation.command_line_parser import parse_command_line
 from moses_file_reader import read_moses_files
-from src.generator.generator import generate_train_data
+from generation.generator import generate_train_data
 
 from config import TRAIN_SOURCE_FILE_DE, TRAIN_SOURCE_FILE_EN, TRAIN_TARGET_FILE_DE, \
     DEFAULT_DATA_PATH_EN, DEFAULT_DATA_PATH_DE, DEFAULT_TRAINING_PATH

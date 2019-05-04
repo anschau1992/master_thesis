@@ -16,6 +16,4 @@ unzip -o oo-de-en.txt.zip -d ../source_data/oo
 unzip -o php-de-en.txt.zip -d ../source_data/php
 
 # clean
-rm -r ubuntu-de-en.txt.zip
-rm -r oo-de-en.txt.zip
-rm -r php-de-en.txt.zip
+rm -r ubuntu-de-en.txt.zip oo-de-en.txt.zip php-de-en.txt.zip
