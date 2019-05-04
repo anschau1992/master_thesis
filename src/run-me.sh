@@ -32,7 +32,8 @@ then
     exit 1
 fi
 
-if [[ ! -e ../tools/moses-scripts ]] || [[ ! -e ../tools/subword-nmt ]] || [[ ! -e ../tools/sacreBLEU ]]
+#if [[ ! -e ../tools/moses-scripts ]] || [[ ! -e ../tools/subword-nmt ]] || [[ ! -e ../tools/sacreBLEU ]]
+if [[ ! -e ../tools/moses-scripts ]]
 then
     echo "missing tools in ../tools, you need to download them first"
     exit 1
@@ -45,6 +46,8 @@ mkdir -p model
 if [[ ! -e "../data/train.src.en" ]] || [[ ! -e "../data/train.src.de" ]] || [[ ! -e "../data/train.trg.de" ]]
 then
     echo "missing training data. Will be downloaded and prepared..."
+    ./scripts/download-source-data.sh
+
 fi
 
 echo $MARIAN
