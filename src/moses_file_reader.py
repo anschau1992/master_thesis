@@ -17,6 +17,7 @@ def read_moses_files(file_paths: list):
         logging.exception(ex_msg)
         raise Exception(ex_msg)
 
+
     is_line_numb_defined = False
     line_number = 0
     files_contents = []

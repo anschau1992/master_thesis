@@ -45,9 +45,10 @@ mkdir -p model
 
 if [[ ! -e "../data/train.src.en" ]] || [[ ! -e "../data/train.src.de" ]] || [[ ! -e "../data/train.trg.de" ]]
 then
+    # delete potential old training data
+    rm -r -f ../data
     echo "missing training data. Will be downloaded and prepared..."
     ./scripts/download-source-data.sh
-    ./scripts/prepare-preprocess-data.sh
 fi
 
 echo $MARIAN
