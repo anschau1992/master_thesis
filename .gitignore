@@ -4,3 +4,5 @@ src/venv
 training/*
 *.log
 *__pycache__*
+data/*
+train/*
