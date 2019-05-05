@@ -1,5 +1,6 @@
 import logging
 
+
 def read_moses_files(file_paths: list):
     """
     Opens files provided as parameter. It reads in line by line
@@ -16,7 +17,6 @@ def read_moses_files(file_paths: list):
         ex_msg = 'Passed param must at least have length of 2'
         logging.exception(ex_msg)
         raise Exception(ex_msg)
-
 
     is_line_numb_defined = False
     line_number = 0
