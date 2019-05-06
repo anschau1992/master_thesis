@@ -51,6 +51,12 @@ then
     ./scripts/download-source-data.sh
 fi
 
+# create common vocabulary
+if [[ ! -e "../model/vocab.ende.yml" ]]
+then
+    echo "voca"
+    cat ../data/train.src.en ../data/train.src.de | ${MARIAN_VOCAB} --max-size 36000 > model/vocab.ende.yml
+fi
 echo $MARIAN
 #if [[ ! -e "training/train.src.en" ]]
 #then
