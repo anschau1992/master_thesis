@@ -11,16 +11,33 @@ This is my general repository considering all my work for my master thesis. It c
 
 ## Prerequisites 
 1. Install python 3.7: https://www.python.org/downloads/
-2. Make sure you have pip installed : https://pip.pypa.io/en/stable/installing/
+2. Install pip3
+3. Make sure you have pip installed : https://pip.pypa.io/en/stable/installing/
 
 ## Setup
-1. Start the virtual environment (from root directory of the repo): 
-
-    `` source src/venv/bin/activate``
-3. Start the generator:
-
-    `` python3 src/generator.py``
-  
+1. Clone the repository
+2. Set the environment variable 'MARIAN_PATH' to the build-path. E.g. put the following into file '.zshrc' or '.bash_profile':
+    ```
+    export MARIAN_PATH=/home/user/{username}/software/marian/build
+    ```
+3. Install the marian tools required:
+    ```
+    cd master-thesis/tools
+    make
+    ```
+4. Install the depending python libraries: (TODO: überprüfen der benötigten Libraries)
+    ```
+        pip3 install -r requirements.txt
+    ```
+5. Install the spaCy models for german language:
+    ```
+    python3 -m spacy download de
+    ```
+6. Run the program:
+    ```
+    cd src
+    ./run-me.sh
+    ```
 ## Useful commands
  TODO
 
