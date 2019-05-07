@@ -1,11 +1,8 @@
 import unittest
-from src.generator.generator import generate_train_data
+from src.generation.generator import generate_train_data
 
 
 class TestGenerateTrainData(unittest.TestCase):
-
-    def test_true(self):
-        self.assertTrue(True)
 
     def test_empty_parameters(self):
         """
