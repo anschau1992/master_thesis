@@ -61,8 +61,9 @@ fi
 
 # train model TODO: move on and finish model, but valid-dataset first
 mkdir -p ../model/back
-if [[ ! -e "../model/back/model.npz.best-translation.npz" ]]
-then
+#if [[ ! -e "../model/back/model.npz.best-translation.npz" ]]
+#then
+    echo "Start of Model Training"
     ${MARIAN_TRAIN} \
         --model ../model/back/model.npz --type s2s \
         --train-set ..data/train.src.en ..data/train.src.de  ..data/train.trg.de\
@@ -81,14 +82,16 @@ then
         --tied-embeddings-all --layer-normalization \
         --devices ${GPUS} --seed 1111 \
         --exponential-smoothing
-fi
+#fi
 
 # inflect test set
+echo "Start of Testing"
 cat ../data/test.trg.de \
     | ${MARIAN_DECODER} -c ../model/back/model.npz.best-bleu-detok.npz.decoder.yml -d ${GPUS} -b 6 -n0.6 \
     --mini-batch 65 --maxi-batch 100 --maxi-batch-sort src > ../data/test.trg.de.output
 
 # calculate scores
+echo "Start of Score calculation"
 ../tools/sacreBLEU/sacrebleu.py -t ../score/validation -l en-de < ..data/validation.de.output
 ../tools/sacreBLEU/sacrebleu.py -t ../score -l en-de < ..data/test.trg.de.output
 
