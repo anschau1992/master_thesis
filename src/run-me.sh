@@ -65,7 +65,7 @@ mkdir -p ../model/back
 echo "Start of Model Training"
 ${MARIAN_TRAIN} \
     --model ../model/back/model.npz --type s2s \
-    --train-set ..data/train.src.en ..data/train.src.de  ..data/train.trg.de\
+    --train-sets ../data/train.src.en ../data/train.src.de  ../data/train.trg.de\
     --max-length 200 \
     --vocabs ../model/vocab.deen.yml ../model/vocab.deen.yml \
     --mini-batch-fit -w 3500 --maxi-batch 1000 \
@@ -76,7 +76,7 @@ ${MARIAN_TRAIN} \
     --valid-sets ../data/validation.src.en ../data/validation.src.en \
     --valid-mini-batch 64 --beam-size 12 --normalize=1 \
     --overwrite --keep-best \
-    --early-stopping 5 --after.epochs 5 --cost-type_ce-mean-words \
+    --early-stopping 5 --after-epochs 5 --cost-type=ce-mean-words \
     --log ../model/back/train.log --valid-log ../model/back/valid.log \
     --tied-embeddings-all --layer-normalization \
     --devices ${GPUS} --seed 1111 \
