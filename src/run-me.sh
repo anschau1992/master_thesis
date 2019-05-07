@@ -39,7 +39,7 @@ then
     exit 1
 fi
 
-mkdir -p model
+mkdir -p ../model
 
 
 
@@ -54,8 +54,7 @@ fi
 # create common vocabulary
 if [[ ! -e "../model/vocab.ende.yml" ]]
 then
-    echo "voca"
-    cat ../data/train.src.en ../data/train.src.de | ${MARIAN_VOCAB} --max-size 36000 > model/vocab.ende.yml
+    cat ../data/train.src.en ../data/train.src.de | ${MARIAN_VOCAB} --max-size 36000 > ../model/vocab.ende.yml
 fi
 echo $MARIAN
 #if [[ ! -e "training/train.src.en" ]]
