@@ -49,13 +49,33 @@ then
     rm -r -f ../data
     echo "missing training data. Will be downloaded and prepared..."
     ./scripts/download-source-data.sh
+else
+    echo "Found generated training data under '../data'"
 fi
 
 # create common vocabulary
-if [[ ! -e "../model/vocab.ende.yml" ]]
+if [[ ! -e "../model/vocab.deen.yml" ]]
 then
-    cat ../data/train.src.en ../data/train.src.de | ${MARIAN_VOCAB} --max-size 36000 > ../model/vocab.ende.yml
+    cat ../data/train.src.de ../data/train.src.en | ${MARIAN_VOCAB} --max-size 36000 > ../model/vocab.deen.yml
 fi
+
+# train model TODO: move on and finish model, but valid-dataset first
+#mkdir -p ../model/back
+#if [ ! -e "../model/back/model.npz.best-translation.npz" ]
+#then
+#    $MARIAN_TRAIN \
+#        --model ../model/back/model.npz --type s2s \
+#        --train-sets ..data/train.src.en ..data/train.src.de \
+#        --max-length 200 \
+#        --vocabs ../model/vocab.deen.yml ../model/vocab.deen.yml \
+#        --mini-batch-fit -w 3500 --maxi-batch 1000 \
+#        --valid-freq 5000 --save-freq 5000 --disp-freq 1000 \
+#        --valid-metrics bleu translation \
+
+
+
+
+
 echo $MARIAN
 #if [[ ! -e "training/train.src.en" ]]
 #then
