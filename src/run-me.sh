@@ -74,7 +74,7 @@ ${MARIAN_TRAIN} \
     --valid-metrics bleu translation \
     --valid-script-path "bash ./scripts/validate.sh" \
     --valid-translation-output ../data/validation.de.output \
-    --valid-sets ../data/validation.src.en ../data/validation.src.en \
+    --valid-sets ../data/validation.src.en ../data/validation.src.de ../data/validation.src.en \
     --valid-mini-batch 64 --beam-size 12 --normalize=1 \
     --overwrite --keep-best \
     --early-stopping 5 --after-epochs 5 --cost-type=ce-mean-words \
