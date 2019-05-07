@@ -79,7 +79,7 @@ ${MARIAN_TRAIN} \
     --overwrite --keep-best \
     --early-stopping 5 --after-epochs 5 --cost-type=ce-mean-words \
     --log ../model/back/train.log --valid-log ../model/back/valid.log \
-    --tied-embeddings-all --layer-normalization \
+    --tied-embeddings --layer-normalization \
     --devices ${GPUS} --seed 1111 \
     --exponential-smoothing
 
