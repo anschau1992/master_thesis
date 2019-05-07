@@ -62,12 +62,13 @@ fi
 # train model TODO: move on and finish model, but valid-dataset first
 mkdir -p ../model/back
 
+#--vocabs ../model/vocab.deen.yml ../model/vocab.deen.yml \
+
 echo "Start of Model Training"
 ${MARIAN_TRAIN} \
     --model ../model/back/model.npz --type s2s \
     --train-sets ../data/train.src.en ../data/train.src.de  ../data/train.trg.de\
     --max-length 200 \
-    --vocabs ../model/vocab.deen.yml ../model/vocab.deen.yml \
     --mini-batch-fit -w 3500 --maxi-batch 1000 \
     --valid-freq 5000 --save-freq 5000 --disp-freq 1000 \
     --valid-metrics bleu translation \
