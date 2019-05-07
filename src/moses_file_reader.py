@@ -1,5 +1,6 @@
 import logging
 
+
 def read_moses_files(file_paths: list):
     """
     Opens files provided as parameter. It reads in line by line

@@ -6,3 +6,5 @@ training/*
 *__pycache__*
 data/*
 train/*
+source_data/*
+model/*

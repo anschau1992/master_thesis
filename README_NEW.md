@@ -2,42 +2,17 @@
 
 
 ## Introduction
-This is my general repository considering all my work for my master thesis. It consist of:
-* Proposal (proposal.zip)
-* Project itself:
-  * Generator - generates training data out of translation data
-  * Predictor (TODO)
-  * Evaluator - evaluates the results of the predictor using gold data from the generator
+
 
 ## Prerequisites 
 1. Install python 3.7: https://www.python.org/downloads/
-2. Install pip3
-3. Make sure you have pip installed : https://pip.pypa.io/en/stable/installing/
+2. Make sure you have pip installed : https://pip.pypa.io/en/stable/installing/
 
 ## Setup
-1. Clone the repository
-2. Set the environment variable 'MARIAN_PATH' to the build-path. E.g. put the following into file '.zshrc' or '.bash_profile':
-    ```
-    export MARIAN_PATH=/home/user/{username}/software/marian/build
-    ```
-3. Install the marian tools required:
-    ```
-    cd master-thesis/tools
-    make
-    ```
-4. Install the depending python libraries: (TODO: überprüfen der benötigten Libraries)
-    ```
-        pip3 install -r requirements.txt
-    ```
-5. Install the spaCy models for german language:
-    ```
-    python3 -m spacy download de
-    ```
-6. Run the program:
-    ```
-    cd src
-    ./run-me.sh
-    ```
+1. Set the environment variable 'MARIAN_PATH' for marian build. (e.g. in .bash_profile)
+```
+export MARIAN_PATH=/usr/lib/marian/build
+``` 
 ## Useful commands
  TODO
 
