@@ -3,13 +3,29 @@
 
  For simplicity reasons it only compares the count of
   lowercase against capitalized version of a token.
+  This method assumes that all punctuations are removed beforehand
 
 """
 import logging
 from collections import Counter
 
 
-def build_model(lines):
+def true_case_lines(lines):
+    """
+    Takes in multiple lines of text.
+    Creates a true-case model with the private function and the provided lines.
+    Uses this model to true-case all the lines and return them.
+    :return: true cased lines
+    """
+    model = _build_model(lines)
+
+    true_cased_lines = []
+    for line in lines:
+        true_cased_lines.append(_true_case(line, model))
+    return true_cased_lines
+
+
+def _build_model(lines):
     """
     Builds a true-caser model, which is trained by the arguments.
     Expects a list of strings as argument. These strings get tokenized for the model
@@ -25,7 +41,7 @@ def build_model(lines):
     return Counter(corpus)
 
 
-def truecase(line, model):
+def _true_case(line, model):
     """
     Recevies the pre-trained counter and decides based on it if
     each token in the line should be lowercased or capitalized.

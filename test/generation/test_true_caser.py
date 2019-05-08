@@ -1,5 +1,5 @@
 import unittest
-from generation.true_caser import build_model, truecase
+from generation.true_caser import _build_model, _true_case, true_case_lines
 
 
 class TestTrueCaser(unittest.TestCase):
@@ -14,8 +14,8 @@ class TestTrueCaser(unittest.TestCase):
             "Simple test",
             "for the true caser"
         ]
-        model = build_model(input_list)
-        result = truecase("Never APPeared", model)
+        model = _build_model(input_list)
+        result = _true_case("Never APPeared", model)
         self.assertEqual("never appeared", result)
 
     def test_correct_capitalization(self):
@@ -29,6 +29,23 @@ class TestTrueCaser(unittest.TestCase):
             "capitalize",
             "Second time Capitalize"
         ]
-        model = build_model(input_list)
-        result = truecase("capitalize", model)
+        model = _build_model(input_list)
+        result = _true_case("capitalize", model)
         self.assertEqual("Capitalize", result)
+
+    def test_true_case_lines(self):
+        """
+        Test if the true-caser return the expected lines, given the input
+        :return:
+        """
+        input_list = [
+            "lower Up",
+            "Up up",
+            "Lower lower lower"
+        ]
+        result = true_case_lines(input_list)
+        self.assertEqual([
+            "lower Up",
+            "Up Up",
+            "lower lower lower"
+        ], result)

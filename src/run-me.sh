@@ -26,11 +26,11 @@ N=4
 EPOCHS=5
 B=12
 
-if [[ ! -e $MARIAN_TRAIN ]]
-then
-    echo "marian is not installed in $MARIAN, you need to compile the toolkit first"
-    exit 1
-fi
+#if [[ ! -e $MARIAN_TRAIN ]]
+#then
+#    echo "marian is not installed in $MARIAN, you need to compile the toolkit first"
+#    exit 1
+#fi
 
 #if [[ ! -e ../tools/moses-scripts ]] || [[ ! -e ../tools/subword-nmt ]] || [[ ! -e ../tools/sacreBLEU ]]
 if [[ ! -e ../tools/moses-scripts ]]
@@ -75,7 +75,7 @@ ${MARIAN_TRAIN} \
     --valid-sets ../data/validation.src.en ../data/validation.src.de ../data/validation.src.en \
     --valid-mini-batch 64 --beam-size 12 --normalize=1 \
     --overwrite --keep-best \
-    --early-stopping 5 --after-epochs 5 --cost-type=ce-mean-words \
+    --early-stopping 10 --after-epochs 10 --cost-type=ce-mean-words \
     --log ../model/back/train.log --valid-log ../model/back/valid.log \
     --tied-embeddings --layer-normalization \
     --devices ${GPUS} --seed 1111 \
