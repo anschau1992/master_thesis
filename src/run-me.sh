@@ -62,8 +62,6 @@ fi
 # train model TODO: move on and finish model, but valid-dataset first
 mkdir -p ../model/back
 
-#--vocabs ../model/vocab.deen.yml ../model/vocab.deen.yml \
-
 echo "Start of Model Training"
 ${MARIAN_TRAIN} \
     --model ../model/back/model.npz --type s2s \
@@ -97,24 +95,3 @@ echo "Start of Score calculation"
 
 
 echo $MARIAN
-#if [[ ! -e "training/train.src.en" ]]
-#then
-#    echo "missing train.src.en in ./training, you need to have training data first"
-#fi
-#
-#if [[ ! -e "training/train.src.de" ]]
-#then
-#    echo "missing train.src.de in ./training, you need to have training data first"
-#fi
-#
-#if [[ ! -e "training/train.trg.de" ]]
-#then
-#    echo "missing train.trg.de in ./training, you need to have training data first"
-#fi
-#
-## create common vocabulary
-#if [[ ! -e "model/vocab.ende.yml" ]]
-#then
-#    cat data/corpus.bpe.en data/corpus.bpe.de | ${MARIAN_VOCAB} --max-size 36000 > model/vocab.ende.yml
-#fi
-
