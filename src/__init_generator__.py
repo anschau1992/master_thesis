@@ -1,7 +1,8 @@
 import sys
 from generation.command_line_parser import parse_command_line
 from moses_file_reader import read_moses_files
-from generation.generator import generate_train_data, split_validation_and_test_data
+from generation.generator import generate_train_data
+from generation.validation_test_divider import divide_data
 
 from config import VALIDATION_FRACTION_PERCENTAGE, TEST_FRACTION_PERCENTAGE,\
     TRAIN_SOURCE_FILE_DE, TRAIN_SOURCE_FILE_EN, TRAIN_TARGET_FILE_DE, \
@@ -17,7 +18,7 @@ def main():
     sources_en, sources_de, targets_de = generate_train_data(input_files[0], input_files[1])
 
     training_data_set, validation_data_set, test_data_set = \
-        split_validation_and_test_data(
+        divide_data(
             sources_en,
             sources_de,
             targets_de,

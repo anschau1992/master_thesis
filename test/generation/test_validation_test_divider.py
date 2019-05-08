@@ -1,5 +1,5 @@
 import unittest
-from src.generation.generator import split_validation_and_test_data
+from src.generation.validation_test_divider import divide_data
 
 # example data used in multiple tests
 basic_source_en = [
@@ -30,7 +30,7 @@ class TestSplitValidationTestData(unittest.TestCase):
         :return: this three objects
         """
         training_data, validation_data, test_data = \
-            split_validation_and_test_data(basic_source_en, basic_source_en, basic_targets_de, 0.1, 0.2)
+            divide_data(basic_source_en, basic_source_en, basic_targets_de, 0.1, 0.2)
 
         # training data
         self.assertTrue(hasattr(training_data, 'sources_en'))
@@ -52,7 +52,7 @@ class TestSplitValidationTestData(unittest.TestCase):
         Parameter 4 and 5 need to be ratios between 0.00 and 1.00
         :return: exception as no ratios provided
         """
-        self.assertRaises(Exception, split_validation_and_test_data,
+        self.assertRaises(Exception, divide_data,
                           basic_source_en, basic_source_de, basic_targets_de)
 
     def test_too_high_ratio_one_provided(self):
@@ -61,7 +61,7 @@ class TestSplitValidationTestData(unittest.TestCase):
         Higher ratios raises Exception.
         :return: exception
         """
-        self.assertRaises(Exception, split_validation_and_test_data,
+        self.assertRaises(Exception, divide_data,
                           basic_source_en, basic_source_de, basic_targets_de, 0.1, 1.5)
 
     def test_incorrect_ratio_two_provided(self):
@@ -70,7 +70,7 @@ class TestSplitValidationTestData(unittest.TestCase):
         Higher ratios raises Exception.
         :return: exception
         """
-        self.assertRaises(Exception, split_validation_and_test_data,
+        self.assertRaises(Exception, divide_data,
                           basic_source_en, basic_source_de, basic_targets_de, 1.5, 0.1)
 
     def test_too_low_ratio_one_provided(self):
@@ -79,7 +79,7 @@ class TestSplitValidationTestData(unittest.TestCase):
         Lower ratios raises Exception.
         :return: exception
         """
-        self.assertRaises(Exception, split_validation_and_test_data,
+        self.assertRaises(Exception, divide_data,
                           basic_source_en, basic_source_de, basic_targets_de, -0.1, 0.2)
 
     def test_too_low_ratio_two_provided(self):
@@ -88,7 +88,7 @@ class TestSplitValidationTestData(unittest.TestCase):
         Lower ratios raises Exception.
         :return: exception
         """
-        self.assertRaises(Exception, split_validation_and_test_data,
+        self.assertRaises(Exception, divide_data,
                           basic_source_en, basic_source_de, basic_targets_de, 0.2, -0.1)
 
     def test_ratio_sum_higher_than_one(self):
@@ -97,7 +97,7 @@ class TestSplitValidationTestData(unittest.TestCase):
         Is the sum of the two higher than 1 it is illogical.
         :return: exception as sum is higher than 1
         """
-        self.assertRaises(Exception, split_validation_and_test_data,
+        self.assertRaises(Exception, divide_data,
                           basic_source_en, basic_source_de, basic_targets_de, 0.6, 0.5)
 
     def test_empty_paramters(self):
@@ -105,7 +105,7 @@ class TestSplitValidationTestData(unittest.TestCase):
         Empty parameter entries should return empty lists back
         :return: three objects including three empty lists
         """
-        training_data, validation_data, test_data = split_validation_and_test_data([], [], [], 0.1, 0.2)
+        training_data, validation_data, test_data = divide_data([], [], [], 0.1, 0.2)
 
         # training data
         self.assertEqual(len(training_data.sources_en), 0)
@@ -144,7 +144,7 @@ class TestSplitValidationTestData(unittest.TestCase):
             'Benutzerdaten',
         ]
 
-        self.assertRaises(Exception, split_validation_and_test_data,
+        self.assertRaises(Exception, divide_data,
                           source_en, source_de, targets_de, 0.1, 0.1)
 
     def test_not_same_length_02(self):
@@ -169,7 +169,7 @@ class TestSplitValidationTestData(unittest.TestCase):
             'Benutzerdaten',
         ]
 
-        self.assertRaises(Exception, split_validation_and_test_data,
+        self.assertRaises(Exception, divide_data,
                           source_en, source_de, targets_de, 0.1, 0.1)
 
     def test_not_same_length_03(self):
@@ -194,7 +194,7 @@ class TestSplitValidationTestData(unittest.TestCase):
             'Ändern',
         ]
 
-        self.assertRaises(Exception, split_validation_and_test_data,
+        self.assertRaises(Exception, divide_data,
                           source_en, source_de, targets_de, 0.1, 0.1)
 
     def test_correct_splitting(self):
@@ -207,7 +207,7 @@ class TestSplitValidationTestData(unittest.TestCase):
         targets_de = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10']
 
         training_data, validation_data, test_data = \
-            split_validation_and_test_data(source_en, source_de, targets_de, 0.1, 0.2)
+            divide_data(source_en, source_de, targets_de, 0.1, 0.2)
 
         # training
         self.assertEqual(len(training_data.sources_en), 7)
@@ -236,7 +236,7 @@ class TestSplitValidationTestData(unittest.TestCase):
         targets_de = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10']
 
         training_data, validation_data, test_data = \
-            split_validation_and_test_data(source_en, source_de, targets_de, 0.3, 0.3)
+            divide_data(source_en, source_de, targets_de, 0.3, 0.3)
 
         for entry in validation_data.sources_en:
             if entry in training_data.sources_en:
@@ -258,7 +258,7 @@ class TestSplitValidationTestData(unittest.TestCase):
         targets_de = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10']
 
         training_data, validation_data, test_data = \
-            split_validation_and_test_data(source_en, source_de, targets_de, 0.3, 0.3)
+            divide_data(source_en, source_de, targets_de, 0.3, 0.3)
 
         for entry in validation_data.sources_de:
             if entry in training_data.sources_de:
@@ -280,7 +280,7 @@ class TestSplitValidationTestData(unittest.TestCase):
         targets_de = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10']
 
         training_data, validation_data, test_data = \
-            split_validation_and_test_data(source_en, source_de, targets_de, 0.3, 0.3)
+            divide_data(source_en, source_de, targets_de, 0.3, 0.3)
 
         for entry in validation_data.targets_de:
             if entry in training_data.targets_de:
