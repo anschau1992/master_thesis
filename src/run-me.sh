@@ -87,7 +87,7 @@ ${MARIAN_TRAIN} \
 # inflect test set
 echo "Start of Testing"
 cat ../data/test.trg.de \
-    | ${MARIAN_DECODER} -c ../model/back/model.npz.best-bleu-detok.npz.decoder.yml -d ${GPUS} -b 6 -n0.6 \
+    | ${MARIAN_DECODER} -c ../model/back/model.npz.best-translation.npz.decoder.yml -d ${GPUS} -b 6 -n0.6 \
     --mini-batch 65 --maxi-batch 100 --maxi-batch-sort src > ../data/test.trg.de.output
 
 # calculate scores
