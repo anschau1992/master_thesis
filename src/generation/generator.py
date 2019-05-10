@@ -1,9 +1,9 @@
 import sys
 import logging
 import spacy
-import types
-from random import randint
 from spacy.tokenizer import Tokenizer
+
+from generation.line_preprocessor import preprocess
 
 module = sys.modules['__main__'].__file__
 log = logging.getLogger(module)
@@ -23,6 +23,11 @@ def generate_train_data(lines_en, lines_de):
 
     if len(lines_en) != len(lines_de):
         raise Exception('Length of the list parameters are not equal')
+
+    lines_en = preprocess(lines_en)
+    lines_de = preprocess(lines_de)
+
+
 
     sources_en = []
     sources_de = []
