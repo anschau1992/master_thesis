@@ -39,14 +39,16 @@ def generate_train_data(lines_en, lines_de):
 
         tokens = nlp(line_de)
         for token in tokens:
-            line_en = __assure_line_break(line_en)
-            sources_en.append(line_en)
+            # skip too short tokens
+            if len(token) >= 2:
+                line_en = __assure_line_break(line_en)
+                sources_en.append(line_en)
 
-            lemma = __assure_line_break(token.lemma_)
-            sources_de.append(lemma)
+                lemma = __assure_line_break(token.lemma_)
+                sources_de.append(lemma)
 
-            token_string = __assure_line_break(str(token))
-            targets_de.append(token_string)
+                token_string = __assure_line_break(str(token))
+                targets_de.append(token_string)
 
     logging.debug("Finish generate training data. Number of entries: %s " % len(lines_de))
     return sources_en, sources_de, targets_de
