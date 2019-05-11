@@ -26,11 +26,11 @@ N=4
 EPOCHS=5
 B=12
 
-#if [[ ! -e $MARIAN_TRAIN ]]
-#then
-#    echo "marian is not installed in $MARIAN, you need to compile the toolkit first"
-#    exit 1
-#fi
+if [[ ! -e $MARIAN_TRAIN ]]
+then
+    echo "marian is not installed in $MARIAN, you need to compile the toolkit first"
+    exit 1
+fi
 
 #if [[ ! -e ../tools/moses-scripts ]] || [[ ! -e ../tools/subword-nmt ]] || [[ ! -e ../tools/sacreBLEU ]]
 if [[ ! -e ../tools/moses-scripts ]]

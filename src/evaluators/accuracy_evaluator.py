@@ -1,5 +1,5 @@
 import logging
-from src.evaluators.evaluator_base import Evaluator
+from evaluators.evaluator_base import Evaluator
 
 
 class AccuracyEvaluator(Evaluator):
