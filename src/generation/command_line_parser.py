@@ -10,7 +10,7 @@ from config import DEFAULT_TRAINING_PATH, DEFAULT_DATA_PATH_DE, DEFAULT_DATA_PAT
 root_path = Path(__file__).parent.parent
 
 
-def parse_command_line_generator():
+def parse_command_line_generator(argv):
     """
     Parse command line argument for the data generation.
      See -h option
@@ -46,7 +46,7 @@ def parse_command_line_generator():
     return args
 
 
-def parse_command_line_evaluator():
+def parse_command_line_evaluator(argv):
     """
     Parse command line argument for the evaluation
     See -h for options
