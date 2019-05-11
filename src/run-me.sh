@@ -78,7 +78,7 @@ ${MARIAN_TRAIN} \
     --early-stopping 10 --after-epochs 10 --cost-type=ce-mean-words \
     --log ../model/back/train.log --valid-log ../model/back/valid.log \
     --enc-depth 6 --dec-depth 6 \
-    --tied-embeddings-all \
+    --tied-embeddings \
     --transformer-dropout 0.1 --label-smoothing 0.1 \
     --learn-rate 0.0003 --lr-warmup 16000 --lr-decay-inv-sqrt 16000 --lr-report \
     --optimizer-params 0.9 0.98 1e-09 --clip-norm 5 \
