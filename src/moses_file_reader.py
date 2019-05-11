@@ -9,7 +9,8 @@ def read_moses_files(file_paths: list):
     as the position are treated as pairs afterwards.
 
     :param file_paths:
-    :return:
+    :return: a list of lists.
+     The size of the first list correspond on the size of file-paths given as argument.
     """
     logging.info('Moses_file_reader: Starting')
 

@@ -11,7 +11,7 @@ class ChrfEvaluator(Evaluator):
         scoring = list(map(lambda r, t: chrf_score.sentence_chrf(r, t), results, targets))
 
         logging.info('Chrf evaluator: Finished evaluating')
-        return scoring
+        return scoring, (sum(scoring)/len(scoring))
 
 
 if __name__ == '__main__':

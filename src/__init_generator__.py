@@ -1,5 +1,5 @@
 import sys
-from generation.command_line_parser import parse_command_line
+from generation.command_line_parser import parse_command_line_generator
 from moses_file_reader import read_moses_files
 from generation.generator import generate_train_data
 from generation.validation_test_divider import divide_data
@@ -11,7 +11,7 @@ from config import VALIDATION_FRACTION_PERCENTAGE, TEST_FRACTION_PERCENTAGE,\
 
 
 def main():
-    args = parse_command_line(sys.argv)
+    args = parse_command_line_generator(sys.argv)
 
     input_files = read_moses_files([args.file_en, args.file_de])
 

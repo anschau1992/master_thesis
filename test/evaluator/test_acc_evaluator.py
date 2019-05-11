@@ -41,16 +41,16 @@ class TestAccuracyEvaluator(unittest.TestCase):
 
     def test_zero_score(self):
         score = self.accuracyEvaluator.evaluate(none_results, t_targets)
-        self.assertEqual([0, 0, 0, 0, 0], score, msg='When all results are wrong, score is 0 for all')
+        self.assertEqual(([0, 0, 0, 0, 0], 0.0), score, msg='When all results are wrong, score is 0 for all')
 
     def test_correct_accuracy_score(self):
         score = self.accuracyEvaluator.evaluate(t_results, t_targets)
-        self.assertEqual([1, 1, 0, 0, 0], score, msg='Accuracy-Scoring returned is [1,1,0,0,0]')
+        self.assertEqual(([1, 1, 0, 0, 0], 0.4), score, msg='Accuracy-Scoring returned is [1,1,0,0,0]')
 
     def test_not_same_case_accuracy_score(self):
         """
-        Same words but wiht not the same case letter are not considered a correct result
+        Same words but with not the same case letter are not considered a correct result
         """
         t_results_lowercase = list(map(lambda word: word.lower(), t_results))
         score = self.accuracyEvaluator.evaluate(t_results_lowercase, t_targets)
-        self.assertEqual([1, 0, 0, 0, 0], score, msg='Accuracy-Scoring when results are all lowercase is [1,0,0,0,0]')
+        self.assertEqual(([1, 0, 0, 0, 0], 0.2), score, msg='Accuracy-Scoring when results are all lowercase is [1,0,0,0,0]')
