@@ -67,12 +67,12 @@ ${MARIAN_TRAIN} \
     --model ../model/back/model.npz --type multi-transformer \
     --train-sets ../data/train.src.en ../data/train.src.de  ../data/train.trg.de\
     --max-length 100 \
-    --mini-batch-fit -w 7000 --maxi-batch 1000 \
+    --mini-batch-fit -w 5000 --maxi-batch 1000 \
     --valid-freq 5000 --save-freq 5000 --disp-freq 500 \
     --valid-metrics ce-mean-words perplexity translation \
     --valid-translation-output ../data/validation.de.output \
     --valid-sets ../data/validation.src.en ../data/validation.src.de ../data/validation.trg.de \
-    --valid-mini-batch 16 \
+    --valid-mini-batch 64 \
     --beam-size 12 --normalize=1 \
     --overwrite --keep-best \
     --early-stopping 10 --after-epochs 10 --cost-type=ce-mean-words \
