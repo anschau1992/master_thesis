@@ -97,8 +97,8 @@ $MARIAN_DECODER \
     -i ../data/test.src.en ../data/test.src.de \
     -b 6 --normalize=1 -w 2000 -d ${GPUS} \
     --mini-batch 64 --maxi-batch 100 --maxi-batch-sort src \
-    --vocabs ../data/train.src.en.yml ../data/train.src.de.yml ../data/train.trg.de.yml
-    > ../data/test.trg.de.output
+    --vocabs ../data/train.src.en.yml ../data/train.src.de.yml ../data/train.trg.de.yml \
+    --output ../data/test.trg.de.output
 
 # calculate scores
 echo "Start of Score calculation"
