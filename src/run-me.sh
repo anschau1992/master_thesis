@@ -69,7 +69,7 @@ ${MARIAN_TRAIN} \
     --max-length 100 \
     --mini-batch-fit -w 5000 --maxi-batch 1000 \
     --valid-freq 5000 --save-freq 5000 --disp-freq 500 \
-    --valid-metrics ce-mean-words perplexity translation \
+    --valid-metrics ce-mean-words perplexity \
     --valid-translation-output ../data/validation.de.output \
     --valid-sets ../data/validation.src.en ../data/validation.src.de ../data/validation.trg.de \
     --valid-mini-batch 64 \
