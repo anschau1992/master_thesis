@@ -98,7 +98,7 @@ cat ../data/training.bpe.de \
     -i ../data/test.src.en ../data/test.src.de \
     -b 6 --normalize=1 -w 2500 -d ${GPUS} \
     --mini-batch 64 --maxi-batch 100 --maxi-batch-sort src \
-   > ../data/test.trg.de.output
+   | > ../data/test.trg.de.output
 
 # calculate scores
 echo "Start of Score calculation"
