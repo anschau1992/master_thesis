@@ -92,13 +92,12 @@ echo "Start of Testing"
 touch ../data/test.trg.de.output
 
    #  -c ../model/back/model.npz.best-translation.npz.decoder.yml \
-cat ../data/training.bpe.de \
-  | ${MARIAN_DECODER} \
+${MARIAN_DECODER} \
     -c ../model/back/model.npz \
     -i ../data/test.src.en ../data/test.src.de \
     -b 6 --normalize=1 -w 2500 -d ${GPUS} \
     --mini-batch 64 --maxi-batch 100 --maxi-batch-sort src \
-   | > ../data/test.trg.de.output
+    > ../data/test.trg.de.output
 
 # calculate scores
 echo "Start of Score calculation"
