@@ -92,7 +92,7 @@ echo "Start of Testing"
 touch ../data/test.trg.de.output
 
    #  -c ../model/back/model.npz.best-translation.npz.decoder.yml \
-${MARIAN_DECODER} \
+cat ${MARIAN_DECODER} \
     -c ../model/back/model.npz \
     -i ../data/test.src.en ../data/test.src.de \
     -b 6 --normalize=1 -w 2500 -d ${GPUS} \
