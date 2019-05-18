@@ -95,8 +95,8 @@ touch ../data/test.trg.de.output
 $MARIAN_DECODER \
     -m ../model/back/model.npz \
     -i ../data/test.src.en ../data/test.src.de \
-    --mini-batch-fit -w 5000 --maxi-batch 1000 \
-    -b 6 --normalize=1 -d ${GPUS} \
+    -b 6 --normalize=1 -w 2000 -d ${GPUS} \
+    --mini-batch 64 --maxi-batch 100 --maxi-batch-sort src \
     --vocabs ../data/train.src.en.yml ../data/train.src.de.yml ../data/train.trg.de.yml
     > ../data/test.trg.de.output
 
