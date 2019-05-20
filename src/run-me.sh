@@ -100,7 +100,6 @@ $MARIAN_DECODER \
     --vocabs ../data/train.src.en.yml ../data/train.src.de.yml ../data/train.trg.de.yml \
     --output ../data/test.trg.de.output \
     --max-length-factor=0.2 \
-    --n-best=3
 
 # calculate scores
 echo "Start of Score calculation"
