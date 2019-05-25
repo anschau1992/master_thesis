@@ -38,27 +38,27 @@ then
     echo "missing tools in ../tools, you need to download them first"
     exit 1
 fi
-#
-#mkdir -p ../model
-#
-#
-#
-#if [[ ! -e "../data/train.src.en" ]] || [[ ! -e "../data/train.src.de" ]] || [[ ! -e "../data/train.trg.de" ]]
+
+mkdir -p ../model
+
+
+
+if [[ ! -e "../data/train.src.en" ]] || [[ ! -e "../data/train.src.de" ]] || [[ ! -e "../data/train.trg.de" ]]
+then
+    # delete potential old training data
+    rm -r -f ../data
+    echo "missing training data. Will be downloaded and prepared..."
+    ./scripts/download-source-data.sh
+else
+    echo "Found generated training data under '../data'"
+fi
+
+## create common vocabulary
+#if [[ ! -e "../model/vocab.deen.yml" ]]
 #then
-#    # delete potential old training data
-#    rm -r -f ../data
-#    echo "missing training data. Will be downloaded and prepared..."
-#    ./scripts/download-source-data.sh
-#else
-#    echo "Found generated training data under '../data'"
+#    cat ../data/train.src.de ../data/train.src.en | ${MARIAN_VOCAB} --max-size 36000 > ../model/vocab.deen.yml
 #fi
-#
-### create common vocabulary
-##if [[ ! -e "../model/vocab.deen.yml" ]]
-##then
-##    cat ../data/train.src.de ../data/train.src.en | ${MARIAN_VOCAB} --max-size 36000 > ../model/vocab.deen.yml
-##fi
-#
+
 ## train model TODO: move on and finish model, but valid-dataset first
 #mkdir -p ../model/back
 #
