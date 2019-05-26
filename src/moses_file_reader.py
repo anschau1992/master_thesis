@@ -27,6 +27,10 @@ def read_moses_files(file_paths: list):
         with open(fp, 'r') as file:
             file_content = file.readlines()
 
+            # TODO remove, only testing
+            print(len(file_content))
+
+
             if not is_line_numb_defined:
                 line_number = len(file_content)
                 is_line_numb_defined = True

@@ -89,23 +89,23 @@ ${MARIAN_TRAIN} \
 # inflect test set
 echo "Start of Testing"
 
+if [[ ! -e "../data/test.trg.de.output" ]]
+then
 touch ../data/test.trg.de.output
+    ${MARIAN_DECODER} \
+        -m ../model/back/model.npz \
+        -i ../data/test.src.en ../data/test.src.de \
+        -b 6 --normalize=1 -w 2000 -d ${GPUS} \
+        --mini-batch 64 --maxi-batch 100 --maxi-batch-sort src \
+        --vocabs ../data/train.src.en.yml ../data/train.src.de.yml ../data/train.trg.de.yml \
+        --output ../data/test.trg.de.output \
+        --log ../model/back/test.log \
+        --max-length-factor 0.1 \
+        --word-penalty 10
 
-   #  -c ../model/back/model.npz.best-translation.npz.decoder.yml \
-$MARIAN_DECODER \
-    -m ../model/back/model.npz \
-    -i ../data/test.src.en ../data/test.src.de \
-    -b 6 --normalize=1 -w 2000 -d ${GPUS} \
-    --mini-batch 64 --maxi-batch 100 --maxi-batch-sort src \
-    --vocabs ../data/train.src.en.yml ../data/train.src.de.yml ../data/train.trg.de.yml \
-    --output ../data/test.trg.de.output \
-    --log ../model/back/test.log \
-    --max-length-factor 0.1 \
-    --word-penalty 10
-
-
-# make file with only one word TODO: find better way -> model should actually do this itself
-grep -Eo '^[^ ]+' ../data/test.trg.de.output > ../data/test.trg.de.output_one_word
+    # make file with only one word TODO: find better way -> model should actually do this itself
+    grep -Eo '^[^ ]+' ../data/test.trg.de.output > ../data/test.trg.de.output_one_word
+fi
 
 # calculate scores
 echo "Start of Score calculation"
