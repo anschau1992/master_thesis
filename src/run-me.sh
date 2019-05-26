@@ -86,12 +86,11 @@ ${MARIAN_TRAIN} \
     --exponential-smoothing
 
 
-# inflect test set
-echo "Start of Testing"
-
+# Testing phase
 if [[ ! -e "../data/test.trg.de.output" ]]
 then
-touch ../data/test.trg.de.output
+    echo "Start of Testing"
+    touch ../data/test.trg.de.output
     ${MARIAN_DECODER} \
         -m ../model/back/model.npz \
         -i ../data/test.src.en ../data/test.src.de \
@@ -100,11 +99,13 @@ touch ../data/test.trg.de.output
         --vocabs ../data/train.src.en.yml ../data/train.src.de.yml ../data/train.trg.de.yml \
         --output ../data/test.trg.de.output \
         --log ../model/back/test.log \
-        --max-length-factor 0.1 \
+        --max-length-factor 0.3 \
         --word-penalty 10
 
     # make file with only one word TODO: find better way -> model should actually do this itself
     grep -Eo '^[^ ]+' ../data/test.trg.de.output > ../data/test.trg.de.output_one_word
+else
+    echo "Testing already done; Skip it"
 fi
 
 # calculate scores
