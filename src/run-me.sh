@@ -105,7 +105,7 @@ $MARIAN_DECODER \
 
 
 # make file with only one word TODO: find better way -> model should actually do this itself
-grep -Eo '^[^ ]+' test.trg.de.output > test.trg.de.output_one
+grep -Eo '^[^ ]+' test.trg.de.output > test.trg.de.output_one_word
 
 # calculate scores
 echo "Start of Score calculation"
