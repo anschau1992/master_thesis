@@ -103,7 +103,9 @@ then
         --word-penalty 10
 
     # make file with only one word TODO: find better way -> model should actually do this itself
-    grep -Eo '^[^ ]+|^\s*$' ../data/test.trg.de.output > ../data/test.trg.de.output_one_word
+    test_lines = 'cat $../data/test.trg.de.output'
+    print test_lines
+
 else
     echo "Testing already done; Skip it"
 fi
