@@ -53,37 +53,37 @@ else
     echo "Found generated training data under '../data'"
 fi
 
-## create common vocabulary
-#if [[ ! -e "../model/vocab.deen.yml" ]]
-#then
-#    cat ../data/train.src.de ../data/train.src.en | ${MARIAN_VOCAB} --max-size 36000 > ../model/vocab.deen.yml
-#fi
+# create common vocabulary
+if [[ ! -e "../model/vocab.deen.yml" ]]
+then
+    cat ../data/train.src.de ../data/train.src.en | ${MARIAN_VOCAB} --max-size 36000 > ../model/vocab.deen.yml
+fi
 
-## train model TODO: move on and finish model, but valid-dataset first
-#mkdir -p ../model/back
-#
-#echo "Start of Model Training"
-#${MARIAN_TRAIN} \
-#    --model ../model/back/model.npz --type multi-transformer \
-#    --train-sets ../data/train.src.en ../data/train.src.de  ../data/train.trg.de\
-#    --max-length 100 \
-#    --mini-batch-fit -w 5000 --maxi-batch 1000 \
-#    --valid-freq 5000 --save-freq 5000 --disp-freq 500 \
-#    --valid-metrics ce-mean-words perplexity\
-#    --valid-translation-output ../data/validation.de.output \
-#    --valid-sets ../data/validation.src.en ../data/validation.src.de ../data/validation.trg.de \
-#    --valid-mini-batch 64 \
-#    --beam-size 12 --normalize=1 \
-#    --overwrite --keep-best \
-#    --early-stopping 10 --after-epochs 10 --cost-type=ce-mean-words \
-#    --log ../model/back/train.log --valid-log ../model/back/valid.log \
-#    --enc-depth 6 --dec-depth 6 \
-#    --tied-embeddings \
-#    --transformer-dropout 0.1 --label-smoothing 0.1 \
-#    --learn-rate 0.0003 --lr-warmup 16000 --lr-decay-inv-sqrt 16000 --lr-report \
-#    --optimizer-params 0.9 0.98 1e-09 --clip-norm 5 \
-#    --devices ${GPUS} --seed 1111 \
-#    --exponential-smoothing
+# train model
+mkdir -p ../model/back
+
+echo "Start of Model Training"
+${MARIAN_TRAIN} \
+    --model ../model/back/model.npz --type multi-transformer \
+    --train-sets ../data/train.src.en ../data/train.src.de  ../data/train.trg.de\
+    --max-length 100 \
+    --mini-batch-fit -w 5000 --maxi-batch 1000 \
+    --valid-freq 5000 --save-freq 5000 --disp-freq 500 \
+    --valid-metrics ce-mean-words perplexity\
+    --valid-translation-output ../data/validation.de.output \
+    --valid-sets ../data/validation.src.en ../data/validation.src.de ../data/validation.trg.de \
+    --valid-mini-batch 64 \
+    --beam-size 12 --normalize=1 \
+    --overwrite --keep-best \
+    --early-stopping 10 --after-epochs 10 --cost-type=ce-mean-words \
+    --log ../model/back/train.log --valid-log ../model/back/valid.log \
+    --enc-depth 6 --dec-depth 6 \
+    --tied-embeddings \
+    --transformer-dropout 0.1 --label-smoothing 0.1 \
+    --learn-rate 0.0003 --lr-warmup 16000 --lr-decay-inv-sqrt 16000 --lr-report \
+    --optimizer-params 0.9 0.98 1e-09 --clip-norm 5 \
+    --devices ${GPUS} --seed 1111 \
+    --exponential-smoothing
 
 
 # inflect test set
