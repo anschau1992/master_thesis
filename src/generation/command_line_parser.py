@@ -53,8 +53,8 @@ def parse_command_line_evaluator(argv):
     :param argv:
     :return:
     """
-    default_source_file = str((root_path / DEFAULT_EVAL_SOURCE_PATH).resolve())
-    default_target_file = str((root_path / DEFAULT_EVAL_TARGET_PATH).resolve())
+    default_source_file = str((root_path.parent / DEFAULT_EVAL_SOURCE_PATH).resolve())
+    default_target_file = str((root_path.parent / DEFAULT_EVAL_TARGET_PATH).resolve())
 
     parser = argparse.ArgumentParser()
     parser.add_argument("-v", "--verbose", dest="verbose", action="count",

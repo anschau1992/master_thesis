@@ -103,6 +103,10 @@ $MARIAN_DECODER \
     --max-length-factor 0.1 \
     --word-penalty 10
 
+
+# make file with only one word TODO: find better way -> model should actually do this itself
+grep -Eo '^[^ ]+' test.trg.de.output > test.trg.de.output_one
+
 # calculate scores
 echo "Start of Score calculation"
 python3 __init_evaluators__.py --vv
