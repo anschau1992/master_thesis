@@ -99,6 +99,7 @@ $MARIAN_DECODER \
     --mini-batch 64 --maxi-batch 100 --maxi-batch-sort src \
     --vocabs ../data/train.src.en.yml ../data/train.src.de.yml ../data/train.trg.de.yml \
     --output ../data/test.trg.de.output \
+    --log ../model/test.log \
     --max-length-factor 0.1 \
     --max-length 15 \
     --word-penalty 10
