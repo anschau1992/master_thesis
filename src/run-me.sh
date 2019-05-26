@@ -109,5 +109,5 @@ grep -Eo '^[^ ]+' ../data/test.trg.de.output > ../data/test.trg.de.output_one_wo
 
 # calculate scores
 echo "Start of Score calculation"
-python3 __init_evaluators__.py --vv
+python3 __init_evaluators__.py
 
