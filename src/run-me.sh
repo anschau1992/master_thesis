@@ -103,8 +103,7 @@ then
         --word-penalty 10
 
     # make file with only one word TODO: find better way -> model should actually do this itself
-    test_lines = 'cat $../data/test.trg.de.output'
-    print test_lines
+    python3 crop-to-first-word.py
 
 else
     echo "Testing already done; Skip it"
