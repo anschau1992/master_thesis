@@ -4,7 +4,7 @@ from moses_file_reader import read_moses_files
 from evaluators.accuracy_evaluator import AccuracyEvaluator
 from evaluators.chrf_evaluator import ChrfEvaluator
 
-scoring_file_path = "../../data/scoring.output"
+scoring_file_path = "../data/scoring.output"
 
 
 def main():
