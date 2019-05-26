@@ -22,7 +22,7 @@ def main():
     scoring_list = ["Accuracy || chrf score \n"]
 
     for i in range(0, len(accuracy_scoring)):
-        scoring_list.append(accuracy_scoring[i] + " || " + chrf_scoring[i] + "\n")
+        scoring_list.append(str(accuracy_scoring[i]) + " || " + str(chrf_scoring[i]) + "\n")
 
     scoring_list.append("===================================")
     scoring_list.append("Accuracy scoring: " + accuracy + " || " + "Chrf-Score: " + chrf_score + "\n")
