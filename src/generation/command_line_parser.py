@@ -74,6 +74,7 @@ def parse_command_line_evaluator(argv):
                         format='%(asctime)s %(levelname)s: %(message)s')
 
     logging.debug('Finished parsing command line arguments for the Evaluator')
+    return args
 
 
 def _check_and_create_folder(path):
