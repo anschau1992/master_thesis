@@ -4,8 +4,6 @@ from moses_file_reader import read_moses_files
 from evaluators.accuracy_evaluator import AccuracyEvaluator
 from evaluators.chrf_evaluator import ChrfEvaluator
 
-scoring_file_path = "../data/scoring.output"
-
 
 def main():
     args = parse_command_line_evaluator(sys.argv)
@@ -27,7 +25,7 @@ def main():
     scoring_list.append("===================================")
     scoring_list.append("Accuracy scoring: " + str(accuracy) + " || " + "Chrf-Score: " + str(chrf_score) + "\n")
 
-    scoring_file = open(scoring_file_path, 'w+')
+    scoring_file = open(args.output + '/scoring.output', 'w+')
     scoring_file.writelines(scoring_list)
     scoring_file.close()
 

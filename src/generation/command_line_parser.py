@@ -5,7 +5,7 @@ import os.path
 from pathlib import Path
 
 from config import DEFAULT_TRAINING_PATH, DEFAULT_DATA_PATH_DE, DEFAULT_DATA_PATH_EN, \
-    DEFAULT_EVAL_SOURCE_PATH, DEFAULT_EVAL_TARGET_PATH
+    DEFAULT_EVAL_SOURCE_PATH, DEFAULT_EVAL_TARGET_PATH, DEFAULT_SCORING_PATH
 
 root_path = Path(__file__).parent.parent
 
@@ -55,6 +55,7 @@ def parse_command_line_evaluator(argv):
     """
     default_source_file = str((root_path.parent / DEFAULT_EVAL_SOURCE_PATH).resolve())
     default_target_file = str((root_path.parent / DEFAULT_EVAL_TARGET_PATH).resolve())
+    default_output_file = str((root_path.parent / DEFAULT_SCORING_PATH).resolve())
 
     parser = argparse.ArgumentParser()
     parser.add_argument("-v", "--verbose", dest="verbose", action="count",
@@ -69,6 +70,10 @@ def parse_command_line_evaluator(argv):
                         help="target file with the gold data the model has to predict",
                         metavar="FILE",
                         type=lambda x: _is_valid_file(parser, x))
+    parser.add_argument("-o", "--output",
+                        dest="output", default=default_output_file, help="scoring file location path",
+                        metavar="DIR",
+                        type=lambda x: _check_and_create_folder(x))
     args = parser.parse_args()
     logging.basicConfig(stream=sys.stderr, level=(max(3 - args.verbose, 0) * 10),
                         format='%(asctime)s %(levelname)s: %(message)s')

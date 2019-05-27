@@ -18,6 +18,7 @@ DEFAULT_TRAINING_PATH = "./data"
 
 DEFAULT_EVAL_SOURCE_PATH = "./data/test.trg.de.output_one_word"
 DEFAULT_EVAL_TARGET_PATH = "./data/test.trg.de"
+DEFAULT_SCORING_PATH = "./data/scoring.output"
 
 VALIDATION_FRACTION_PERCENTAGE = 0.025
 TEST_FRACTION_PERCENTAGE = 0.10
