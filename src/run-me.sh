@@ -59,61 +59,57 @@ then
     cat ../data/train.src.de ../data/train.src.en | ${MARIAN_VOCAB} --max-size 36000 > ../model/vocab.deen.yml
 fi
 
-# train model TODO: move on and finish model, but valid-dataset first
+# train model
 mkdir -p ../model/back
 
 echo "Start of Model Training"
 ${MARIAN_TRAIN} \
-    --model ../model/back/model.npz --type s2s \
+    --model ../model/back/model.npz --type multi-transformer \
     --train-sets ../data/train.src.en ../data/train.src.de  ../data/train.trg.de\
-    --max-length 200 \
-    --vocabs ../model/vocab.deen.yml ../model/vocab.deen.yml \
-    --mini-batch-fit -w 3500 --maxi-batch 1000 \
-    --valid-freq 5000 --save-freq 5000 --disp-freq 1000 \
-    --valid-metrics bleu translation \
-    --valid-script-path "bash ./scripts/validate.sh" \
+    --max-length 100 \
+    --mini-batch-fit -w 5000 --maxi-batch 1000 \
+    --valid-freq 5000 --save-freq 5000 --disp-freq 500 \
+    --valid-metrics ce-mean-words perplexity\
     --valid-translation-output ../data/validation.de.output \
-    --valid-sets ../data/validation.src.en ../data/validation.src.en \
-    --valid-mini-batch 64 --beam-size 12 --normalize=1 \
+    --valid-sets ../data/validation.src.en ../data/validation.src.de ../data/validation.trg.de \
+    --valid-mini-batch 64 \
+    --beam-size 12 --normalize=1 \
     --overwrite --keep-best \
-    --early-stopping 5 --after-epochs 5 --cost-type=ce-mean-words \
+    --early-stopping 10 --after-epochs 10 --cost-type=ce-mean-words \
     --log ../model/back/train.log --valid-log ../model/back/valid.log \
-    --tied-embeddings-all --layer-normalization \
+    --enc-depth 6 --dec-depth 6 \
+    --tied-embeddings \
+    --transformer-dropout 0.1 --label-smoothing 0.1 \
+    --learn-rate 0.0003 --lr-warmup 16000 --lr-decay-inv-sqrt 16000 --lr-report \
+    --optimizer-params 0.9 0.98 1e-09 --clip-norm 5 \
     --devices ${GPUS} --seed 1111 \
     --exponential-smoothing
 
 
-# inflect test set
-echo "Start of Testing"
-cat ../data/test.trg.de \
-    | ${MARIAN_DECODER} -c ../model/back/model.npz.best-bleu-detok.npz.decoder.yml -d ${GPUS} -b 6 -n0.6 \
-    --mini-batch 65 --maxi-batch 100 --maxi-batch-sort src > ../data/test.trg.de.output
+# Testing phase
+if [[ ! -e "../data/test.trg.de.output" ]]
+then
+    echo "Start of Testing"
+    touch ../data/test.trg.de.output
+    ${MARIAN_DECODER} \
+        -m ../model/back/model.npz \
+        -i ../data/test.src.en ../data/test.src.de \
+        -b 6 --normalize=1 -w 2000 -d ${GPUS} \
+        --mini-batch 64 --maxi-batch 100 --maxi-batch-sort src \
+        --vocabs ../data/train.src.en.yml ../data/train.src.de.yml ../data/train.trg.de.yml \
+        --output ../data/test.trg.de.output \
+        --log ../model/back/test.log \
+        --max-length-factor 0.3 \
+        --word-penalty 10
+
+    # make file with only one word TODO: find better way -> model should actually do this itself
+    python3 crop-to-first-word.py
+
+else
+    echo "Testing already done; Skip it"
+fi
 
 # calculate scores
 echo "Start of Score calculation"
-../tools/sacreBLEU/sacrebleu.py -t ../score/validation -l en-de < ..data/validation.de.output
-../tools/sacreBLEU/sacrebleu.py -t ../score -l en-de < ..data/test.trg.de.output
-
-
-echo $MARIAN
-#if [[ ! -e "training/train.src.en" ]]
-#then
-#    echo "missing train.src.en in ./training, you need to have training data first"
-#fi
-#
-#if [[ ! -e "training/train.src.de" ]]
-#then
-#    echo "missing train.src.de in ./training, you need to have training data first"
-#fi
-#
-#if [[ ! -e "training/train.trg.de" ]]
-#then
-#    echo "missing train.trg.de in ./training, you need to have training data first"
-#fi
-#
-## create common vocabulary
-#if [[ ! -e "model/vocab.ende.yml" ]]
-#then
-#    cat data/corpus.bpe.en data/corpus.bpe.de | ${MARIAN_VOCAB} --max-size 36000 > model/vocab.ende.yml
-#fi
+python3 __init_evaluators__.py
 

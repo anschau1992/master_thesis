@@ -9,7 +9,8 @@ def read_moses_files(file_paths: list):
     as the position are treated as pairs afterwards.
 
     :param file_paths:
-    :return:
+    :return: a list of lists.
+     The size of the first list correspond on the size of file-paths given as argument.
     """
     logging.info('Moses_file_reader: Starting')
 
@@ -25,6 +26,10 @@ def read_moses_files(file_paths: list):
     for fp in file_paths:
         with open(fp, 'r') as file:
             file_content = file.readlines()
+
+            # TODO remove, only testing
+            print(len(file_content))
+
 
             if not is_line_numb_defined:
                 line_number = len(file_content)
