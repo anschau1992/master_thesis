@@ -8,3 +8,4 @@ data/*
 train/*
 source_data/*
 model/*
+*nohup.out*

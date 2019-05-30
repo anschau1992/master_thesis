@@ -53,18 +53,18 @@ else
     echo "Found generated training data under '../data'"
 fi
 
-# create common vocabulary
-if [[ ! -e "../model/vocab.deen.yml" ]]
-then
-    cat ../data/train.src.de ../data/train.src.en | ${MARIAN_VOCAB} --max-size 36000 > ../model/vocab.deen.yml
-fi
+## create common vocabulary
+#if [[ ! -e "../model/vocab.deen.yml" ]]
+#then
+#    cat ../data/train.src.de ../data/train.src.en | ${MARIAN_VOCAB} --max-size 36000 > ../model/vocab.deen.yml
+#fi
 
 # train model
-mkdir -p ../model/back
+mkdir -p ../model
 
 echo "Start of Model Training"
 ${MARIAN_TRAIN} \
-    --model ../model/back/model.npz --type multi-transformer \
+    --model ../model/model.npz --type multi-transformer \
     --train-sets ../data/train.src.en ../data/train.src.de  ../data/train.trg.de\
     --max-length 100 \
     --mini-batch-fit -w 5000 --maxi-batch 1000 \
@@ -73,10 +73,12 @@ ${MARIAN_TRAIN} \
     --valid-translation-output ../data/validation.de.output \
     --valid-sets ../data/validation.src.en ../data/validation.src.de ../data/validation.trg.de \
     --valid-mini-batch 64 \
-    --beam-size 12 --normalize=1 \
+    --beam-size 12 --normalize=0 \
     --overwrite --keep-best \
+    --vocabs ../model/vocab.deen.spm ../model/vocab.deen.spm ../model/vocab.deen.spm \
+    --dim-vocabs 32000 32000 32000 \
     --early-stopping 10 --after-epochs 10 --cost-type=ce-mean-words \
-    --log ../model/back/train.log --valid-log ../model/back/valid.log \
+    --log ../model/train.log --valid-log ../model/valid.log \
     --enc-depth 6 --dec-depth 6 \
     --tied-embeddings \
     --transformer-dropout 0.1 --label-smoothing 0.1 \
@@ -92,13 +94,13 @@ then
     echo "Start of Testing"
     touch ../data/test.trg.de.output
     ${MARIAN_DECODER} \
-        -m ../model/back/model.npz \
+        -m ../model/model.npz \
         -i ../data/test.src.en ../data/test.src.de \
         -b 6 --normalize=1 -w 2000 -d ${GPUS} \
         --mini-batch 64 --maxi-batch 100 --maxi-batch-sort src \
-        --vocabs ../data/train.src.en.yml ../data/train.src.de.yml ../data/train.trg.de.yml \
+        --vocabs ../model/vocab.deen.spm ../model/vocab.deen.spm ../model/vocab.deen.spm \
         --output ../data/test.trg.de.output \
-        --log ../model/back/test.log \
+        --log ../model/test.log \
         --max-length-factor 0.3 \
         --word-penalty 10
 
