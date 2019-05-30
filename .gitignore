@@ -9,3 +9,5 @@ train/*
 source_data/*
 model/*
 *nohup.out*
+*deu.mt*
+generated_approaches/*
