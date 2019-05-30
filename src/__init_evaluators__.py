@@ -1,4 +1,5 @@
 import sys
+import logging
 from generation.command_line_parser import parse_command_line_evaluator
 from moses_file_reader import read_moses_files
 from evaluators.accuracy_evaluator import AccuracyEvaluator
@@ -7,6 +8,7 @@ from evaluators.chrf_evaluator import ChrfEvaluator
 
 def main():
     args = parse_command_line_evaluator(sys.argv)
+    logging.info('** Start of scoring calculation **')
 
     input_files = read_moses_files([args.file_source, args.file_target])
 
@@ -24,6 +26,7 @@ def main():
 
     scoring_list.append("===================================")
     scoring_list.append("Accuracy scoring: " + str(accuracy) + " || " + "Chrf-Score: " + str(chrf_score) + "\n")
+    logging.info("Accuracy scoring: " + str(accuracy) + " || " + "Chrf-Score: " + str(chrf_score) + "\n")
 
     scoring_file = open(args.output + '/scoring.output', 'w+')
     scoring_file.writelines(scoring_list)
