@@ -16,7 +16,7 @@ unzip -o ubuntu-de-en.txt.zip -d ./ubuntu
 unzip -o oo-de-en.txt.zip -d ./oo
 unzip -o php-de-en.txt.zip -d ./php
 
-# unzip and pre-process Autodesk data
+ unzip and pre-process Autodesk data
 bzip2 -dk ../deu.mt.bz2
 sed -i -e 's//$/g' ../deu.mt # replace multi-char symbol by single char, as 'cut' only works with it
 while read line
@@ -32,8 +32,8 @@ cd ../src
 python3 __init_generator__.py -vv -ien ../source_data/ubuntu/Ubuntu.de-en.en -ide ../source_data/ubuntu/Ubuntu.de-en.de -o ./data
 python3 __init_generator__.py -vv -ien ../source_data/oo/OpenOffice.de-en_GB.en_GB -ide ../source_data/oo/OpenOffice.de-en_GB.de -o ./data
 python3 __init_generator__.py -vv -ien ../source_data/php/PHP.de-en.en -ide ../source_data/php/PHP.de-en.de -o ./data
-python3 __init_generator__.py -vv -ien ../source_data/autodesk.output.en -ide ./autodesk.output.de -o ./data
+ python3 __init_generator__.py -vv -ien ../source_data/autodesk.output.en -ide ../source_data/autodesk.output.de -o ./data
 
 cd ..
-rm -r -f source_data
-rm ./deu.mt
+rm -r source_data
+rm ../deu.mt

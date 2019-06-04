@@ -1,3 +1,4 @@
-		Training paramters							Testing paramters				Results				
-Nr.	Date	Dim-vocabs	normalize	learning rate	Learning Warmup	Lr-decay-inv-sqrt	optimizer params	additional parameters	normalize(test)	max-length-factor	word-penalty	additional params	Accuracy score	Chrf score	Good examples	Bad examples	Folder
-1	30.05.19	32000	0	0.0003	16000	16000	0.9 0.98 1e-09		1	0.3	10						
+			Training paramters							Testing paramters				Results				
+Nr.	Date	Notizen	Dim-vocabs	normalize	learning rate	Learning Warmup	Lr-decay-inv-sqrt	optimizer params	additional parameters	normalize(test)	max-length-factor	word-penalty	additional params	Accuracy score	Chrf score	Good examples	Bad examples	Folder
+1	30.05.19	Testversuch	32000	0	0.0003	16000	16000	0.9, 0.98, 1e-09		1	0.3	10						
+2	04.06.19	ohne Autodeskdaten --> nur ca. 500k Daten	32000	0	0.0003	16000	16000	0.9, 0.98, 1e-09		1	0.3	10		0.602772618	0.600006201			

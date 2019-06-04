@@ -25,7 +25,7 @@ def main():
     scoring_list.append("===================================")
     scoring_list.append("Accuracy scoring: " + str(accuracy) + " || " + "Chrf-Score: " + str(chrf_score) + "\n")
 
-    scoring_file = open(args.output + '/scoring.output', 'w+')
+    scoring_file = open(args.output, 'w+')
     scoring_file.writelines(scoring_list)
     scoring_file.close()
 

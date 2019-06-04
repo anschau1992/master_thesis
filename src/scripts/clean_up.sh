@@ -14,6 +14,8 @@ mkdir -p "../generated_approaches/$i"
 mv ../model/train.log ../generated_approaches/${i}/train.log
 mv ../model/valid.log ../generated_approaches/${i}/valid.log
 mv ../model/test.log ../generated_approaches/${i}/test.log
+mv ../data/scoring.output ../generated_approaches/${i}/scoring.output
+mv ../data/lowerbound-score.output ../generated_approaches/${i}/lowerbound-score.output
 cp ../src/run-me.sh ../generated_approaches/${i}/run-me.sh
 
 # clean up & set up for new training round
