@@ -29,10 +29,10 @@ done < "../deu.mt"
 
 # Pre-process training data
 cd ../src
-python3 __init_generator__.py -vv -ien ./ubuntu/Ubuntu.de-en.en -ide ../source_data/ubuntu/Ubuntu.de-en.de -o ./data
-python3 __init_generator__.py -vv -ien ./oo/OpenOffice.de-en_GB.en_GB -ide ../source_data/oo/OpenOffice.de-en_GB.de -o ./data
-python3 __init_generator__.py -vv -ien ./php/PHP.de-en.en -ide ../source_data/php/PHP.de-en.de -o ./data
-python3 __init_generator__.py -vv -ien ./autodesk.output.en -ide ./autodesk.output.de -o ./data
+python3 __init_generator__.py -vv -ien ../source_data/ubuntu/Ubuntu.de-en.en -ide ../source_data/ubuntu/Ubuntu.de-en.de -o ./data
+python3 __init_generator__.py -vv -ien ../source_data/oo/OpenOffice.de-en_GB.en_GB -ide ../source_data/oo/OpenOffice.de-en_GB.de -o ./data
+python3 __init_generator__.py -vv -ien ../source_data/php/PHP.de-en.en -ide ../source_data/php/PHP.de-en.de -o ./data
+python3 __init_generator__.py -vv -ien ../source_data/autodesk.output.en -ide ./autodesk.output.de -o ./data
 
 cd ..
 rm -r -f source_data

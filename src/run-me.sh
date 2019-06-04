@@ -111,7 +111,10 @@ else
     echo "Testing already done; Skip it"
 fi
 
-# calculate scores
-echo "Start of Score calculation"
+# Calculates the score if no flectation, but
+echo "Calculate Lower bound"
+python3 __init_evaluators__.py -s ../data/test.src.de -t ../data/test.trg.de -o ../data/lowerbound-score.output
+
+echo "Calculate Score"
 python3 __init_evaluators__.py
 
