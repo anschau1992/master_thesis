@@ -2,6 +2,14 @@
 
 MARIAN=${MARIAN_PATH}
 
+# logging method
+log() {
+
+    MSG="[`date "+%Y-%m-%d %H:%M:%S"`] [$1] $2"
+    echo ${MSG}
+    echo ${MSG} >> "run-me.log"
+}
+
 # if we are in WSL, we need to add '.exe' to the tool names
 if [[ -e "/bin/wslpath" ]]
 then
@@ -19,7 +27,7 @@ if [[ $# -ne 0 ]]
 then
     GPUS=$@
 fi
-echo Using GPUs: $GPUS
+log "config" Using GPUs: $GPUS
 
 WORKSPACE=8500
 N=4
@@ -28,14 +36,14 @@ B=12
 
 if [[ ! -e $MARIAN_TRAIN ]]
 then
-    echo "marian is not installed in $MARIAN, you need to compile the toolkit first"
+    log "config" "marian is not installed in $MARIAN, you need to compile the toolkit first"
     exit 1
 fi
 
 #if [[ ! -e ../tools/moses-scripts ]] || [[ ! -e ../tools/subword-nmt ]] || [[ ! -e ../tools/sacreBLEU ]]
 if [[ ! -e ../tools/moses-scripts ]]
 then
-    echo "missing tools in ../tools, you need to download them first"
+    log "config" "missing tools in ../tools, you need to download them first"
     exit 1
 fi
 
@@ -47,10 +55,10 @@ if [[ ! -e "../data/train.src.en" ]] || [[ ! -e "../data/train.src.de" ]] || [[ 
 then
     # delete potential old training data
     rm -r -f ../data
-    echo "missing training data. Will be downloaded and prepared..."
+    log "data" "missing training data. Will be downloaded and prepared..."
     ./scripts/download-source-data.sh
 else
-    echo "Found generated training data under '../data'"
+    log "data" "Found generated training data under '../data'"
 fi
 
 ## create common vocabulary
@@ -62,12 +70,12 @@ fi
 # train model
 mkdir -p ../model
 
-echo "Start of Model Training"
+log "train" "Start Model Training"
 ${MARIAN_TRAIN} \
     --model ../model/model.npz --type multi-transformer \
     --train-sets ../data/train.src.en ../data/train.src.de  ../data/train.trg.de\
     --max-length 100 \
-    --mini-batch-fit -w 5000 --maxi-batch 1000 \
+    --mini-batch-fit -w 6000 --maxi-batch 1000 \
     --valid-freq 5000 --save-freq 5000 --disp-freq 500 \
     --valid-metrics ce-mean-words perplexity\
     --valid-translation-output ../data/validation.de.output \
@@ -82,7 +90,7 @@ ${MARIAN_TRAIN} \
     --enc-depth 6 --dec-depth 6 \
     --tied-embeddings \
     --transformer-dropout 0.1 --label-smoothing 0.1 \
-    --learn-rate 0.0003 --lr-warmup 16000 --lr-decay-inv-sqrt 16000 --lr-report \
+    --learn-rate 0.0003 --lr-warmup 32000 --lr-decay-inv-sqrt 16000 --lr-report \
     --optimizer-params 0.9 0.98 1e-09 --clip-norm 5 \
     --devices ${GPUS} --seed 1111 \
     --exponential-smoothing
@@ -91,12 +99,12 @@ ${MARIAN_TRAIN} \
 # Testing phase
 if [[ ! -e "../data/test.trg.de.output" ]]
 then
-    echo "Start of Testing"
+    log "test" "Start of Testing"
     touch ../data/test.trg.de.output
     ${MARIAN_DECODER} \
         -m ../model/model.npz \
         -i ../data/test.src.en ../data/test.src.de \
-        -b 6 --normalize=1 -w 2000 -d ${GPUS} \
+        -b 6 --normalize=0 -w 2000 -d ${GPUS} \
         --mini-batch 64 --maxi-batch 100 --maxi-batch-sort src \
         --vocabs ../model/vocab.deen.spm ../model/vocab.deen.spm ../model/vocab.deen.spm \
         --output ../data/test.trg.de.output \
@@ -108,13 +116,13 @@ then
     python3 crop-to-first-word.py
 
 else
-    echo "Testing already done; Skip it"
+    log "train" "Testing already done; Skip it"
 fi
 
 # Calculates the score if no flectation, but
-echo "Calculate Lower bound"
+log "score" "Calculate Lower bound"
 python3 __init_evaluators__.py -s ../data/test.src.de -t ../data/test.trg.de -o ../data/lowerbound-score.output
 
-echo "Calculate Score"
+log "score" "Calculate Score"
 python3 __init_evaluators__.py
 

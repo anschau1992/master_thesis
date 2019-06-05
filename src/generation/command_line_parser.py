@@ -39,7 +39,7 @@ def parse_command_line_generator(argv):
                         type=lambda x: _check_and_create_folder(x))
 
     args = parser.parse_args()
-    logging.basicConfig(stream=sys.stderr, level=(max(3 - args.verbose, 0) * 10),
+    logging.basicConfig(filename= 'run-me.log', stream=sys.stderr, level=(max(3 - args.verbose, 0) * 10),
                         format='%(asctime)s %(levelname)s: %(message)s')
 
     logging.debug('Finished parsing command line arguments for the Generator')
@@ -75,7 +75,7 @@ def parse_command_line_evaluator(argv):
                         metavar="DIR",
                         type=lambda x: _check_and_create_folder(x))
     args = parser.parse_args()
-    logging.basicConfig(stream=sys.stderr, level=(max(3 - args.verbose, 0) * 10),
+    logging.basicConfig(filename= 'run-me.log', stream=sys.stderr, level=(max(3 - args.verbose, 0) * 10),
                         format='%(asctime)s %(levelname)s: %(message)s')
 
     logging.debug('Finished parsing command line arguments for the Evaluator')
