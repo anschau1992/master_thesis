@@ -1,14 +1,10 @@
 #!/usr/bin/env bash
+source ./scripts/shell-logger.sh
 
 MARIAN=${MARIAN_PATH}
 
 # logging method
-log() {
 
-    MSG="[`date "+%Y-%m-%d %H:%M:%S"`] [$1] $2"
-    echo ${MSG}
-    echo ${MSG} >> "run-me.log"
-}
 
 # if we are in WSL, we need to add '.exe' to the tool names
 if [[ -e "/bin/wslpath" ]]
@@ -27,7 +23,7 @@ if [[ $# -ne 0 ]]
 then
     GPUS=$@
 fi
-log "config" Using GPUs: $GPUS
+log "config" "Using GPUs: ${GPUS}"
 
 WORKSPACE=8500
 N=4
@@ -90,7 +86,7 @@ ${MARIAN_TRAIN} \
     --enc-depth 6 --dec-depth 6 \
     --tied-embeddings \
     --transformer-dropout 0.1 --label-smoothing 0.1 \
-    --learn-rate 0.0003 --lr-warmup 32000 --lr-decay-inv-sqrt 16000 --lr-report \
+    --learn-rate 0.00003 --lr-warmup 32000 --lr-decay-inv-sqrt 16000 --lr-report \
     --optimizer-params 0.9 0.98 1e-09 --clip-norm 5 \
     --devices ${GPUS} --seed 1111 \
     --exponential-smoothing
