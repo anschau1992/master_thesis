@@ -11,3 +11,4 @@ model/*
 *nohup.out*
 *deu.mt*
 generated_approaches/*
+!generated_approaches/*.zip
