@@ -57,3 +57,4 @@ This is my general repository considering all my work for my master thesis. It c
 - [Neural Machine Translation of Rare Words with Subword Units](https://www.aclweb.org/anthology/P16-1162)
 - [Attention Is All You Need](https://arxiv.org/abs/1706.03762)
 - [SentencePiece: A simple and language independent subword tokenizer and detoniker for Neural Text Processing](https://arxiv.org/pdf/1808.06226.pdf)
+- [CHRF: character n-gram F-score for automatic MT evaluation](http://www.statmt.org/wmt15/pdf/WMT49.pdf)
