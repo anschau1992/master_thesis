@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 ##
-## Print out random lines of the given model to compare the results with the source
+## Print out random lines of the given model to compare the results with the source.
+## If strings are not defined '[NULL]' is set into the table.
 ##
 ## $1: folder-name in generated_approaches/ => e.g. 4
 ## $2: number of lines to print
@@ -11,15 +12,13 @@ LINE_LENGTH=$(wc -l < ../../generated_approaches/"$1"/test.src.de)
 
 let "RANDOM_NUMB= $RANDOM % ${LINE_LENGTH}"
 
+# Extract data out of files
 test_src_de=()
 test_trg_de=()
 test_trg_de_output=()
 test_src_en=()
 accuracy=()
 chrf=()
-
-
-test_var=$( [[ -z "$my_var" ]] && echo "NULL" || echo "Not NULL" )
 
 max_i=$(( ${RANDOM_NUMB}+$2 ))
 for i in `seq ${RANDOM_NUMB} ${max_i}`
