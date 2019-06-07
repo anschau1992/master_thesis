@@ -18,7 +18,7 @@ def parse_command_line_generator(argv):
     """
     default_data_file_en = str((root_path / DEFAULT_DATA_PATH_EN).resolve())
     default_data_file_de = str((root_path / DEFAULT_DATA_PATH_DE).resolve())
-    default_training_file = str((root_path / DEFAULT_TRAINING_PATH).resolve())
+    default_training_folder = str((root_path / DEFAULT_TRAINING_PATH).resolve())
 
     parser = argparse.ArgumentParser()
     parser.add_argument("-v", "--verbose", dest="verbose", action="count",
@@ -34,12 +34,12 @@ def parse_command_line_generator(argv):
                         metavar="FILE",
                         type=lambda x: _is_valid_file(parser, x))
     parser.add_argument("-o", "--output",
-                        dest="output", default=default_training_file, help="training data folder location",
+                        dest="output", default=default_training_folder, help="training data folder location",
                         metavar="DIR",
                         type=lambda x: _check_and_create_folder(x))
 
     args = parser.parse_args()
-    logging.basicConfig(filename= 'run-me.log', stream=sys.stderr, level=(max(3 - args.verbose, 0) * 10),
+    logging.basicConfig(filename='run-me.log', level=(max(3 - args.verbose, 0) * 10),
                         format='%(asctime)s %(levelname)s: %(message)s')
 
     logging.debug('Finished parsing command line arguments for the Generator')
@@ -72,13 +72,13 @@ def parse_command_line_evaluator(argv):
                         type=lambda x: _is_valid_file(parser, x))
     parser.add_argument("-o", "--output",
                         dest="output", default=default_output_file, help="scoring file location path",
-                        metavar="DIR",
-                        type=lambda x: _check_and_create_folder(x))
+                        metavar="FILE",
+                        type=lambda x: _is_valid_file(parser, x))
     args = parser.parse_args()
-    logging.basicConfig(filename= 'run-me.log', stream=sys.stderr, level=(max(3 - args.verbose, 0) * 10),
+    logging.basicConfig(filename='run-me.log', level=(max(3 - args.verbose, 0) * 10),
                         format='%(asctime)s %(levelname)s: %(message)s')
 
-    logging.debug('Finished parsing command line arguments for the Evaluator')
+    logging.info('Finished parsing command line arguments for the Evaluator')
     return args
 
 

@@ -117,8 +117,10 @@ fi
 
 # Calculates the score if no flectation, but
 log "score" "Calculate Lower bound"
-python3 __init_evaluators__.py -s ../data/test.src.de -t ../data/test.trg.de -o ../data/lowerbound-score.output
+touch ../data/lowerbound-score.output
+python3 __init_evaluators__.py -s ../data/test.src.de -t ../data/test.trg.de -o ../data/lowerbound-score.output -vv
 
 log "score" "Calculate Score"
-python3 __init_evaluators__.py
+touch ../data/scoring.output
+python3 __init_evaluators__.py -vv
 
