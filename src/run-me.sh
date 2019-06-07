@@ -71,7 +71,7 @@ ${MARIAN_TRAIN} \
     --model ../model/model.npz --type multi-transformer \
     --train-sets ../data/train.src.en ../data/train.src.de  ../data/train.trg.de\
     --max-length 100 \
-    --mini-batch-fit -w 6000 --maxi-batch 1000 \
+    --mini-batch-fit -w 7000 --maxi-batch 1000 \
     --valid-freq 5000 --save-freq 5000 --disp-freq 500 \
     --valid-metrics ce-mean-words perplexity\
     --valid-translation-output ../data/validation.de.output \
@@ -81,7 +81,7 @@ ${MARIAN_TRAIN} \
     --overwrite --keep-best \
     --vocabs ../model/vocab.deen.spm ../model/vocab.deen.spm ../model/vocab.deen.spm \
     --dim-vocabs 32000 32000 32000 \
-    --early-stopping 10 --after-epochs 10 --cost-type=ce-mean-words \
+    --early-stopping 10 --after-epochs 40 --cost-type=ce-mean-words \
     --log ../model/train.log --valid-log ../model/valid.log \
     --enc-depth 6 --dec-depth 6 \
     --tied-embeddings \
@@ -108,8 +108,8 @@ then
         --max-length-factor 0.3 \
         --word-penalty 10
 
-    # make file with only one word TODO: find better way -> model should actually do this itself
-    python3 crop-to-first-word.py
+#    # make file with only one word TODO: find better way -> model should actually do this itself
+#    python3 crop-to-first-word.py
 
 else
     log "train" "Testing already done; Skip it"
