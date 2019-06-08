@@ -66,12 +66,15 @@ fi
 # train model
 mkdir -p ../model
 
+# 4 GPU --> w: 9000
+#
+
 log "train" "Start Model Training"
 ${MARIAN_TRAIN} \
     --model ../model/model.npz --type multi-transformer \
     --train-sets ../data/train.src.en ../data/train.src.de  ../data/train.trg.de\
     --max-length 100 \
-    --mini-batch-fit -w 7000 --maxi-batch 1000 \
+    --mini-batch-fit -w 9000 --maxi-batch 1000 \
     --valid-freq 5000 --save-freq 5000 --disp-freq 500 \
     --valid-metrics ce-mean-words perplexity\
     --valid-translation-output ../data/validation.de.output \
@@ -122,5 +125,8 @@ python3 __init_evaluators__.py -s ../data/test.src.de -t ../data/test.trg.de -o 
 
 log "score" "Calculate Score"
 touch ../data/scoring.output
-python3 __init_evaluators__.py -vv
+python3 __init_evaluators__.py -vv -s ../data/test.trg.de.output -t ../data/test.trg.de -o ../data/scoring.output
+
+
+
 
