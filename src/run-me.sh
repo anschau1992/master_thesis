@@ -57,18 +57,6 @@ else
     log "data" "Found generated training data under '../data'"
 fi
 
-## create common vocabulary
-#if [[ ! -e "../model/vocab.deen.yml" ]]
-#then
-#    cat ../data/train.src.de ../data/train.src.en | ${MARIAN_VOCAB} --max-size 36000 > ../model/vocab.deen.yml
-#fi
-
-# train model
-mkdir -p ../model
-
-# 4 GPU --> w: 9000
-#
-
 log "train" "Start Model Training"
 ${MARIAN_TRAIN} \
     --model ../model/model.npz --type multi-transformer \
@@ -83,7 +71,7 @@ ${MARIAN_TRAIN} \
     --beam-size 12 --normalize=0 \
     --overwrite --keep-best \
     --vocabs ../model/vocab.deen.spm ../model/vocab.deen.spm ../model/vocab.deen.spm \
-    --dim-vocabs 32000 32000 32000 \
+    --dim-vocabs 1000 1000 1000 \
     --early-stopping 10 --after-epochs 40 --cost-type=ce-mean-words \
     --log ../model/train.log --valid-log ../model/valid.log \
     --enc-depth 6 --dec-depth 6 \
@@ -92,7 +80,8 @@ ${MARIAN_TRAIN} \
     --learn-rate 0.00003 --lr-warmup 32000 --lr-decay-inv-sqrt 16000 --lr-report \
     --optimizer-params 0.9 0.98 1e-09 --clip-norm 5 \
     --devices ${GPUS} --seed 1111 \
-    --exponential-smoothing
+    --exponential-smoothing \
+    --tempdir /var/tmp
 
 
 # Testing phase
@@ -108,8 +97,7 @@ then
         --vocabs ../model/vocab.deen.spm ../model/vocab.deen.spm ../model/vocab.deen.spm \
         --output ../data/test.trg.de.output \
         --log ../model/test.log \
-        --max-length-factor 0.3 \
-        --word-penalty 10
+        --max-length-factor 0.5 \
 
 #    # make file with only one word TODO: find better way -> model should actually do this itself
 #    python3 crop-to-first-word.py
@@ -125,7 +113,7 @@ python3 __init_evaluators__.py -s ../data/test.src.de -t ../data/test.trg.de -o 
 
 log "score" "Calculate Score"
 touch ../data/scoring.output
-python3 __init_evaluators__.py -vv -s ../data/test.trg.de.output -t ../data/test.trg.de -o ../data/scoring.output
+python3 __init_evaluators__.py -s ../data/test.trg.de.output -t ../data/test.trg.de -o ../data/scoring.output -vv
 
 
 

@@ -25,9 +25,8 @@ cp ../data/test.src.de ../generated_approaches/${i}/test.src.de
 cp ../data/test.trg.de ../generated_approaches/${i}/test.trg.de
 
 mv ./run-me.log ../generated_approaches/${i}/run-me.log
-
 # zip all
-zip ../generated_approaches/model_${i}.zip ../generated_approaches/${i}/train.log ../generated_approaches/${i}/valid.log \
+zip -r ../generated_approaches/model_${i}.zip ../generated_approaches/${i}/train.log ../generated_approaches/${i}/valid.log \
  ../generated_approaches/${i}/test.log ../generated_approaches/${i}/scoring.output \
   ../generated_approaches/${i}/lowerbound-score.output ../generated_approaches/${i}/run-me.sh \
   ../generated_approaches/${i}/run-me.log
