@@ -77,7 +77,7 @@ ${MARIAN_TRAIN} \
     --enc-depth 6 --dec-depth 6 \
     --tied-embeddings \
     --transformer-dropout 0.1 --label-smoothing 0.1 \
-    --learn-rate 0.00003 --lr-warmup 32000 --lr-decay-inv-sqrt 16000 --lr-report \
+    --learn-rate 0.0003 --lr-warmup 64000 --lr-decay-inv-sqrt 16000 --lr-report \
     --optimizer-params 0.9 0.98 1e-09 --clip-norm 5 \
     --devices ${GPUS} --seed 1111 \
     --exponential-smoothing \
@@ -97,7 +97,7 @@ then
         --vocabs ../model/vocab.deen.spm ../model/vocab.deen.spm ../model/vocab.deen.spm \
         --output ../data/test.trg.de.output \
         --log ../model/test.log \
-        --max-length-factor 0.5 \
+        --max-length 100
 
 #    # make file with only one word TODO: find better way -> model should actually do this itself
 #    python3 crop-to-first-word.py
