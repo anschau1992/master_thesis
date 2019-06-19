@@ -92,12 +92,13 @@ then
     ${MARIAN_DECODER} \
         -m ../model/model.npz \
         -i ../data/test.src.en ../data/test.src.de \
-        -b 6 --normalize=0 -w 2000 -d ${GPUS} \
+        -b 6 --normalize=0 -w 1500 -d ${GPUS} \
         --mini-batch 64 --maxi-batch 100 --maxi-batch-sort src \
         --vocabs ../model/vocab.deen.spm ../model/vocab.deen.spm ../model/vocab.deen.spm \
         --output ../data/test.trg.de.output \
         --log ../model/test.log \
-        --max-length 100
+        --max-length 200 \
+        --max-length-crop
 
 #    # make file with only one word TODO: find better way -> model should actually do this itself
 #    python3 crop-to-first-word.py

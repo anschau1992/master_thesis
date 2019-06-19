@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-source ./shell-logger.sh
+source ./scripts/shell-logger.sh
 
 # Download and unzip the three corpia Ubuntu, OpenOffice and PHP from 'http://opus.nlpl.eu'
 # Prepare and pre-process data, merge all three corpia together with the local data from Autodesk (deu.mt.bz2).
@@ -19,13 +19,13 @@ unzip -o oo-de-en.txt.zip -d ./oo
 unzip -o php-de-en.txt.zip -d ./php
 
 log "download" "Preprocess the Autodesk source data"
-unzip and pre-process Autodesk data
+# unzip and pre-process Autodesk data
 bzip2 -dk ../deu.mt.bz2
 sed -i -e 's//$/g' ../deu.mt # replace multi-char symbol by single char, as 'cut' only works with it
 while read line
 do
     A="$(cut -d'$' -f1 <<<"$line")"
-    B="$(cut -d'$' -f2 <<<"$line")"
+    B="$(cut -d'$' -f3 <<<"$line")"
     echo "$A" >> autodesk.output.en
     echo "$B" >> autodesk.output.de
 done < "../deu.mt"
@@ -44,4 +44,4 @@ python3 __init_generator__.py -vv -ien ../source_data/autodesk.output.en -ide ..
 log "download" "Clean up"
 cd ..
 rm -r source_data
-rm ../deu.mt
+rm ./deu.mt

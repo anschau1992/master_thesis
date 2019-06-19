@@ -1,5 +1,5 @@
 import sys
-import logger
+import logging
 from generation.command_line_parser import parse_command_line_generator
 from moses_file_reader import read_moses_files
 from generation.generator import generate_train_data
@@ -28,7 +28,7 @@ def main():
         )
 
     # write training files
-    logger.debug("Write generated lines into Training files")
+    logging.info("Write generated lines into Training files")
     source_file_en = open(args.output + TRAIN_SOURCE_FILE_EN, 'a+')
     source_file_de = open(args.output + TRAIN_SOURCE_FILE_DE, 'a+')
     target_file_de = open(args.output + TRAIN_TARGET_FILE_DE, 'a+')
@@ -42,7 +42,7 @@ def main():
     target_file_de.close()
 
     # write validation files
-    logger.debug("Write generated lines into Validation files")
+    logging.info("Write generated lines into Validation files")
     source_file_en = open(args.output + VAL_SOURCE_FILE_EN, 'a+')
     source_file_de = open(args.output + VAL_SOURCE_FILE_DE, 'a+')
     target_file_de = open(args.output + VAL_TARGET_FILE_DE, 'a+')
@@ -56,7 +56,7 @@ def main():
     target_file_de.close()
 
     # write test files
-    logger.debug("Write generated lines into Test files")
+    logging.info("Write generated lines into Test files")
     source_file_en = open(args.output + TEST_SOURCE_FILE_EN, 'a+')
     source_file_de = open(args.output + TEST_SOURCE_FILE_DE, 'a+')
     target_file_de = open(args.output + TEST_TARGET_FILE_DE, 'a+')
