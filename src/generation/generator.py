@@ -32,6 +32,7 @@ def generate_train_data(lines_en, lines_de):
     sources_en = []
     sources_de = []
     targets_de = []
+    base_de = []
 
     for i in range(0, len(lines_en)):
         line_en = lines_en[i]
@@ -50,8 +51,10 @@ def generate_train_data(lines_en, lines_de):
                 token_string = __assure_line_break(str(token))
                 targets_de.append(token_string)
 
+                base_de.append(__assure_line_break(line_de))
+
     logging.debug("Finish generate training data. Number of entries: %s " % len(lines_de))
-    return sources_en, sources_de, targets_de
+    return sources_en, sources_de, targets_de, base_de
 
 
 def __assure_line_break(line):

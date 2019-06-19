@@ -1,14 +1,17 @@
 TRAIN_SOURCE_FILE_EN = '/train.src.en'
 TRAIN_SOURCE_FILE_DE = '/train.src.de'
 TRAIN_TARGET_FILE_DE = '/train.trg.de'
+TRAIN_BASE_FILE_DE = '/train.base.de'
 
 VAL_SOURCE_FILE_EN = '/validation.src.en'
 VAL_SOURCE_FILE_DE = '/validation.src.de'
 VAL_TARGET_FILE_DE = '/validation.trg.de'
+VAL_BASE_FILE_DE = '/validation.base.de'
 
 TEST_SOURCE_FILE_EN = '/test.src.en'
 TEST_SOURCE_FILE_DE = '/test.src.de'
 TEST_TARGET_FILE_DE = '/test.trg.de'
+TEST_BASE_FILE_DE = '/test.base.de'
 
 RESULT_FILE_DE = '/result.de'
 

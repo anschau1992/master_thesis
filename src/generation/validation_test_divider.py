@@ -3,7 +3,7 @@ import types
 from random import randint
 
 
-def divide_data(sources_en: object, sources_de: object, targets_de: object, validation_ratio: object,
+def divide_data(sources_en: object, sources_de: object, targets_de: object, base_de: object, validation_ratio: object,
                 test_ratio: object) -> object:
     logging.info('Generator: Splitting data into training/test/validation sets')
 
@@ -13,7 +13,7 @@ def divide_data(sources_en: object, sources_de: object, targets_de: object, vali
     if (validation_ratio + test_ratio) > 1.00:
         raise Exception('The sum of the ratios is higher than 1.00, which is illegal.')
 
-    if len(sources_en) != len(sources_de) or len(sources_en) != len(targets_de):
+    if len(sources_en) != len(sources_de) or len(sources_en) != len(targets_de) or len(sources_en) != len(base_de):
         raise Exception('Length of the data-sets provided is not equal')
 
     set_length = len(sources_de)
@@ -24,27 +24,32 @@ def divide_data(sources_en: object, sources_de: object, targets_de: object, vali
     validation_data_set.sources_en = []
     validation_data_set.sources_de = []
     validation_data_set.targets_de = []
+    validation_data_set.base_de = []
 
     for i in range(0, validation_set_number):
         random_position = randint(0, len(sources_en) - 1)
         validation_data_set.sources_en.append(sources_en.pop(random_position))
         validation_data_set.sources_de.append(sources_de.pop(random_position))
         validation_data_set.targets_de.append(targets_de.pop(random_position))
+        validation_data_set.base_de.append(base_de.pop(random_position))
 
     test_data_set = types.SimpleNamespace()
     test_data_set.sources_en = []
     test_data_set.sources_de = []
     test_data_set.targets_de = []
+    test_data_set.base_de = []
 
     for i in range(0, test_set_number):
         random_position = randint(0, len(sources_en) - 1)
         test_data_set.sources_en.append(sources_en.pop(random_position))
         test_data_set.sources_de.append(sources_de.pop(random_position))
         test_data_set.targets_de.append(targets_de.pop(random_position))
+        test_data_set.base_de.append(base_de.pop(random_position))
 
     training_data_set = types.SimpleNamespace()
     training_data_set.sources_en = sources_en
     training_data_set.sources_de = sources_de
     training_data_set.targets_de = targets_de
+    training_data_set.base_de = base_de
 
     return training_data_set, validation_data_set, test_data_set
