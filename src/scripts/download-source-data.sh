@@ -1,12 +1,16 @@
 #!/usr/bin/env bash
 source ./scripts/shell-logger.sh
 
+# set parent folder as starting point
+mydir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" > /dev/null && pwd )"
+cd ${mydir}
+
 # Download and unzip the three corpia Ubuntu, OpenOffice and PHP from 'http://opus.nlpl.eu'
 # Prepare and pre-process data, merge all three corpia together with the local data from Autodesk (deu.mt.bz2).
 
 
-mkdir -p ../source_data
-cd ../source_data
+mkdir -p ../../source_data
+cd ../../source_data
 
 # get the three corpia
 log "download" "Downloading the corpia"

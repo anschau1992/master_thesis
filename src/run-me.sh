@@ -71,7 +71,7 @@ ${MARIAN_TRAIN} \
     --beam-size 12 --normalize=0 \
     --overwrite --keep-best \
     --vocabs ../model/vocab.deen.spm ../model/vocab.deen.spm ../model/vocab.deen.spm \
-    --dim-vocabs 1000 1000 1000 \
+    --dim-vocabs 500 500 500 \
     --early-stopping 10 --after-epochs 40 --cost-type=ce-mean-words \
     --log ../model/train.log --valid-log ../model/valid.log \
     --enc-depth 6 --dec-depth 6 \
@@ -107,7 +107,7 @@ else
     log "train" "Testing already done; Skip it"
 fi
 
-# Calculates the score if no flectation, but
+# Calculates the score if no flectation, instead copying the base form
 log "score" "Calculate Lower bound"
 touch ../data/lowerbound-score.output
 python3 __init_evaluators__.py -s ../data/test.src.de -t ../data/test.trg.de -o ../data/lowerbound-score.output -vv
