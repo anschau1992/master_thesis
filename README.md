@@ -58,3 +58,4 @@ This is my general repository considering all my work for my master thesis. It c
 - [Attention Is All You Need](https://arxiv.org/abs/1706.03762)
 - [SentencePiece: A simple and language independent subword tokenizer and detoniker for Neural Text Processing](https://arxiv.org/pdf/1808.06226.pdf)
 - [CHRF: character n-gram F-score for automatic MT evaluation](http://www.statmt.org/wmt15/pdf/WMT49.pdf)
+- [ParaCrawl: a collection of parallel corpora](http://www.lrec-conf.org/proceedings/lrec2012/pdf/463_Paper.pdf) --> cite it if you use ParaCrawl corpora!  

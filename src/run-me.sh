@@ -47,7 +47,7 @@ mkdir -p ../model
 
 
 
-if [[ ! -e "../data/train.src.en" ]] || [[ ! -e "../data/train.src.de" ]] || [[ ! -e "../data/train.trg.de" ]]
+if [[ ! -e "../data2/train.src.en" ]] || [[ ! -e "../data/train.src.de" ]] || [[ ! -e "../data/train.trg.de" ]]
 then
     # delete potential old training data
     rm -r -f ../data

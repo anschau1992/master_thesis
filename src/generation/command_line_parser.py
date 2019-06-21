@@ -37,7 +37,12 @@ def parse_command_line_generator(argv):
                         dest="output", default=default_training_folder, help="training data folder location",
                         metavar="DIR",
                         type=lambda x: _check_and_create_folder(x))
-
+    parser.add_argument("-pv", "--percentageValidation",
+                        dest="perValid", default=default_training_folder, help="validation percentage fraction",
+                        type=lambda x: _is_percentage_number(parser, x))
+    parser.add_argument("-pt", "--percentageTesting",
+                        dest="perTest", default=default_training_folder, help="testing percentage fraction",
+                        type=lambda x: _is_percentage_number(parser, x))
     args = parser.parse_args()
     logging.basicConfig(filename='run-me.log', level=(max(3 - args.verbose, 0) * 10),
                         format='%(asctime)s %(levelname)s: %(message)s')
@@ -95,3 +100,10 @@ def _is_valid_file(parser, path):
 
     else:
         return path  # return the open file handle
+
+
+def _is_percentage_number(parser, number):
+    if 0 <= int(number) <= 100:
+        return number
+    else:
+        parser.error("Not a correct percentage number")

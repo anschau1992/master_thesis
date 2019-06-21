@@ -15,6 +15,18 @@ from config import VALIDATION_FRACTION_PERCENTAGE, TEST_FRACTION_PERCENTAGE,\
 def main():
     args = parse_command_line_generator(sys.argv)
 
+    print(args.perValid)
+    print(args.perTest)
+
+    validation_percentage = VALIDATION_FRACTION_PERCENTAGE
+    test_percentage = TEST_FRACTION_PERCENTAGE
+
+    if args.perValid is not None:
+        validation_percentage = args.perValid
+
+    if args.perTest is not None:
+        test_percentage = args.perTest
+
     input_files = read_moses_files([args.file_en, args.file_de])
 
     sources_en, sources_de, targets_de, base_de = generate_train_data(input_files[0], input_files[1])
@@ -25,8 +37,8 @@ def main():
             sources_de,
             targets_de,
             base_de,
-            VALIDATION_FRACTION_PERCENTAGE,
-            TEST_FRACTION_PERCENTAGE,
+            validation_percentage,
+            test_percentage,
         )
 
     # write training files
