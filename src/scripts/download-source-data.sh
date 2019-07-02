@@ -41,18 +41,18 @@ done < "../deu.mt"
 # Pre-process training data
 cd ../src
 log "download" "Ubuntu: Preprocess Training Data"
-python3 ../src/__init_generator__.py -vv -ien ../source_data/ubuntu/Ubuntu.de-en.en -ide ../source_data/ubuntu/Ubuntu.de-en.de -o ./data
+python3 ./__init_generator__.py -vv -ien ../source_data/ubuntu/Ubuntu.de-en.en -ide ../source_data/ubuntu/Ubuntu.de-en.de -o ./data
 log "download" "OpenOffice: Preprocess Training Data"
-python3 ../src/__init_generator__.py -vv -ien ../source_data/oo/OpenOffice.de-en_GB.en_GB -ide ../source_data/oo/OpenOffice.de-en_GB.de -o ./data
+python3 ./__init_generator__.py -vv -ien ../source_data/oo/OpenOffice.de-en_GB.en_GB -ide ../source_data/oo/OpenOffice.de-en_GB.de -o ./data
 log "download" "PHP: Preprocess Training Data"
-python3 ../src/__init_generator__.py -vv -ien ../source_data/php/PHP.de-en.en -ide ../source_data/php/PHP.de-en.de -o ./data
+python3 ./__init_generator__.py -vv -ien ../source_data/php/PHP.de-en.en -ide ../source_data/php/PHP.de-en.de -o ./data
 log "download" "AutoDesk: Preprocess Training Data"
-python3 ../src/__init_generator__.py -vv -ien ../source_data/autodesk.output.en -ide ../source_data/autodesk.output.de -o ./data
+python3 ./__init_generator__.py -vv -ien ../source_data/autodesk.output.en -ide ../source_data/autodesk.output.de -o ./data
 
 
-#log "download" "ParaCrawl: Preprocess additional Training Data without adding to Test and Validation"
-#python3 ../src/__init_generator__.py -vv -ien ../source_data/paracrawl/ParaCrawl.de-en.en -ide ../source_data/paracrawl/ParaCrawl.de-en.de -o ./data -pv 0 -pt 0
+log "download" "ParaCrawl: Preprocess additional Training Data without adding to Test and Validation"
+python3 ./__init_generator__.py -vv -ien ../source_data/paracrawl/ParaCrawl.de-en.en -ide ../source_data/paracrawl/ParaCrawl.de-en.de -o ./data -pv 0 -pt 0
 
-log "download" "Clean up"
-rm -r ../source_data
-rm ../deu.mt
+#log "download" "Clean up"
+#rm -r ../source_data
+#rm ../deu.mt

@@ -5,7 +5,8 @@ import os.path
 from pathlib import Path
 
 from config import DEFAULT_TRAINING_PATH, DEFAULT_DATA_PATH_DE, DEFAULT_DATA_PATH_EN, \
-    DEFAULT_EVAL_SOURCE_PATH, DEFAULT_EVAL_TARGET_PATH, DEFAULT_SCORING_PATH
+    DEFAULT_EVAL_SOURCE_PATH, DEFAULT_EVAL_TARGET_PATH, DEFAULT_SCORING_PATH, \
+    VALIDATION_FRACTION_PERCENTAGE, TEST_FRACTION_PERCENTAGE
 
 root_path = Path(__file__).parent.parent
 
@@ -38,10 +39,10 @@ def parse_command_line_generator(argv):
                         metavar="DIR",
                         type=lambda x: _check_and_create_folder(x))
     parser.add_argument("-pv", "--percentageValidation",
-                        dest="perValid", default=default_training_folder, help="validation percentage fraction",
+                        dest="perValid", default=VALIDATION_FRACTION_PERCENTAGE, help="validation percentage fraction",
                         type=lambda x: _is_percentage_number(parser, x))
     parser.add_argument("-pt", "--percentageTesting",
-                        dest="perTest", default=default_training_folder, help="testing percentage fraction",
+                        dest="perTest", default=TEST_FRACTION_PERCENTAGE, help="testing percentage fraction",
                         type=lambda x: _is_percentage_number(parser, x))
     args = parser.parse_args()
     logging.basicConfig(filename='run-me.log', level=(max(3 - args.verbose, 0) * 10),

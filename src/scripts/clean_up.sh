@@ -37,4 +37,4 @@ zip -r ./generated_approaches/model_${i}.zip ./generated_approaches/${i}/train.l
   ./generated_approaches/${i}/run-me.log
 
 # clean up & set up for new training round
-#rm -r ./model
+rm -r ./model
