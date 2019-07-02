@@ -1,5 +1,5 @@
 import unittest
-from generation.line_preprocessor import _remove_punctuation, _remove_numbers, _remove_start_end_whitespaces, preprocess
+from generation.line_preprocessor import _remove_punctuation, _remove_numbers, _remove_start_end_whitespaces, preprocess_lines
 
 
 class TestLinePreprocessor(unittest.TestCase):
@@ -37,7 +37,7 @@ class TestLinePreprocessor(unittest.TestCase):
                       "\t Box A contains [3] red and 5 white*&%?`_{} balls, while Box B contains 4 red and 2 blue "
                       "balls.\t "
                       ]
-        preprocessed_strings = preprocess(input_strs)
+        preprocessed_strings = preprocess_lines(input_strs)
         self.assertEqual([
             "This is an example of string with punctuation",
             "Box A contains red and white balls while Box B contains red and blue balls"

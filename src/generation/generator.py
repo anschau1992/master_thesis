@@ -3,7 +3,7 @@ import logging
 import spacy
 from spacy.tokenizer import Tokenizer
 
-from generation.line_preprocessor import preprocess
+from generation.line_preprocessor import preprocess_lines, preprocess
 
 module = sys.modules['__main__'].__file__
 log = logging.getLogger(module)
@@ -11,7 +11,36 @@ nlp = spacy.load("de")
 tokenizer = Tokenizer(nlp.vocab)
 
 
-def generate_train_data(lines_en, lines_de):
+def generate_train_data(line_en, line_de):
+    if type(line_en) is not str or type(line_de) is not str:
+        raise Exception('Provided parameters are not of type string')
+
+    line_en = preprocess(line_en)
+    line_de = preprocess(line_de)
+
+    sources_en = []
+    sources_de = []
+    targets_de = []
+    base_de = []
+
+    tokens = nlp(line_de)
+    for token in tokens:
+        # skip too short tokens
+        if len(token) >= 2:
+            line_en = __assure_line_break(line_en)
+            sources_en.append(line_en)
+
+            lemma = __assure_line_break(token.lemma_)
+            sources_de.append(lemma)
+
+            token_string = __assure_line_break(str(token))
+            targets_de.append(token_string)
+
+            base_de.append(__assure_line_break(line_de))
+    return sources_en, sources_de, targets_de, base_de
+
+
+def generate_train_data_by_lines(lines_en, lines_de):
     """
     Generates the training data in lists.
     Entries with the same position are considered a tuple
@@ -24,10 +53,8 @@ def generate_train_data(lines_en, lines_de):
     if len(lines_en) != len(lines_de):
         raise Exception('Length of the list parameters are not equal')
 
-    lines_en = preprocess(lines_en)
-    lines_de = preprocess(lines_de)
-
-
+    lines_en = preprocess_lines(lines_en)
+    lines_de = preprocess_lines(lines_de)
 
     sources_en = []
     sources_de = []

@@ -1,8 +1,8 @@
 import sys
 import logging
 from generation.command_line_parser import parse_command_line_generator
-from moses_file_reader import read_moses_files
-from generation.generator import generate_train_data
+from moses_file_reader import MosesFileReader
+from generation.generator import generate_train_data_by_lines, generate_train_data
 from generation.validation_test_divider import divide_data
 
 from config import VALIDATION_FRACTION_PERCENTAGE, TEST_FRACTION_PERCENTAGE,\
@@ -27,9 +27,25 @@ def main():
     if args.perTest is not None:
         test_percentage = args.perTest
 
-    input_files = read_moses_files([args.file_en, args.file_de])
 
-    sources_en, sources_de, targets_de, base_de = generate_train_data(input_files[0], input_files[1])
+
+
+
+    moses_file_reader = MosesFileReader([args.file_en, args.file_de])
+
+    next_lines = moses_file_reader.read_next_lines()
+    while next_lines:
+        # generate train_data with it
+        next_lines = moses_file_reader.read_next_lines()
+        sources_en, sources_de, targets_de, base_de = generate_train_data(next_lines[0], next_lines[1])
+
+
+
+# OLD CODE
+
+    # input_files = read_moses_files([args.file_en, args.file_de])
+
+    sources_en, sources_de, targets_de, base_de = generate_train_data_by_lines(input_files[0], input_files[1])
 
     training_data_set, validation_data_set, test_data_set = \
         divide_data(
