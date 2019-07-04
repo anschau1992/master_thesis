@@ -97,14 +97,15 @@ class TestGenerateTrainData(unittest.TestCase):
             'Record file and application usage',
             'Die Nutzung von Dateien und Anwendungen aufzeichnen')
 
-        de_tokens = ['der\n',
-                     'Nutzung\n',
-                     'von\n',
-                     'Datei\n',
-                     'und\n',
-                     'Anwendung\n',
-                     'aufzeichnen\n'
-                     ]
+        de_tokens = [
+            'der\n',
+            'Nutzung\n',
+            'von\n',
+            'Datei\n',
+            'und\n',
+            'Anwendung\n',
+            'aufzeichnen\n'
+        ]
         for i in range(0, len(sources_de)):
             self.assertEqual(sources_de[i], de_tokens[i],
                              'source_de entry: "{0}" matches with token "{1}" at position {2}'

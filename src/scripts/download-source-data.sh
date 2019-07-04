@@ -53,6 +53,6 @@ python3 ./__init_generator__.py -vv -ien ../source_data/autodesk.output.en -ide 
 log "download" "ParaCrawl: Preprocess additional Training Data without adding to Test and Validation"
 python3 ./__init_generator__.py -vv -ien ../source_data/paracrawl/ParaCrawl.de-en.en -ide ../source_data/paracrawl/ParaCrawl.de-en.de -o ./data -pv 0 -pt 0
 
-#log "download" "Clean up"
-#rm -r ../source_data
-#rm ../deu.mt
+log "download" "Clean up"
+rm -r ../source_data
+rm ../deu.mt

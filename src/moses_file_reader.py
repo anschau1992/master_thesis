@@ -2,7 +2,7 @@ import logging
 import sys
 
 
-class MosesFileReader():
+class MosesFileReader:
 
     def __init__(self, file_paths):
         if len(file_paths) < 2:
@@ -31,7 +31,7 @@ class MosesFileReader():
         :return: line content, cleaned
         """
         line_contents = []
-        for i in range(self.files_numb):
+        for i in range(0, self.files_numb):
             line = self.file_contents[i].readline()
             if line:
                 line_contents.append(line.rstrip())
