@@ -7,8 +7,6 @@ cd ${mydir}
 
 # Download and unzip the three corpia Ubuntu, OpenOffice and PHP from 'http://opus.nlpl.eu'
 # Prepare and pre-process data, merge all three corpia together with the local data from Autodesk (deu.mt.bz2).
-
-
 mkdir -p ../../source_data
 cd ../../source_data
 
@@ -48,7 +46,6 @@ log "download" "PHP: Preprocess Training Data"
 python3 ./__init_generator__.py -vv -ien ../source_data/php/PHP.de-en.en -ide ../source_data/php/PHP.de-en.de -o ./data
 log "download" "AutoDesk: Preprocess Training Data"
 python3 ./__init_generator__.py -vv -ien ../source_data/autodesk.output.en -ide ../source_data/autodesk.output.de -o ./data
-
 
 log "download" "ParaCrawl: Preprocess additional Training Data without adding to Test and Validation"
 python3 ./__init_generator__.py -vv -ien ../source_data/paracrawl/ParaCrawl.de-en.en -ide ../source_data/paracrawl/ParaCrawl.de-en.de -o ./data -pv 0 -pt 0

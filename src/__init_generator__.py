@@ -46,10 +46,13 @@ def main():
     moses_file_reader = MosesFileReader([args.file_en, args.file_de])
     val_test_divider = ValidationTestDivider(validation_percentage, test_percentage)
 
-    next_lines = moses_file_reader.read_next_lines()
-    while next_lines:
+    while True:
         # generate train_data with it
         next_lines = moses_file_reader.read_next_lines()
+
+        if next_lines is None:
+            break
+
         sources_en, sources_de, targets_de, base_de = generate_train_data(next_lines[0], next_lines[1])
         training_data_set, validation_data_set, test_data_set = val_test_divider.divide_data(sources_en, sources_de,
                                                                                              targets_de, base_de)
