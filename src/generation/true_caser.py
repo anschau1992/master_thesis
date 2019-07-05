@@ -10,6 +10,51 @@ import logging
 from collections import Counter
 
 
+class TrueCaser():
+
+    def __init__(self):
+        self.true_case_counter = Counter()
+        self.has_training_finished = False
+
+    def train(self, line):
+        """
+        Add all the token from the param line into the True-Case-Counter.
+        The counter is used to evaluate the true-casing afterwards
+        :param line:
+        :return:
+        """
+        if self.has_training_finished:
+            raise Exception('The training of the TruceCaser model has already finished before this call.')
+        for token in line.split():
+            self.true_case_counter[token] += 1
+
+    def close_training(self):
+        """
+        Close the training, after all tokens have been read in by add_into_model Method.
+        Assures that the model will not be changed afterwards.
+        The model returns always lower form if the count is even (incl. also 0).
+        :return:
+        """
+        self.has_training_finished = True
+
+    def true_case(self, token):
+        """
+        Returns the true case of the param token based on the pre-trained model
+        :param token:
+        :return:
+        """
+        if not self.has_training_finished:
+            raise Exception('Training of the true-caser has not finished yet.'
+                            ' Close it by calling "close_training"-function.')
+        cap_count = self.true_case_counter[token.capitalize()]
+        lower_count = self.true_case_counter[token.lower()]
+
+        if cap_count > lower_count:
+            return token.capitalize()
+        else:
+            return token.lower()
+
+
 def true_case_lines(lines):
     """
     Takes in multiple lines of text.

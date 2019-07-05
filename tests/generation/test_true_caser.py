@@ -1,51 +1,70 @@
 import unittest
-from generation.true_caser import _build_model, _true_case, true_case_lines
+from generation.true_caser import TrueCaser
 
 
 class TestTrueCaser(unittest.TestCase):
 
-    def test_no_corpus_appearance(self):
+    def test_true_case_before_closing(self):
         """
-        If a token has not appeared in the corpus. The true-case should return it as lowercase
-        :return: lowercase word
+        An instance of the true-caser cannot be used for the process of true-casing, before it is closed and training is done
+        :return: Exception if "true_case" is called.
         """
-        input_list = [
-            "Hello world",
-            "Simple test",
-            "for the true caser"
-        ]
-        model = _build_model(input_list)
-        result = _true_case("Never APPeared", model)
-        self.assertEqual("never appeared", result)
+        true_caser = TrueCaser()
+        self.assertRaises(Exception, true_caser.true_case, 'test')
 
-    def test_correct_capitalization(self):
+    def test_true_case_after_closing(self):
         """
-        If a token was more times capitalised in the model,
-         the it should get capitalized by the true-caser
-        :return:
+        An instance of the true-caser can true-case after if the model has been closed and training is finished.
+        :return: the true-case of 'test'
         """
-        input_list = [
-            "Capitalize this",
-            "capitalize",
-            "Second time Capitalize"
-        ]
-        model = _build_model(input_list)
-        result = _true_case("capitalize", model)
-        self.assertEqual("Capitalize", result)
+        true_caser = TrueCaser()
+        true_caser.close_training()
+        self.assertEqual('test', true_caser.true_case('test'))
 
-    def test_true_case_lines(self):
+    def test_train_after_closing(self):
         """
-        Test if the true-caser return the expected lines, given the input
-        :return:
+        An instance of the true-caser cannot train anymore after the model has been closed and the training is finished.
+        :return: Exception
         """
-        input_list = [
-            "lower Up",
-            "Up up",
-            "Lower lower lower"
-        ]
-        result = true_case_lines(input_list)
-        self.assertEqual([
-            "lower Up",
-            "Up Up",
-            "lower lower lower"
-        ], result)
+        true_caser = TrueCaser()
+        true_caser.close_training()
+        self.assertRaises(Exception, true_caser.train, 'Test line to train with.')
+
+    def test_capitalize_true_case(self):
+        """
+        Is the model trained with more capitalized form of a word,
+        the method "true-case" returns the capitalized form of the word.
+        :return: capitalized form of word "test"
+        """
+        true_caser = TrueCaser()
+        true_caser.train('Test')
+        true_caser.train('test')
+        true_caser.train('Test')
+
+        true_caser.close_training()
+        self.assertEqual('Test', true_caser.true_case('test'))
+
+    def test_even_count_true_case(self):
+        """
+        Is the model trained with the same amount of capitalized and lowered form of a token
+        the method "true-case" returns the lowered form of the word.
+        :return: lowered form of word "test"
+        """
+        true_caser = TrueCaser()
+        true_caser.train('Test')
+        true_caser.train('test')
+        true_caser.train('test')
+        true_caser.train('Test')
+
+        true_caser.close_training()
+        self.assertEqual('test', true_caser.true_case('Test'))
+
+    def test_no_training_true_case(self):
+        """
+        Is the model never trained with any form of a token,
+        it returns the lower form of the token.
+        :return: lowered form of word "test"
+        """
+        true_caser = TrueCaser()
+        true_caser.close_training()
+        self.assertEqual('test', true_caser.true_case('Test'))

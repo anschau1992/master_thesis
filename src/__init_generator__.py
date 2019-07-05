@@ -22,10 +22,10 @@ def main():
     test_percentage = TEST_FRACTION_PERCENTAGE
 
     if args.perValid is not None:
-        validation_percentage = args.perValid
+        validation_percentage = float(args.perValid)
 
     if args.perTest is not None:
-        test_percentage = args.perTest
+        test_percentage = float(args.perTest)
 
     logging.info("Open up data file for writing generated data into it.")
     train_source_file_en = open(args.output + TRAIN_SOURCE_FILE_EN, 'a+')
