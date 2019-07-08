@@ -24,6 +24,15 @@ unzip -o oo-de-en.txt.zip -d ./oo
 unzip -o php-de-en.txt.zip -d ./php
 unzip -o paracrawl-de-en.txt.zip -d ./paracrawl
 
+log "download" "Truncate the ParaCrawl data to 10 Mio lines"
+sed -i '1000001,$ d' ./paracrawl/ParaCrawl.de-en.en
+sed -i '1000001,$ d' ./paracrawl/ParaCrawl.de-en.de
+paraen= wc -l ./paracrawl/ParaCrawl.de-en.en
+parade= wc -l ./paracrawl/ParaCrawl.de-en.de
+log "download" "Length ParaCrlaw.de-en.en: $paraen"
+log "download" "Length ParaCrlaw.de-en.de: $parade"
+
+
 log "download" "Preprocess the Autodesk source data"
 # unzip and pre-process Autodesk data
 bzip2 -dk ../deu.mt.bz2

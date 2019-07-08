@@ -1,9 +1,12 @@
 """
- Simple True-caser
+ Simple True-caser & Top-Most validator
 
- For simplicity reasons it only compares the count of
-  lowercase against capitalized version of a token.
-  This method assumes that all punctuations are removed beforehand
+    For simplicity reasons it only compares the count of
+    lowercase against capitalized version of a token.
+    This method assumes that all punctuations are removed beforehand.
+
+    Also used as an Top-Most validator, as it holds the counts for all the tokens.
+    Can evaluate the
 
 """
 import logging
@@ -41,6 +44,7 @@ class TrueCaser():
         """
         Returns the true case of the param token based on the pre-trained model
         :param token:
+        :raises Exception if training has not finished yet
         :return:
         """
         if not self.has_training_finished:
@@ -54,53 +58,19 @@ class TrueCaser():
         else:
             return token.lower()
 
-
-def true_case_lines(lines):
-    """
-    Takes in multiple lines of text.
-    Creates a true-case model with the private function and the provided lines.
-    Uses this model to true-case all the lines and return them.
-    :return: true cased lines
-    """
-    model = _build_model(lines)
-
-    true_cased_lines = []
-    for line in lines:
-        true_cased_lines.append(_true_case(line, model))
-    return true_cased_lines
-
-
-def _build_model(lines):
-    """
-    Builds a true-caser model, which is trained by the arguments.
-    Expects a list of strings as argument. These strings get tokenized for the model
-    :param lines:
-    :return: the trained counter
-    """
-
-    logging.info("True-caser model creation")
-    corpus = []
-    for line in lines:
-        corpus += line.split()
-
-    return Counter(corpus)
-
-
-def _true_case(line, model):
-    """
-    Recevies the pre-trained counter and decides based on it if
-    each token in the line should be lowercased or capitalized.
-    :param line: with text
-    :param model: pre-trained counter
-    :return: true-cased line
-    """
-    truecased = []
-    for token in line.split():
-        cap_count = model[token.capitalize()]
-        lower_count = model[token.lower()]
-
-        if cap_count > lower_count:
-            truecased.append(token.capitalize())
-        else:
-            truecased.append(token.lower())
-    return " ".join(truecased)
+    def is_true_case_most_common(self, token, n):
+        """
+        Is the true-case form of the given token
+        one of the n-th common token in the model
+        :param token:
+        :param n:
+        :raises Exception if training has not finished yet.
+        :return:
+        """
+        if not self.has_training_finished:
+            raise Exception('Training of the true-caser has not finished yet.'
+                            ' Close it by calling "close_training"-function.')
+        most_common = self.true_case_counter.most_common(n)
+        true_case = self.true_case(token)
+        token_count = self.true_case_counter[true_case]
+        return most_common.__contains__((true_case, token_count))

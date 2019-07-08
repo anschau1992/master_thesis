@@ -68,3 +68,37 @@ class TestTrueCaser(unittest.TestCase):
         true_caser = TrueCaser()
         true_caser.close_training()
         self.assertEqual('test', true_caser.true_case('Test'))
+
+    def test_most_common_before_closing(self):
+        """
+        The method 'us_true_case_most_common' is not allowed to call before the model is closed.
+        :raises Exception when called before Method is called.
+        """
+        true_caser = TrueCaser()
+        self.assertRaises(Exception, true_caser.is_true_case_most_common, 'test', 1)
+
+    def test_not_most_common(self):
+        """
+        Method returns 'False' when token is not in most-common n-th tokens.
+        :return: False
+        """
+        true_caser = TrueCaser()
+        true_caser.train('Test your data')
+        true_caser.train('Test test data')
+        true_caser.train('Test Test data')
+        true_caser.train('Test your data')
+        true_caser.close_training()
+        self.assertFalse(true_caser.is_true_case_most_common('your', 2))
+
+    def test_most_common(self):
+        """
+        Method returns 'True' when token is in most-common n-th tokens.
+        :return: True
+        """
+        true_caser = TrueCaser()
+        true_caser.train('Test your data')
+        true_caser.train('Test test data')
+        true_caser.train('Test Test data')
+        true_caser.train('Test your data')
+        true_caser.close_training()
+        self.assertTrue(true_caser.is_true_case_most_common('your', 3))
