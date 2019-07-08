@@ -10,5 +10,7 @@ source_data/*
 model/*
 *nohup.out*
 *deu.mt*
+*test-true-case-export.en*
+*test-true-case-import.en*
 generated_approaches/*
 !generated_approaches/*.zip

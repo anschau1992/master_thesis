@@ -2,7 +2,7 @@ import sys
 import logging
 from generation.command_line_parser import parse_command_line_generator
 from moses_file_reader import MosesFileReader
-from generation.generator import generate_train_data_by_lines, generate_train_data
+from generation.generator import generate_train_data
 from generation.validation_test_divider import ValidationTestDivider
 
 from config import VALIDATION_FRACTION_PERCENTAGE, TEST_FRACTION_PERCENTAGE, \

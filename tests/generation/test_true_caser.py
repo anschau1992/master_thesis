@@ -102,3 +102,49 @@ class TestTrueCaser(unittest.TestCase):
         true_caser.train('Test your data')
         true_caser.close_training()
         self.assertTrue(true_caser.is_true_case_most_common('your', 3))
+
+    def test_export_counter(self):
+        """
+        Test the correct export of the True-Caser counter into a file.
+        :return:
+        """
+
+        fp = './test-true-case-export.en'
+        true_caser = TrueCaser()
+        true_caser.train('Test your data')
+        true_caser.train('Test test data')
+        true_caser.train('Test Test data')
+        true_caser.train('Test your data')
+        true_caser.close_training()
+
+        true_caser.export_counter(fp)
+
+        with open(fp, 'r') as f:
+            line = f.readline()
+            self.assertEqual(line, 'Test;5\n')
+            line = f.readline()
+            self.assertEqual(line, 'your;2\n')
+            line = f.readline()
+            self.assertEqual(line, 'data;4\n')
+
+    def test_import_counter(self):
+        """
+        Test the correct import of the True-Caser counter into a file.
+        :return:
+        """
+        fp = './test-true-case-import.en'
+        # write into file
+        with open(fp, 'w+') as f:
+            f.write('Test;5\n')
+            f.write('Data;10\n')
+            f.write('import;15\n')
+
+        true_caser = TrueCaser()
+        true_caser.import_counter('./test-true-case-import.en')
+        true_caser.close_training()
+        self.assertTrue(true_caser.is_true_case_most_common('Test', 3))
+        self.assertTrue(true_caser.is_true_case_most_common('Data', 3))
+        self.assertTrue(true_caser.is_true_case_most_common('import', 3))
+        self.assertFalse(true_caser.is_true_case_most_common('Fail', 3))
+
+

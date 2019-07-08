@@ -6,8 +6,7 @@
     This method assumes that all punctuations are removed beforehand.
 
     Also used as an Top-Most validator, as it holds the counts for all the tokens.
-    Can evaluate the
-
+    The frequency of token appearances can be written into a file and then also read out of this file.
 """
 import logging
 from collections import Counter
@@ -74,3 +73,29 @@ class TrueCaser():
         true_case = self.true_case(token)
         token_count = self.true_case_counter[true_case]
         return most_common.__contains__((true_case, token_count))
+
+    def export_counter(self, path):
+        """
+        Exports the counter into the provided path location.
+        Export is done by writing every token with its corresponding number into the file
+        Creates a file if not existing.
+        :param path: file path
+        :return:
+        """
+        with open(path, 'w+') as f:
+            for k,v in self.true_case_counter.items():
+                f.write(k + ';' + str(v) + '\n')
+
+    def import_counter(self, path):
+        """
+        Imports the counter by the provided path location.
+        File must have format 'key;value' on each line
+        :param path: file path
+        :return:
+        """
+        with open(path, 'r') as f:
+            line = f.readline()
+            while line:
+                content = line.split(";")
+                self.true_case_counter[content[0]] = int(content[1])
+                line = f.readline()
