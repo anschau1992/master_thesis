@@ -80,6 +80,11 @@ def parse_command_line_evaluator(argv):
                         dest="output", default=default_output_file, help="scoring file location path",
                         metavar="FILE",
                         type=lambda x: _is_valid_file(parser, x))
+    parser.add_argument("-mc", "--most-common",
+                        dest="most-common", default=0,
+                        help="Ignoring the most common english token."
+                             " Number of the most common ignored is defined by the parameter.",
+                        type=lambda x: _is_positive_int(parser, x))
     args = parser.parse_args()
     logging.basicConfig(filename='run-me.log', level=(max(3 - args.verbose, 0) * 10),
                         format='%(asctime)s %(levelname)s: %(message)s')
@@ -108,3 +113,10 @@ def _is_percentage_number(parser, number):
         return number
     else:
         parser.error("Not a correct percentage number")
+
+
+def _is_positive_int(parser, number):
+    if number >= 0 and isinstance(number, int):
+        return number
+    else:
+        parser.error("Not a positive integer")
