@@ -3,20 +3,20 @@ import logging
 import spacy
 from spacy.tokenizer import Tokenizer
 
-from generation.line_preprocessor import preprocess_lines, preprocess
+from generation.line_preprocessor import LinePreprocessor
 
 module = sys.modules['__main__'].__file__
 log = logging.getLogger(module)
 nlp = spacy.load("de")
 tokenizer = Tokenizer(nlp.vocab)
-
+preprocessor = LinePreprocessor()
 
 def generate_train_data(line_en, line_de):
     if type(line_en) is not str or type(line_de) is not str:
         raise Exception('Provided parameters are not of type string')
 
-    line_en = preprocess(line_en)
-    line_de = preprocess(line_de)
+    line_en = preprocessor.preprocess(line_en)
+    line_de = preprocessor.preprocess(line_de)
 
     sources_en = []
     sources_de = []

@@ -15,13 +15,17 @@ TEST_BASE_FILE_DE = '/test.base.de'
 
 RESULT_FILE_DE = '/result.de'
 
-DEFAULT_DATA_PATH_EN = "./data/data.en"
-DEFAULT_DATA_PATH_DE = "./data/data.de"
-DEFAULT_TRAINING_PATH = "./data"
+DEFAULT_DATA_PATH_EN = "/data/data.en"
+DEFAULT_DATA_PATH_DE = "/data/data.de"
+DEFAULT_TRAINING_PATH = "/data"
 
-DEFAULT_EVAL_SOURCE_PATH = "./data/test.trg.de.output_one_word"
-DEFAULT_EVAL_TARGET_PATH = "./data/test.trg.de"
-DEFAULT_SCORING_PATH = "./data/scoring.output"
+DEFAULT_EVAL_SOURCE_PATH = "/data/test.trg.de.output_one_word"
+DEFAULT_EVAL_TARGET_PATH = "/data/test.trg.de"
+DEFAULT_SCORING_PATH = "/data/scoring.output"
+
+TRUE_CASER_ACTIVE = True
+TRUE_CASER_COUNT_FILE = "/true_caser_count.en"
+SOURCE_DATA_PATH = "/source_data"
 
 VALIDATION_FRACTION_PERCENTAGE = 0.025
 TEST_FRACTION_PERCENTAGE = 0.10

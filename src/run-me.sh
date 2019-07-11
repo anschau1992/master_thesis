@@ -3,8 +3,6 @@ source ./scripts/shell-logger.sh
 
 MARIAN=${MARIAN_PATH}
 
-# logging method
-
 
 # if we are in WSL, we need to add '.exe' to the tool names
 if [[ -e "/bin/wslpath" ]]
@@ -23,27 +21,27 @@ if [[ $# -ne 0 ]]
 then
     GPUS=$@
 fi
-log "config" "Using GPUs: ${GPUS}"
+shell-log "config" "Using GPUs: ${GPUS}"
 
 WORKSPACE=8500
 N=4
 EPOCHS=5
 B=12
-
-if [[ ! -e $MARIAN_TRAIN ]]
-then
-    log "config" "marian is not installed in $MARIAN, you need to compile the toolkit first"
-    exit 1
-fi
-
-#if [[ ! -e ../tools/moses-scripts ]] || [[ ! -e ../tools/subword-nmt ]] || [[ ! -e ../tools/sacreBLEU ]]
-if [[ ! -e ../tools/moses-scripts ]]
-then
-    log "config" "missing tools in ../tools, you need to download them first"
-    exit 1
-fi
-
-mkdir -p ../model
+#
+#if [[ ! -e $MARIAN_TRAIN ]]
+#then
+#    log "config" "marian is not installed in $MARIAN, you need to compile the toolkit first"
+#    exit 1
+#fi
+#
+##if [[ ! -e ../tools/moses-scripts ]] || [[ ! -e ../tools/subword-nmt ]] || [[ ! -e ../tools/sacreBLEU ]]
+#if [[ ! -e ../tools/moses-scripts ]]
+#then
+#    log "config" "missing tools in ../tools, you need to download them first"
+#    exit 1
+#fi
+#
+#mkdir -p ../model
 
 
 
@@ -51,13 +49,15 @@ if [[ ! -e "../data/train.src.en" ]] || [[ ! -e "../data/train.src.de" ]] || [[ 
 then
     # delete potential old training data
     rm -r -f ../data
-    log "data" "missing training data. Will be downloaded and prepared..."
+    shell-log "data" "missing training data. Will be downloaded and prepared..."
     ./scripts/download-source-data.sh
+    python3 __init_true_caser__.py -vv
+    ./scripts/generate-training-data.sh
 else
-    log "data" "Found generated training data under '../data'"
+    shell-log "data" "Found generated training data under '../data'"
 fi
 
-log "train" "Start Model Training"
+shell-log "train" "Start Model Training"
 ${MARIAN_TRAIN} \
     --model ../model/model.npz --type multi-transformer \
     --train-sets ../data/train.src.en ../data/train.src.de  ../data/train.trg.de\
@@ -87,7 +87,7 @@ ${MARIAN_TRAIN} \
 # Testing phase
 if [[ ! -e "../data/test.trg.de.output" ]]
 then
-    log "test" "Start of Testing"
+    shell-log "test" "Start of Testing"
     touch ../data/test.trg.de.output
     ${MARIAN_DECODER} \
         -m ../model/model.npz \
@@ -104,15 +104,15 @@ then
 #    python3 crop-to-first-word.py
 
 else
-    log "train" "Testing already done; Skip it"
+    shell-log "train" "Testing already done; Skip it"
 fi
 
 # Calculates the score if no flectation, instead copying the base form
-log "score" "Calculate Lower bound"
+shell-log "score" "Calculate Lower bound"
 touch ../data/lowerbound-score.output
 python3 __init_evaluators__.py -s ../data/test.src.de -t ../data/test.trg.de -o ../data/lowerbound-score.output -vv
 
-log "score" "Calculate Score"
+shell-log "score" "Calculate Score"
 touch ../data/scoring.output
 python3 __init_evaluators__.py -s ../data/test.trg.de.output -t ../data/test.trg.de -o ../data/scoring.output -vv
 

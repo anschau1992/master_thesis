@@ -8,7 +8,7 @@
     Also used as an Top-Most validator, as it holds the counts for all the tokens.
     The frequency of token appearances can be written into a file and then also read out of this file.
 """
-import logging
+import string
 from collections import Counter
 
 
@@ -27,6 +27,7 @@ class TrueCaser():
         """
         if self.has_training_finished:
             raise Exception('The training of the TruceCaser model has already finished before this call.')
+        line = self.__remove_punctuation(line)
         for token in line.split():
             self.true_case_counter[token] += 1
 
@@ -83,7 +84,7 @@ class TrueCaser():
         :return:
         """
         with open(path, 'w+') as f:
-            for k,v in self.true_case_counter.items():
+            for k, v in self.true_case_counter.items():
                 f.write(k + ';' + str(v) + '\n')
 
     def import_counter(self, path):
@@ -99,3 +100,22 @@ class TrueCaser():
                 content = line.split(";")
                 self.true_case_counter[content[0]] = int(content[1])
                 line = f.readline()
+
+    # remove symbols like  [!”#$%&’()*+,-./:;<=>?@[\]^_`{|}~]
+    def __remove_punctuation(self, line):
+        return line.translate(str.maketrans('', '', string.punctuation))
+
+
+# def true_case_lines(lines):
+#     """
+#     Takes in multiple lines of text.
+#     Creates a true-case model with the private function and the provided lines.
+#     Uses this model to true-case all the lines and return them.
+#     :return: true cased lines
+#     """
+#     model = _build_model(lines)
+#
+#     true_cased_lines = []
+#     for line in lines:
+#         true_cased_lines.append(_true_case(line, model))
+#     return true_cased_lines

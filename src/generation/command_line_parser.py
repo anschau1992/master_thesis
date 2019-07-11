@@ -6,9 +6,9 @@ from pathlib import Path
 
 from config import DEFAULT_TRAINING_PATH, DEFAULT_DATA_PATH_DE, DEFAULT_DATA_PATH_EN, \
     DEFAULT_EVAL_SOURCE_PATH, DEFAULT_EVAL_TARGET_PATH, DEFAULT_SCORING_PATH, \
-    VALIDATION_FRACTION_PERCENTAGE, TEST_FRACTION_PERCENTAGE
+    VALIDATION_FRACTION_PERCENTAGE, TEST_FRACTION_PERCENTAGE, SOURCE_DATA_PATH
 
-root_path = Path(__file__).parent.parent
+root_path = Path().resolve().parent
 
 
 def parse_command_line_generator(argv):
@@ -17,25 +17,21 @@ def parse_command_line_generator(argv):
      See -h option
     :param argv: arguments on the command line must include caller file name.
     """
-    default_data_file_en = str((root_path / DEFAULT_DATA_PATH_EN).resolve())
-    default_data_file_de = str((root_path / DEFAULT_DATA_PATH_DE).resolve())
-    default_training_folder = str((root_path / DEFAULT_TRAINING_PATH).resolve())
-
     parser = argparse.ArgumentParser()
     parser.add_argument("-v", "--verbose", dest="verbose", action="count",
                         default=0, help="increase output verbosity (e.g., -vv is more than -v)")
     parser.add_argument("-ien", "--inputEn",
-                        dest="file_en", default=default_data_file_en,
+                        dest="file_en", default=DEFAULT_DATA_PATH_EN,
                         help="input file with english sentences",
                         metavar="FILE",
                         type=lambda x: _is_valid_file(parser, x))
     parser.add_argument("-ide", "--inputDe",
-                        dest="file_de", default=default_data_file_de,
+                        dest="file_de", default=DEFAULT_DATA_PATH_DE,
                         help="input file with german sentences",
                         metavar="FILE",
                         type=lambda x: _is_valid_file(parser, x))
     parser.add_argument("-o", "--output",
-                        dest="output", default=default_training_folder, help="training data folder location",
+                        dest="output", default=DEFAULT_TRAINING_PATH, help="training data folder location",
                         metavar="DIR",
                         type=lambda x: _check_and_create_folder(x))
     parser.add_argument("-pv", "--percentageValidation",
@@ -59,25 +55,21 @@ def parse_command_line_evaluator(argv):
     :param argv:
     :return:
     """
-    default_source_file = str((root_path.parent / DEFAULT_EVAL_SOURCE_PATH).resolve())
-    default_target_file = str((root_path.parent / DEFAULT_EVAL_TARGET_PATH).resolve())
-    default_output_file = str((root_path.parent / DEFAULT_SCORING_PATH).resolve())
-
     parser = argparse.ArgumentParser()
     parser.add_argument("-v", "--verbose", dest="verbose", action="count",
                         default=0, help="increase output verbosity (e.g., -vv is more than -v)")
     parser.add_argument("-s", "--source",
-                        dest="file_source", default=default_source_file,
+                        dest="file_source", default=DEFAULT_EVAL_SOURCE_PATH,
                         help="source file with output of the testing phase",
                         metavar="FILE",
                         type=lambda x: _is_valid_file(parser, x))
     parser.add_argument("-t", "--target",
-                        dest="file_target", default=default_target_file,
+                        dest="file_target", default=DEFAULT_EVAL_TARGET_PATH,
                         help="target file with the gold data the model has to predict",
                         metavar="FILE",
                         type=lambda x: _is_valid_file(parser, x))
     parser.add_argument("-o", "--output",
-                        dest="output", default=default_output_file, help="scoring file location path",
+                        dest="output", default=DEFAULT_SCORING_PATH, help="scoring file location path",
                         metavar="FILE",
                         type=lambda x: _is_valid_file(parser, x))
     parser.add_argument("-mc", "--most-common",
@@ -93,19 +85,60 @@ def parse_command_line_evaluator(argv):
     return args
 
 
+def parse_command_line_true_caser(argv):
+    """
+    Parse command line argument for the true case
+    See -h for options
+    :param argv:
+    :return:
+    """
+    parser = argparse.ArgumentParser()
+    parser.add_argument("-v", "--verbose", dest="verbose", action="count",
+                        default=0, help="increase output verbosity (e.g., -vv is more than -v)")
+    parser.add_argument("-sd", "--source_data",
+                        dest="source_data", default=SOURCE_DATA_PATH,
+                        help="root folder of the in prior downloaded moses data folder",
+                        metavar="FOLDER",
+                        type=lambda x: _is_valid_folder(parser, x))
+    parser.add_argument("-td", "--training_data",
+                        dest="training_data", default=DEFAULT_TRAINING_PATH,
+                        help="training data folder location",
+                        metavar="FOLDER",
+                        type=lambda x: _add_root_path(x))
+    args = parser.parse_args()
+    logging.basicConfig(filename='run-me.log', level=(max(3 - args.verbose, 0) * 10),
+                        format='%(asctime)s %(levelname)s: %(message)s')
+    logging.info('Finished parsing command line arguments for the True Caser')
+    return args
+
+
 def _check_and_create_folder(path):
-    file_path = str((root_path.parent / path).resolve())
+    file_path = _add_root_path(path)
     if not os.path.exists(file_path):
         os.makedirs(file_path)
     return file_path
 
 
+def _add_root_path(relative_path):
+    return str(root_path) + relative_path
+
+
+def _is_valid_folder(parser, path):
+    file_path = _add_root_path(path)
+    if not os.path.exists(file_path):
+        parser.error("The folder %s does not exist!" % file_path)
+    else:
+        # return the whole file-path
+        return file_path
+
+
 def _is_valid_file(parser, path):
-    if not os.path.exists(path):
-        parser.error("The file %s does not exist!" % path)
+    file_path = _add_root_path(path)
+    if not os.path.exists(file_path):
+        parser.error("The file %s does not exist!" % file_path)
 
     else:
-        return path  # return the open file handle
+        return file_path
 
 
 def _is_percentage_number(parser, number):
