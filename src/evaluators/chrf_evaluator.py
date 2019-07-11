@@ -8,7 +8,7 @@ class ChrfEvaluator(Evaluator):
         logging.info('Chrf evaluator: Start evaluating')
         self._check_params(results, targets)
 
-        scoring = list(map(lambda r, t: chrf_score.sentence_chrf(r.rstrip(), t.rstrip()), results, targets))
+        scoring = list(map(lambda r, t: chrf_score.sentence_chrf(r.rstrip(), t.rstrip(), 1, 1), results, targets))
 
         logging.info('Chrf evaluator: Finished evaluating')
         return scoring, (sum(scoring)/len(scoring))
