@@ -1,5 +1,5 @@
 import unittest
-from src.generation.generator import generate_train_data_by_lines, generate_train_data
+from src.generation.generator import generate_train_data
 
 
 class TestGenerateTrainData(unittest.TestCase):

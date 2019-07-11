@@ -1,7 +1,7 @@
 import sys
 import logging
 import os
-from config import TRUE_CASER_ACTIVE, TRUE_CASER_COUNT_FILE, DEFAULT_TRAINING_PATH
+from config import PREPROCESS_TRUE_CASER, TRUE_CASER_COUNT_FILE, DEFAULT_TRAINING_PATH
 from pathlib import Path
 from generation.true_caser import TrueCaser
 from generation.command_line_parser import parse_command_line_true_caser
@@ -9,7 +9,7 @@ from generation.command_line_parser import parse_command_line_true_caser
 
 def main():
     args = parse_command_line_true_caser(sys.argv)
-    if not TRUE_CASER_ACTIVE:
+    if not PREPROCESS_TRUE_CASER:
         logging.info('True-Caser: is deactivated.')
         sys.exit()
     logging.info('True-Caser: Starting True-caser')

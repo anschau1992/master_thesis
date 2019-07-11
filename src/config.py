@@ -23,9 +23,13 @@ DEFAULT_EVAL_SOURCE_PATH = "/data/test.trg.de.output_one_word"
 DEFAULT_EVAL_TARGET_PATH = "/data/test.trg.de"
 DEFAULT_SCORING_PATH = "/data/scoring.output"
 
-TRUE_CASER_ACTIVE = True
+# Preprocessing configurations
+PREPROCESS_REMOVE_PUNCTUATION = False
+PREPROCESS_REMOVE_NUMBERS = False
+PREPROCESS_TRUE_CASER = True
 TRUE_CASER_COUNT_FILE = "/true_caser_count.en"
 SOURCE_DATA_PATH = "/source_data"
+
 
 DEFAULT_EVAL_SOURCE_PATH = "./data/test.trg.de.output_one_word"
 DEFAULT_EVAL_TARGET_PATH = "./data/test.trg.de"
