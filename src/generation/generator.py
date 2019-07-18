@@ -46,7 +46,7 @@ def generate_train_data(line_en, line_de):
             sources_de.append(lemma)
 
             if PREPROCESS_TRUE_CASER:
-                token = true_caser.true_case(token)
+                token = true_caser.true_case(str(token))
 
             token_string = __assure_line_break(str(token))
             targets_de.append(token_string)

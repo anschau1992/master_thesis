@@ -28,6 +28,7 @@ mv ./data/test.trg.de.output ./generated_approaches/${i}/test.trg.de.output
 cp ./data/test.src.en ./generated_approaches/${i}/test.src.en
 cp ./data/test.src.de ./generated_approaches/${i}/test.src.de
 cp ./data/test.trg.de ./generated_approaches/${i}/test.trg.de
+cp ./data/test.trg.de ./generated_approaches/${i}/test.base.de
 
 mv ./src/run-me.log ./generated_approaches/${i}/run-me.log
 # zip all

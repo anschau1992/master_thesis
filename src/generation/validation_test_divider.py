@@ -49,7 +49,7 @@ class ValidationTestDivider:
                 validation_data_set.base_de.append(base_de[i])
                 self.val_count += 1
 
-            elif self.validation_ratio <= (self.total_count % 100) < (self.validation_ratio + self.test_ratio):
+            elif self.validation_ratio <= (self.total_count % 100) <= (self.validation_ratio + self.test_ratio):
                 # put into test set
                 test_data_set.sources_en.append(sources_en[i])
                 test_data_set.sources_de.append(sources_de[i])

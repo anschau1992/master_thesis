@@ -110,11 +110,11 @@ fi
 # Calculates the score if no flectation, instead copying the base form
 shell-log "score" "Calculate Lower bound"
 touch ../data/lowerbound-score.output
-python3 __init_evaluators__.py -s ../data/test.src.de -t ../data/test.trg.de -o ../data/lowerbound-score.output -vv
+python3 __init_evaluators__.py -s /data/test.src.de -t /data/test.trg.de -o /data/lowerbound-score.output -vv
 
 shell-log "score" "Calculate Score"
 touch ../data/scoring.output
-python3 __init_evaluators__.py -s ../data/test.trg.de.output -t ../data/test.trg.de -o ../data/scoring.output -vv
+python3 __init_evaluators__.py -s /data/test.trg.de.output -t /data/test.trg.de -o /data/scoring.output -vv
 
 
 
