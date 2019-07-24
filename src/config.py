@@ -12,6 +12,7 @@ TEST_SOURCE_FILE_EN = '/test.src.en'
 TEST_SOURCE_FILE_DE = '/test.src.de'
 TEST_TARGET_FILE_DE = '/test.trg.de'
 TEST_BASE_FILE_DE = '/test.base.de'
+TEST_OUTPUT_FILE_DE = '/test.trg.de.output'
 
 RESULT_FILE_DE = '/result.de'
 
@@ -31,9 +32,13 @@ TRUE_CASER_COUNT_FILE = "/true_caser_count.en"
 SOURCE_DATA_PATH = "/source_data"
 
 
-DEFAULT_EVAL_SOURCE_PATH = "./data/test.trg.de.output_one_word"
-DEFAULT_EVAL_TARGET_PATH = "./data/test.trg.de"
-DEFAULT_SCORING_PATH = "./data/scoring.output"
+DEFAULT_EVAL_SOURCE_PATH = "/data/test.trg.de.output_one_word"
+DEFAULT_EVAL_TARGET_PATH = "/data/test.trg.de"
+DEFAULT_SCORING_PATH = "/data/scoring.output"
 
+DEFAULT_MOST_COMMON_LIST_DE = "/german-word-list-total.csv"
+DEFAULT_MOST_COMMON_PATH = DEFAULT_TRAINING_PATH + "/no_most_common"
+
+MOST_COMMON_NUMBER = 500
 VALIDATION_FRACTION_PERCENTAGE = 0.025
 TEST_FRACTION_PERCENTAGE = 0.10

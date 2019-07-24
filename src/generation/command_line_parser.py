@@ -6,7 +6,8 @@ from pathlib import Path
 
 from config import DEFAULT_TRAINING_PATH, DEFAULT_DATA_PATH_DE, DEFAULT_DATA_PATH_EN, \
     DEFAULT_EVAL_SOURCE_PATH, DEFAULT_EVAL_TARGET_PATH, DEFAULT_SCORING_PATH, \
-    VALIDATION_FRACTION_PERCENTAGE, TEST_FRACTION_PERCENTAGE, SOURCE_DATA_PATH
+    VALIDATION_FRACTION_PERCENTAGE, TEST_FRACTION_PERCENTAGE, SOURCE_DATA_PATH, \
+    DEFAULT_MOST_COMMON_PATH, MOST_COMMON_NUMBER, DEFAULT_MOST_COMMON_LIST_DE
 
 root_path = Path().resolve().parent
 
@@ -72,11 +73,6 @@ def parse_command_line_evaluator(argv):
                         dest="output", default=DEFAULT_SCORING_PATH, help="scoring file location path",
                         metavar="FILE",
                         type=lambda x: _is_valid_file(parser, x))
-    parser.add_argument("-mc", "--most-common",
-                        dest="most-common", default=0,
-                        help="Ignoring the most common english token."
-                             " Number of the most common ignored is defined by the parameter.",
-                        type=lambda x: _is_positive_int(parser, x))
     args = parser.parse_args()
     logging.basicConfig(filename='run-me.log', level=(max(3 - args.verbose, 0) * 10),
                         format='%(asctime)s %(levelname)s: %(message)s')
@@ -112,6 +108,41 @@ def parse_command_line_true_caser(argv):
     return args
 
 
+def parse_scoring_no_most_common(argv):
+    """
+    Parse command line arguments for the
+    :param argv:
+    :return:
+    """
+    parser = argparse.ArgumentParser()
+    parser.add_argument("-v", "--verbose", dest="verbose", action="count",
+                        default=0, help="increase output verbosity (e.g., -vv is more than -v)")
+    parser.add_argument("-i", "--input",
+                        dest="input", default=DEFAULT_TRAINING_PATH, help="folder-location for input data, must "
+                                                                             "point to root folder of all test files",
+                        metavar="DIR",
+                        type=lambda x: _is_valid_folder(parser, x))
+    parser.add_argument("-o", "--output",
+                        dest="output", default=DEFAULT_MOST_COMMON_PATH, help="folder-location for the results",
+                        metavar="DIR",
+                        type=lambda x: _check_and_create_folder(x))
+    parser.add_argument("-mc", "--most-common",
+                        dest="most-common", default=MOST_COMMON_NUMBER,
+                        help="Ignoring the most common english token."
+                             " Number of the most common ignored is defined by the parameter.",
+                        type=lambda x: _is_positive_int(parser, x))
+    parser.add_argument("-df", "--de-file",
+                        dest="de_file", default=DEFAULT_MOST_COMMON_LIST_DE,
+                        help="file with the most common german words. Descending ordered",
+                        metavar="FILE",
+                        type=lambda x: _is_valid_file(parser, x))
+    args = parser.parse_args()
+    logging.basicConfig(filename='run-me.log', level=(max(3 - args.verbose, 0) * 10),
+                        format='%(asctime)s %(levelname)s: %(message)s')
+    logging.info('Finished parsing command line arguments for the Scoring-No-Most-Common')
+    return args
+
+
 def _check_and_create_folder(path):
     file_path = _add_root_path(path)
     if not os.path.exists(file_path):
@@ -139,6 +170,7 @@ def _is_valid_file(parser, path):
 
     else:
         return file_path
+
 
 
 def _is_percentage_number(parser, number):

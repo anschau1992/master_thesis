@@ -2,12 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a8b3cd4a-de82-47be-b871-ccb5813b5602" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/__init_scoring_no_most_common.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/generation/generator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/generation/generator.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/generation/validation_test_divider.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/generation/validation_test_divider.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/config.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/config.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/generation/command_line_parser.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/generation/command_line_parser.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/run-me.sh" beforeDir="false" afterPath="$PROJECT_DIR$/src/run-me.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/scripts/clean_up.sh" beforeDir="false" afterPath="$PROJECT_DIR$/src/scripts/clean_up.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/scripts/generate-training-data.sh" beforeDir="false" afterPath="$PROJECT_DIR$/src/scripts/generate-training-data.sh" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -16,63 +15,135 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/master_thesis$test_out.coverage" NAME="test-out Coverage Results" MODIFIED="1563436477116" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/train" />
+    <SUITE FILE_PATH="coverage/master_thesis$test_out.coverage" NAME="test-out Coverage Results" MODIFIED="1563518267151" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/train" />
+    <SUITE FILE_PATH="coverage/master_thesis$__init_scoring_no_most_common.coverage" NAME="__init_scoring_no_most_common Coverage Results" MODIFIED="1563520820317" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src" />
+  </component>
+  <component name="DockManager">
+    <window id="1">
+      <content type="file-editors">
+        <state>
+          <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+            <file pinned="false" current-in-tab="true">
+              <entry file="file://$PROJECT_DIR$/src/config.py">
+                <provider selected="true" editor-type-id="text-editor">
+                  <state relative-caret-position="210">
+                    <caret line="14" column="19" selection-start-line="14" selection-end-line="14" selection-end-column="19" />
+                  </state>
+                </provider>
+              </entry>
+            </file>
+            <file pinned="false" current-in-tab="false">
+              <entry file="file://$PROJECT_DIR$/german-word-list-total.csv">
+                <provider selected="true" editor-type-id="text-editor">
+                  <state relative-caret-position="2400">
+                    <caret line="160" column="3" selection-start-line="155" selection-end-line="155" selection-end-column="9" />
+                  </state>
+                </provider>
+              </entry>
+            </file>
+          </leaf>
+        </state>
+      </content>
+    </window>
+    <window id="1">
+      <content type="file-editors">
+        <state>
+          <splitter split-orientation="horizontal" split-proportion="0.5">
+            <split-first>
+              <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+                <file pinned="false" current-in-tab="true">
+                  <entry file="file://$PROJECT_DIR$/src/generation/command_line_parser.py">
+                    <provider selected="true" editor-type-id="text-editor">
+                      <state relative-caret-position="719">
+                        <caret line="156" column="35" selection-start-line="156" selection-start-column="35" selection-end-line="156" selection-end-column="35" />
+                        <folding>
+                          <element signature="e#0#10#0" expanded="true" />
+                          <marker date="1563464626000" expanded="true" signature="5306:7220" ph="..." />
+                        </folding>
+                      </state>
+                    </provider>
+                  </entry>
+                </file>
+              </leaf>
+            </split-first>
+            <split-second>
+              <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+                <file pinned="false" current-in-tab="true">
+                  <entry file="file://$PROJECT_DIR$/src/config.py">
+                    <provider selected="true" editor-type-id="text-editor">
+                      <state relative-caret-position="195">
+                        <caret line="13" column="17" selection-start-line="13" selection-end-line="13" selection-end-column="17" />
+                      </state>
+                    </provider>
+                  </entry>
+                </file>
+              </leaf>
+            </split-second>
+          </splitter>
+        </state>
+      </content>
+    </window>
   </component>
   <component name="FUSProjectUsageTrigger">
     <session id="-561294081">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="9" />
+          <entry key="project.closed" value="10" />
           <entry key="project.open.time.0" value="1" />
           <entry key="project.open.time.1" value="2" />
           <entry key="project.open.time.10" value="1" />
           <entry key="project.open.time.11" value="3" />
-          <entry key="project.open.time.13" value="1" />
+          <entry key="project.open.time.13" value="2" />
+          <entry key="project.open.time.14" value="1" />
+          <entry key="project.open.time.18" value="1" />
           <entry key="project.open.time.19" value="1" />
           <entry key="project.open.time.23" value="1" />
           <entry key="project.open.time.25" value="1" />
           <entry key="project.open.time.3" value="2" />
           <entry key="project.open.time.32" value="1" />
+          <entry key="project.open.time.36" value="1" />
           <entry key="project.open.time.4" value="1" />
           <entry key="project.open.time.5" value="1" />
           <entry key="project.open.time.7" value="1" />
-          <entry key="project.opened" value="17" />
+          <entry key="project.opened" value="21" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
           <entry key="bz2" value="2" />
-          <entry key="de" value="12" />
-          <entry key="en" value="6" />
+          <entry key="csv" value="4" />
+          <entry key="de" value="34" />
+          <entry key="en" value="12" />
           <entry key="log" value="11" />
-          <entry key="output" value="15" />
-          <entry key="py" value="41" />
-          <entry key="sh" value="24" />
-          <entry key="txt" value="2" />
+          <entry key="output" value="17" />
+          <entry key="py" value="60" />
+          <entry key="sh" value="26" />
+          <entry key="txt" value="4" />
           <entry key="xml" value="1" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="Bash" value="24" />
+          <entry key="Bash" value="26" />
           <entry key="Log" value="11" />
-          <entry key="PLAIN_TEXT" value="37" />
-          <entry key="Python" value="41" />
+          <entry key="PLAIN_TEXT" value="73" />
+          <entry key="Python" value="60" />
           <entry key="XML" value="1" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="dummy" value="18" />
-          <entry key="py" value="781" />
-          <entry key="sh" value="206" />
+          <entry key="csv" value="2" />
+          <entry key="dummy" value="28" />
+          <entry key="py" value="2802" />
+          <entry key="sh" value="611" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="Bash" value="206" />
-          <entry key="PLAIN_TEXT" value="18" />
-          <entry key="Python" value="781" />
+          <entry key="Bash" value="611" />
+          <entry key="PLAIN_TEXT" value="30" />
+          <entry key="Python" value="2802" />
         </counts>
       </usages-collector>
     </session>
@@ -82,31 +153,52 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/scripts/clean_up.sh">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="237">
-              <caret line="30" column="59" selection-start-line="30" selection-start-column="59" selection-end-line="30" selection-end-column="59" />
+            <state>
+              <caret column="13" selection-start-column="13" selection-end-column="13" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/generated_approaches/15/test.base.de">
-          <provider selected="true" editor-type-id="LargeFileEditor">
-            <state relative-caret-position="195">
-              <caret line="13" column="42" lean-forward="true" selection-start-line="13" selection-start-column="42" selection-end-line="13" selection-end-column="42" />
+        <entry file="file://$PROJECT_DIR$/src/run-me.sh">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1635">
+              <caret line="109" selection-start-line="109" selection-end-line="109" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/config.py">
+        <entry file="file://$PROJECT_DIR$/src/__init_scoring_no_most_common.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="355">
-              <caret line="34" column="12" lean-forward="true" selection-start-line="34" selection-start-column="12" selection-end-line="34" selection-end-column="12" />
+            <state relative-caret-position="233">
+              <caret line="24" column="43" selection-start-line="24" selection-start-column="43" selection-end-line="24" selection-end-column="43" />
+              <folding>
+                <element signature="e#0#10#0" expanded="true" />
+                <marker date="1563528800000" expanded="true" signature="2120:2506" ph="..." />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/data/no-most-common-scoring.output">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/data/test.src.de">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
     </leaf>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
@@ -119,6 +211,18 @@
       <find>VALIDATION_FRACTION_PERCENTAGE</find>
       <find>validation_ratio</find>
       <find>from</find>
+      <find>folder</find>
+      <find>*</find>
+      <find>^\*\s+(\S+)</find>
+      <find>^[0-9]</find>
+      <find>_is_positive_int</find>
+      <find>DEFAULT_MOST_COMMON_PATH</find>
+      <find>most-commo</find>
+      <find>^[\s]</find>
+      <find>DEFAULT_SCORING_PATH</find>
+      <find>assure</find>
+      <find>natürlich</find>
+      <find>spielen</find>
     </findStrings>
     <dirStrings>
       <dir>$PROJECT_DIR$</dir>
@@ -134,7 +238,6 @@
         <option value="$PROJECT_DIR$/src/generation/true_caser.py" />
         <option value="$PROJECT_DIR$/train/test.sh" />
         <option value="$PROJECT_DIR$/src/moses_file_reader.py" />
-        <option value="$PROJECT_DIR$/src/generation/command_line_parser.py" />
         <option value="$PROJECT_DIR$/src/__init_generator__.py" />
         <option value="$PROJECT_DIR$/src/scripts/download-source-data.sh" />
         <option value="$PROJECT_DIR$/src/scripts/shell-logger.sh" />
@@ -142,11 +245,17 @@
         <option value="$PROJECT_DIR$/src/generation/line_preprocessor.py" />
         <option value="$PROJECT_DIR$/src/generation/generator.py" />
         <option value="$PROJECT_DIR$/src/scripts/generate-training-data.sh" />
-        <option value="$PROJECT_DIR$/src/run-me.sh" />
         <option value="$PROJECT_DIR$/src/generation/validation_test_divider.py" />
-        <option value="$PROJECT_DIR$/train/test-out.py" />
         <option value="$PROJECT_DIR$/src/scripts/clean_up.sh" />
+        <option value="$PROJECT_DIR$/src/__init_without_most_common.py" />
+        <option value="$PROJECT_DIR$/most_common_de_2.txt" />
+        <option value="$PROJECT_DIR$/../german-word-list-total.csv" />
+        <option value="$PROJECT_DIR$/src/generation/command_line_parser.py" />
+        <option value="$PROJECT_DIR$/german-word-list-total.csv" />
+        <option value="$PROJECT_DIR$/train/test-out.py" />
         <option value="$PROJECT_DIR$/src/config.py" />
+        <option value="$PROJECT_DIR$/src/run-me.sh" />
+        <option value="$PROJECT_DIR$/src/__init_scoring_no_most_common.py" />
       </list>
     </option>
   </component>
@@ -157,10 +266,9 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="19" />
     <option name="y" value="22" />
-    <option name="width" value="1680" />
-    <option name="height" value="960" />
+    <option name="width" value="2560" />
+    <option name="height" value="1350" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -168,6 +276,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -175,16 +284,10 @@
               <item name="master_thesis" type="b2602c69:ProjectViewProjectNode" />
               <item name="master_thesis" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="master_thesis" type="b2602c69:ProjectViewProjectNode" />
-              <item name="master_thesis" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -194,7 +297,11 @@
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/generated_approaches/15" />
     </key>
   </component>
@@ -210,7 +317,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.test-out">
+  <component name="RunManager" selected="Python.__init_scoring_no_most_common">
     <configuration name="test.sh" type="BashConfigurationType" factoryName="Bash" temporary="true">
       <module name="master_thesis" />
       <option name="INTERPRETER_OPTIONS" value="bash" />
@@ -220,6 +327,28 @@
       <option name="PARENT_ENVS" value="true" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/train/test.sh" />
       <option name="PARAMETERS" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="__init_scoring_no_most_common" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="master_thesis" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/src" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/__init_scoring_no_most_common.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
     <configuration name="test-out" type="PythonConfigurationType" factoryName="Python" temporary="true">
@@ -247,9 +376,11 @@
     <list>
       <item itemvalue="Python.test-out" />
       <item itemvalue="Bash.test.sh" />
+      <item itemvalue="Python.__init_scoring_no_most_common" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.__init_scoring_no_most_common" />
         <item itemvalue="Python.test-out" />
         <item itemvalue="Bash.test.sh" />
       </list>
@@ -269,8 +400,31 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="19" y="22" width="1680" height="960" extended-state="0" />
+    <frame x="0" y="22" width="2560" height="1350" extended-state="6" />
     <layout>
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.15488483" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.3507795" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.32815734" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.51035196" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="8" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Database Changes" order="9" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.50183153" side_tool="true" weight="0.47580644" />
+      <window_info anchor="bottom" id="Terminal" order="11" sideWeight="0.4981685" visible="true" weight="0.22893482" />
+      <window_info anchor="bottom" id="Python Console" order="12" weight="0.32919255" />
+      <window_info anchor="right" id="Commander" order="0" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="SciView" order="3" />
+      <window_info anchor="right" id="Database" order="4" />
+    </layout>
+    <layout-to-restore>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.20634921" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
@@ -284,18 +438,21 @@
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="8" show_stripe_button="false" />
       <window_info anchor="bottom" id="Database Changes" order="9" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.50183153" side_tool="true" visible="true" weight="0.47580644" />
-      <window_info anchor="bottom" id="Terminal" order="11" sideWeight="0.4981685" visible="true" weight="0.47580644" />
+      <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.50183153" side_tool="true" weight="0.47580644" />
+      <window_info anchor="bottom" id="Terminal" order="11" sideWeight="0.4981685" visible="true" weight="0.15552996" />
       <window_info anchor="bottom" id="Python Console" order="12" weight="0.32919255" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="right" id="SciView" order="3" />
       <window_info anchor="right" id="Database" order="4" />
-    </layout>
+    </layout-to-restore>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
+  </component>
+  <component name="UnknownFeatures">
+    <option featureType="com.intellij.fileTypeFactory" implementationName="*.csv" />
   </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
@@ -304,46 +461,14 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/train/test-out.py</url>
-          <line>42</line>
-          <option name="timeStamp" value="1" />
+          <url>file://$PROJECT_DIR$/src/__init_scoring_no_most_common.py</url>
+          <line>38</line>
+          <option name="timeStamp" value="3" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/generated_approaches/4/train.log" />
-    <entry file="file://$PROJECT_DIR$/generated_approaches/4/test.trg.de" />
-    <entry file="file://$PROJECT_DIR$/generated_approaches/4/test.trg.de.output" />
-    <entry file="file://$PROJECT_DIR$/../Autodesk-PostEditing-v1.0/deu.tm">
-      <provider selected="true" editor-type-id="LargeFileEditor">
-        <state relative-caret-position="786">
-          <caret line="344" selection-start-line="344" selection-end-line="344" selection-end-column="189" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/source_data/run-me.log" />
-    <entry file="file://$PROJECT_DIR$/train/test.sh">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="18" selection-start-line="18" selection-end-line="19" selection-end-column="51" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/train/test_line.txt">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/__init_true_caser__.py" />
-    <entry file="file://$PROJECT_DIR$/data/train.trg.de" />
-    <entry file="file://$PROJECT_DIR$/src/generation/command_line_parser.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="169">
-          <caret line="13" column="4" selection-start-line="13" selection-start-column="4" selection-end-line="13" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/source_data/ubuntu/Ubuntu.de-en.xml" />
-    <entry file="file://$PROJECT_DIR$/source_data/ubuntu/Ubuntu.de-en.en" />
     <entry file="file://$PROJECT_DIR$/data/train.base.de" />
     <entry file="file://$PROJECT_DIR$/data/train.src.en" />
     <entry file="file://$PROJECT_DIR$/src/scripts/run-me.log">
@@ -361,7 +486,6 @@
     <entry file="file://$PROJECT_DIR$/tests/generation/test_generate_train_data.py" />
     <entry file="file://$PROJECT_DIR$/data/test.trg.de" />
     <entry file="file://$PROJECT_DIR$/data/test.src.en" />
-    <entry file="file://$PROJECT_DIR$/data/test.src.de" />
     <entry file="file://$PROJECT_DIR$/src/evaluators/evaluator_base.py">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -407,43 +531,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/__init_evaluators__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="465">
-          <caret line="36" selection-start-line="36" selection-end-line="36" />
-          <folding>
-            <element signature="e#0#10#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/generation/generator.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="405">
-          <caret line="34" column="16" selection-start-line="34" selection-start-column="16" selection-end-line="34" selection-end-column="16" />
-          <folding>
-            <element signature="e#0#10#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/__init_generator__.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="225">
           <caret line="26" column="36" selection-start-line="26" selection-start-column="36" selection-end-line="26" selection-end-column="36" />
-          <folding>
-            <element signature="e#0#10#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/train/test-out.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="44" selection-start-line="44" selection-end-line="44" />
-          <folding>
-            <element signature="e#0#10#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -454,62 +545,155 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/generation/true_caser.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="480">
-          <caret line="33" column="29" selection-start-line="33" selection-start-column="29" selection-end-line="33" selection-end-column="29" />
+    <entry file="file://$PROJECT_DIR$/data/scoring.output" />
+    <entry file="file://$PROJECT_DIR$/data/lowerbound-score.output" />
+    <entry file="file://$PROJECT_DIR$/generated_approaches/15/test.base.de">
+      <provider selected="true" editor-type-id="LargeFileEditor">
+        <state relative-caret-position="195">
+          <caret line="13" column="42" selection-start-line="13" selection-start-column="42" selection-end-line="13" selection-end-column="42" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/run-me.sh">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="249">
-          <caret line="48" column="4" selection-start-line="48" selection-start-column="4" selection-end-line="48" selection-end-column="4" />
-        </state>
-      </provider>
+    <entry file="file://$PROJECT_DIR$/generated_approaches/15/test.trg.de.output">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/generated_approaches/15/test.src.en">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/generated_approaches/15/test.trg.de">
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/data/true_caser_count.en">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="663">
-          <caret line="172" column="11" lean-forward="true" selection-start-line="172" selection-start-column="11" selection-end-line="172" selection-end-column="11" />
+          <caret line="172" column="11" selection-start-line="172" selection-start-column="11" selection-end-line="172" selection-end-column="11" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/data/scoring.output">
+    <entry file="file://$PROJECT_DIR$/most_common_de.txt" />
+    <entry file="file://$PROJECT_DIR$/most_common_de_2.txt" />
+    <entry file="file://$PROJECT_DIR$/../german-word-list-total.csv">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="467">
-          <caret line="200350" column="8" lean-forward="true" selection-start-line="200350" selection-start-column="8" selection-end-line="200350" selection-end-column="8" />
+        <state relative-caret-position="600">
+          <caret line="40" column="9" selection-start-line="40" selection-start-column="9" selection-end-line="40" selection-end-column="9" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/data/lowerbound-score.output">
+    <entry file="file://$PROJECT_DIR$/src/generation/generator.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="441">
-          <caret line="200350" column="37" lean-forward="true" selection-start-line="200350" selection-start-column="19" selection-end-line="200350" selection-end-column="37" />
+        <state relative-caret-position="529">
+          <caret line="41" column="50" selection-start-line="41" selection-start-column="50" selection-end-line="41" selection-end-column="50" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/__init_true_caser__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="19" column="26" selection-start-line="19" selection-start-column="26" selection-end-line="19" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/__init_evaluators__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="9" column="45" selection-start-line="9" selection-start-column="45" selection-end-line="9" selection-end-column="45" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/train/test-out.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="148">
+          <caret line="16" column="17" selection-start-line="16" selection-start-column="17" selection-end-line="16" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/generation/true_caser.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="407">
+          <caret line="75" column="50" selection-start-line="75" selection-start-column="41" selection-end-line="75" selection-end-column="50" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/crop-to-first-word.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret selection-end-line="3" selection-end-column="15" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/data/test.base.de">
       <provider selected="true" editor-type-id="LargeFileEditor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/scripts/clean_up.sh">
+    <entry file="file://$PROJECT_DIR$/data/no_most_common/test.src.en">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data/no_most_common/test.trg.de">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data/no_most_common/test.base.de">
+      <provider editor-type-id="LargeFileEditor" />
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data/no_most_common/test.src.de">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="237">
-          <caret line="30" column="59" selection-start-line="30" selection-start-column="59" selection-end-line="30" selection-end-column="59" />
+        <state relative-caret-position="277">
+          <caret line="46528" column="9" selection-start-line="46528" selection-start-column="2" selection-end-line="46528" selection-end-column="9" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/generated_approaches/15/test.base.de">
-      <provider selected="true" editor-type-id="LargeFileEditor">
-        <state relative-caret-position="195">
-          <caret line="13" column="42" lean-forward="true" selection-start-line="13" selection-start-column="42" selection-end-line="13" selection-end-column="42" />
+    <entry file="file://$PROJECT_DIR$/src/scripts/clean_up.sh">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="13" selection-start-column="13" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/run-me.sh">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1635">
+          <caret line="109" selection-start-line="109" selection-end-line="109" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data/no-most-common-scoring.output">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data/test.src.de">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/__init_scoring_no_most_common.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="233">
+          <caret line="24" column="43" selection-start-line="24" selection-start-column="43" selection-end-line="24" selection-end-column="43" />
+          <folding>
+            <element signature="e#0#10#0" expanded="true" />
+            <marker date="1563528800000" expanded="true" signature="2120:2506" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/generation/command_line_parser.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="719">
+          <caret line="156" column="35" selection-start-line="156" selection-start-column="35" selection-end-line="156" selection-end-column="35" />
+          <folding>
+            <element signature="e#0#10#0" expanded="true" />
+            <marker date="1563464626000" expanded="true" signature="5306:7220" ph="..." />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/config.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="355">
-          <caret line="34" column="12" lean-forward="true" selection-start-line="34" selection-start-column="12" selection-end-line="34" selection-end-column="12" />
+        <state relative-caret-position="210">
+          <caret line="14" column="19" selection-start-line="14" selection-end-line="14" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/german-word-list-total.csv">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2400">
+          <caret line="160" column="3" selection-start-line="155" selection-end-line="155" selection-end-column="9" />
         </state>
       </provider>
     </entry>
