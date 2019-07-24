@@ -101,9 +101,9 @@ class TestSplitValidationTestData(unittest.TestCase):
         """
         valtest_divider = ValidationTestDivider(0.50, 0.40)
 
-        self.assertEqual(valtest_divider.get_data_count(), 0)
-        self.assertEqual(valtest_divider.get_validation_ratio(), 50)
-        self.assertEqual(valtest_divider.get_test_ratio(), 40)
+        self.assertEqual(valtest_divider.get_total_count(), 0)
+        self.assertEqual(0.50, valtest_divider.get_validation_ratio())
+        self.assertEqual(0.40, valtest_divider.get_test_ratio())
 
     # DIVIDE METHOD
 
@@ -157,20 +157,6 @@ class TestSplitValidationTestData(unittest.TestCase):
                           test_source_de, test_targets_de, test_wrong_length
                           )
 
-    def test_proper_divide(self):
-        """
-        Division according to ratio is done properly
-        :return:
-        """
-        valtest_divider = ValidationTestDivider(0.02, 0.02)
-        training_data_set, validation_data_set, test_data_set =\
-            valtest_divider.divide_data(
-                test_source_en, test_source_de, test_targets_de, test_base_de
-            )
-        self.assertEqual(len(validation_data_set.sources_de), 2)
-        self.assertEqual(len(test_data_set.sources_de), 2)
-        self.assertEqual(len(training_data_set.sources_de), 3)
-
     def test_proper_divide_multiple(self):
         """
         Division according to ratio is done properly also over multiple function calls.
@@ -186,18 +172,18 @@ class TestSplitValidationTestData(unittest.TestCase):
         validation_sources_de = []
         test_sources_de = []
 
-        for i in range(0, 15):
-            new_train, new_val, new_test =\
+        for i in range(0, 14):
+            new_train, new_val, new_test = \
                 valtest_divider.divide_data(
-                    test_source_en, test_source_de, test_targets_de, test_base_de
+                    test_source_en, test_source_de, test_targets_de, test_base_de, 90
                 )
             training_sources_de = training_sources_de + new_train.sources_de
             validation_sources_de = validation_sources_de + new_val.sources_de
             test_sources_de = test_sources_de + new_test.sources_de
 
-        self.assertEqual(30, len(training_sources_de))
-        self.assertEqual(35, len(validation_sources_de))
-        self.assertEqual(40, len(test_sources_de))
+        self.assertEqual(28, len(training_sources_de))  # ~30%
+        self.assertEqual(28, len(validation_sources_de))  # ~40%
+        self.assertEqual(42, len(test_sources_de))  # ~30%
 
     def test_zero_ratio_leaves_empty(self):
         """
@@ -210,16 +196,15 @@ class TestSplitValidationTestData(unittest.TestCase):
         validation_sources_de = []
         test_sources_de = []
 
-        for i in range(0, 15):
+        for i in range(0, 100):
             new_train, new_val, new_test = \
                 valtest_divider.divide_data(
-                    test_source_en, test_source_de, test_targets_de, test_base_de
+                    test_source_en, test_source_de, test_targets_de, test_base_de, 4
                 )
             training_sources_de = training_sources_de + new_train.sources_de
             validation_sources_de = validation_sources_de + new_val.sources_de
             test_sources_de = test_sources_de + new_test.sources_de
 
-        self.assertEqual(105, len(training_sources_de))
+        self.assertEqual(700, len(training_sources_de))
         self.assertEqual(0, len(validation_sources_de))
         self.assertEqual(0, len(test_sources_de))
-

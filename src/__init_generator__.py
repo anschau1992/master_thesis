@@ -1,5 +1,6 @@
 import sys
 import logging
+import random
 from generation.command_line_parser import parse_command_line_generator
 from moses_file_reader import MosesFileReader
 from generation.generator import generate_train_data
@@ -49,11 +50,12 @@ def main():
                 if next_lines is None:
                     break
 
+                random_seed = random.randint(1,100)
                 sources_en, sources_de, targets_de, base_de = generate_train_data(next_lines[0], next_lines[1])
                 training_data_set, validation_data_set, test_data_set = val_test_divider.divide_data(sources_en,
                                                                                                      sources_de,
                                                                                                      targets_de,
-                                                                                                     base_de)
+                                                                                                     base_de, random_seed)
                 train_source_file_en.writelines(training_data_set.sources_en)
                 train_source_file_de.writelines(training_data_set.sources_de)
                 train_target_file_de.writelines(training_data_set.targets_de)
@@ -68,6 +70,7 @@ def main():
                 test_source_file_de.writelines(test_data_set.sources_de)
                 test_target_file_de.writelines(test_data_set.targets_de)
                 test_base_file_de.writelines(test_data_set.base_de)
+
 
     except IOError as e:
         logging.error("Open Generation file failed with Error:  " + e)

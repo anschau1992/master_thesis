@@ -1,4 +1,4 @@
-.idea
+*.idea/*
 daily/*
 src/venv
 training/*

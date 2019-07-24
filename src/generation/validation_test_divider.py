@@ -1,6 +1,5 @@
-import logging
 import types
-from random import randint
+import random
 
 
 class ValidationTestDivider:
@@ -11,16 +10,26 @@ class ValidationTestDivider:
         if (validation_ratio + test_ratio) > 1.00:
             raise Exception('The sum of the ratios is higher than 1.00, which is illegal.')
 
-        self.validation_ratio = int(validation_ratio * 100)  # easier to count with whole numbers
-        self.test_ratio = int(test_ratio * 100)  # easier to count with whole numbers
+        self.validation_ratio = validation_ratio
+        self.test_ratio = test_ratio
         self.total_count = 0
         self.train_count = 0
         self.val_count = 0
         self.test_count = 0
 
-    def divide_data(self, sources_en: list, sources_de: list, targets_de: list, base_de: list):
+    def divide_data(self, sources_en: list, sources_de: list, targets_de: list, base_de: list, seed: int = random.randint(0,100)):
         if len(sources_en) != len(sources_de) or len(sources_en) != len(targets_de) or len(sources_en) != len(base_de):
             raise Exception('Length of the data-sets provided is not equal')
+
+        # random shuffle while assuring all use the same seed-state
+        random.seed(seed)
+        random.shuffle(sources_en)
+        random.seed(seed)
+        random.shuffle(sources_de)
+        random.seed(seed)
+        random.shuffle(targets_de)
+        random.seed(seed)
+        random.shuffle(base_de)
 
         validation_data_set = types.SimpleNamespace()
         validation_data_set.sources_en = []
@@ -41,15 +50,15 @@ class ValidationTestDivider:
         training_data_set.base_de = []
 
         for i in range(len(sources_en)):
-            if 0 <= (self.total_count % 100) < self.validation_ratio:
+            random_numb = random.random()
+            if random_numb < self.validation_ratio:
                 # put into validation set
                 validation_data_set.sources_en.append(sources_en[i])
                 validation_data_set.sources_de.append(sources_de[i])
                 validation_data_set.targets_de.append(targets_de[i])
                 validation_data_set.base_de.append(base_de[i])
                 self.val_count += 1
-
-            elif self.validation_ratio <= (self.total_count % 100) <= (self.validation_ratio + self.test_ratio):
+            elif self.validation_ratio <= random_numb < (self.validation_ratio + self.test_ratio):
                 # put into test set
                 test_data_set.sources_en.append(sources_en[i])
                 test_data_set.sources_de.append(sources_de[i])
