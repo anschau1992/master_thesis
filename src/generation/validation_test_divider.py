@@ -17,7 +17,7 @@ class ValidationTestDivider:
         self.val_count = 0
         self.test_count = 0
 
-    def divide_data(self, sources_en: list, sources_de: list, targets_de: list, base_de: list, seed: int = random.randint(0,100)):
+    def divide_data(self, sources_en: list, sources_de: list, targets_de: list, base_de: list, pos_de, seed: int = random.randint(0,100)):
         if len(sources_en) != len(sources_de) or len(sources_en) != len(targets_de) or len(sources_en) != len(base_de):
             raise Exception('Length of the data-sets provided is not equal')
 
@@ -30,24 +30,29 @@ class ValidationTestDivider:
         random.shuffle(targets_de)
         random.seed(seed)
         random.shuffle(base_de)
+        random.seed(seed)
+        random.shuffle(pos_de)
 
         validation_data_set = types.SimpleNamespace()
         validation_data_set.sources_en = []
         validation_data_set.sources_de = []
         validation_data_set.targets_de = []
         validation_data_set.base_de = []
+        validation_data_set.pos_de = []
 
         test_data_set = types.SimpleNamespace()
         test_data_set.sources_en = []
         test_data_set.sources_de = []
         test_data_set.targets_de = []
         test_data_set.base_de = []
+        test_data_set.pos_de = []
 
         training_data_set = types.SimpleNamespace()
         training_data_set.sources_en = []
         training_data_set.sources_de = []
         training_data_set.targets_de = []
         training_data_set.base_de = []
+        training_data_set.pos_de = []
 
         for i in range(len(sources_en)):
             random_numb = random.random()
@@ -57,6 +62,7 @@ class ValidationTestDivider:
                 validation_data_set.sources_de.append(sources_de[i])
                 validation_data_set.targets_de.append(targets_de[i])
                 validation_data_set.base_de.append(base_de[i])
+                validation_data_set.pos_de.append(pos_de[i])
                 self.val_count += 1
             elif self.validation_ratio <= random_numb < (self.validation_ratio + self.test_ratio):
                 # put into test set
@@ -64,6 +70,7 @@ class ValidationTestDivider:
                 test_data_set.sources_de.append(sources_de[i])
                 test_data_set.targets_de.append(targets_de[i])
                 test_data_set.base_de.append(base_de[i])
+                test_data_set.pos_de.append(pos_de[i])
                 self.test_count += 1
             else:
                 # put into training set
@@ -71,6 +78,7 @@ class ValidationTestDivider:
                 training_data_set.sources_de.append(sources_de[i])
                 training_data_set.targets_de.append(targets_de[i])
                 training_data_set.base_de.append(base_de[i])
+                training_data_set.pos_de.append(pos_de[i])
                 self.train_count += 1
 
             self.total_count += 1

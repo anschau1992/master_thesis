@@ -33,8 +33,9 @@ def generate_train_data(line_en, line_de):
     sources_de = []
     targets_de = []
     base_de = []
+    pos_de = [] #part of speech
 
-    tokens = nlp(line_de, disable=['parser', 'tagger', 'ner'])
+    tokens = nlp(line_de, disable=['parser', 'ner'])
     for token in tokens:
         # skip too short tokens like e.g. 'it'
         if len(token) >= 2:
@@ -52,7 +53,8 @@ def generate_train_data(line_en, line_de):
             targets_de.append(token_string)
 
             base_de.append(__assure_line_break(line_de))
-    return sources_en, sources_de, targets_de, base_de
+            base_de.append(token.pos_)
+    return sources_en, sources_de, targets_de, base_de, pos_de
 
 
 def __assure_line_break(line):
