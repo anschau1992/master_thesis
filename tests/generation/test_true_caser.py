@@ -47,7 +47,7 @@ class TestTrueCaser(unittest.TestCase):
     def test_even_count_true_case(self):
         """
         Is the model trained with the same amount of capitalized and lowered form of a token
-        the method "true-case" returns the lowered form of the word.
+        the method "true-case" returns the original form of the word.
         :return: lowered form of word "test"
         """
         true_caser = TrueCaser()
@@ -57,17 +57,19 @@ class TestTrueCaser(unittest.TestCase):
         true_caser.train('Test')
 
         true_caser.close_training()
-        self.assertEqual('test', true_caser.true_case('Test'))
+        self.assertEqual('Test', true_caser.true_case('Test'))
+        self.assertEqual('test', true_caser.true_case('test'))
 
     def test_no_training_true_case(self):
         """
         Is the model never trained with any form of a token,
-        it returns the lower form of the token.
-        :return: lowered form of word "test"
+        it returns the original form of the token.
+        :return: original form of word "test"
         """
         true_caser = TrueCaser()
         true_caser.close_training()
-        self.assertEqual('test', true_caser.true_case('Test'))
+        self.assertEqual('test', true_caser.true_case('test'))
+        self.assertEqual('TEST', true_caser.true_case('TEST'))
 
     def test_most_common_before_closing(self):
         """

@@ -40,7 +40,9 @@ DEFAULT_SCORING_PATH = "/data/scoring.output"
 
 DEFAULT_MOST_COMMON_LIST_DE = "/german-word-list-total.csv"
 DEFAULT_MOST_COMMON_PATH = DEFAULT_TRAINING_PATH + "/no_most_common"  # scoring, when most common words are ignored
-DEFAULT_ONLY_NOUN_PATH = DEFAULT_TRAINING_PATH + "/only_noun" # scoring, when only nouns are considered
+DEFAULT_POS_PATH = DEFAULT_TRAINING_PATH + "/only_noun"  # scoring, when only nouns are considered
+DEFAULT_POS_LIST = ['NOUN']  # POS considered for the POS-scoring --> see https://spacy.io for POS-definition
+
 
 MOST_COMMON_NUMBER = 500
 VALIDATION_FRACTION_PERCENTAGE = 0.025

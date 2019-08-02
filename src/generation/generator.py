@@ -41,6 +41,7 @@ def generate_train_data(line_en, line_de):
         if len(token) >= 2:
 
             line_en = __assure_line_break(line_en)
+            pos_de.append(__assure_line_break(token.pos_))
             sources_en.append(line_en)
 
             lemma = __assure_line_break(token.lemma_)
@@ -51,9 +52,7 @@ def generate_train_data(line_en, line_de):
 
             token_string = __assure_line_break(str(token))
             targets_de.append(token_string)
-
             base_de.append(__assure_line_break(line_de))
-            base_de.append(token.pos_)
     return sources_en, sources_de, targets_de, base_de, pos_de
 
 

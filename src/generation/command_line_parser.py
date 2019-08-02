@@ -7,7 +7,8 @@ from pathlib import Path
 from config import DEFAULT_TRAINING_PATH, DEFAULT_DATA_PATH_DE, DEFAULT_DATA_PATH_EN, \
     DEFAULT_EVAL_SOURCE_PATH, DEFAULT_EVAL_TARGET_PATH, DEFAULT_SCORING_PATH, \
     VALIDATION_FRACTION_PERCENTAGE, TEST_FRACTION_PERCENTAGE, SOURCE_DATA_PATH, \
-    DEFAULT_MOST_COMMON_PATH, MOST_COMMON_NUMBER, DEFAULT_MOST_COMMON_LIST_DE
+    DEFAULT_MOST_COMMON_PATH, MOST_COMMON_NUMBER, DEFAULT_MOST_COMMON_LIST_DE, \
+    DEFAULT_POS_PATH, DEFAULT_POS_LIST
 
 root_path = Path().resolve().parent
 
@@ -110,7 +111,7 @@ def parse_command_line_true_caser(argv):
 
 def parse_scoring_no_most_common(argv):
     """
-    Parse command line arguments for the
+    Parse command line arguments for the scoring evaluation which ignores the most common words
     :param argv:
     :return:
     """
@@ -118,8 +119,8 @@ def parse_scoring_no_most_common(argv):
     parser.add_argument("-v", "--verbose", dest="verbose", action="count",
                         default=0, help="increase output verbosity (e.g., -vv is more than -v)")
     parser.add_argument("-i", "--input",
-                        dest="input", default=DEFAULT_TRAINING_PATH, help="folder-location for input data, must "
-                                                                             "point to root folder of all test files",
+                        dest="input", default=DEFAULT_TRAINING_PATH,
+                        help="folder-location for input data, must point to root folder of all test files",
                         metavar="DIR",
                         type=lambda x: _is_valid_folder(parser, x))
     parser.add_argument("-o", "--output",
@@ -142,6 +143,30 @@ def parse_scoring_no_most_common(argv):
     logging.info('Finished parsing command line arguments for the Scoring-No-Most-Common')
     return args
 
+
+def parse_scoring_pos_scoring(argv):
+    """
+    Parse command line arguments for the scoring evaluation, which considers only some specific POS words e.g. nouns
+    :param argv:
+    :return:
+    """
+    parser = argparse.ArgumentParser()
+    parser.add_argument("-v", "--verbose", dest="verbose", action="count",
+                        default=0, help="increase output verbosity (e.g., -vv is more than -v)")
+    parser.add_argument("-i", "--input",
+                        dest="input", default=DEFAULT_TRAINING_PATH,
+                        help="folder-location for input data, must point to root folder of all test files",
+                        metavar="DIR",
+                        type=lambda x: _is_valid_folder(parser, x))
+    parser.add_argument("-o", "--output",
+                        dest="output", default=DEFAULT_POS_PATH, help="folder-location for the results",
+                        metavar="DIR",
+                        type=lambda x: _check_and_create_folder(x))
+    args = parser.parse_args()
+    logging.basicConfig(filename='run-me.log', level=(max(3 - args.verbose, 0) * 10),
+                        format='%(asctime)s %(levelname)s: %(message)s')
+    logging.info('Finished parsing command line arguments for the POS scoring')
+    return args
 
 def _check_and_create_folder(path):
     file_path = _add_root_path(path)
@@ -172,7 +197,6 @@ def _is_valid_file(parser, path):
         return file_path
 
 
-
 def _is_percentage_number(parser, number):
     if 0 <= int(number) <= 100:
         return number
@@ -185,3 +209,12 @@ def _is_positive_int(parser, number):
         return number
     else:
         parser.error("Not a positive integer")
+
+
+def _is_non_empty_list(parser, new_list):
+    if not isinstance(new_list, list):
+        parser.error("The provided parameter is not a list")
+    if len(new_list) < 1:
+        parser.error("Provided list is empty.")
+    else:
+        return new_list

@@ -53,7 +53,10 @@ class TrueCaser():
         cap_count = self.true_case_counter[token.capitalize()]
         lower_count = self.true_case_counter[token.lower()]
 
-        if cap_count > lower_count:
+        # keep form if both number are same, also when 0:0
+        if cap_count == lower_count:
+            return token
+        elif cap_count > lower_count:
             return token.capitalize()
         else:
             return token.lower()
