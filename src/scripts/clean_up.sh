@@ -30,12 +30,17 @@ cp ./data/test.src.de ./generated_approaches/${i}/test.src.de
 cp ./data/test.trg.de ./generated_approaches/${i}/test.trg.de
 cp ./data/test.trg.de ./generated_approaches/${i}/test.base.de
 
+# move different scorings
+mv  ./data/no_most_common ./generated_approaches/${i}/no_most_common
+mv  ./data/only_noun ./generated_approaches/${i}/only_noun
+
 mv ./src/run-me.log ./generated_approaches/${i}/run-me.log
 # zip all
-zip -r ./generated_approaches/model_${i}.zip ./generated_approaches/${i}/train.log ./generated_approaches/${i}/valid.log \
+zip -R ./generated_approaches/model_${i}.zip ./generated_approaches/${i}/train.log ./generated_approaches/${i}/valid.log \
  ./generated_approaches/${i}/test.log ./generated_approaches/${i}/scoring.output \
   ./generated_approaches/${i}/lowerbound-score.output ./generated_approaches/${i}/run-me.sh \
-  ./generated_approaches/${i}/run-me.log
+  ./generated_approaches/${i}/run-me.log ./generated_approaches/${i}/no_most_common \
+  ./generated_approaches/${i}/only_noun
 
 # clean up & set up for new training round
-rm -r ./model
+# rm -r ./model
