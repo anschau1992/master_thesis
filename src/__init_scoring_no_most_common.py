@@ -1,9 +1,16 @@
 import sys
+import os
 import logging
 from collections import Counter
 from generation.command_line_parser import parse_scoring_no_most_common
-from config import MOST_COMMON_NUMBER, TEST_SOURCE_FILE_EN, TEST_SOURCE_FILE_DE, TEST_TARGET_FILE_DE, \
-    TEST_BASE_FILE_DE, TEST_OUTPUT_FILE_DE
+
+# read configs
+MOST_COMMON_NUMBER = int(os.environ["MOST_COMMON_NUMBER"])
+TEST_SOURCE_FILE_EN = os.environ["TEST_SOURCE_FILE_EN"]
+TEST_SOURCE_FILE_DE = os.environ["TEST_SOURCE_FILE_DE"]
+TEST_TARGET_FILE_DE = os.environ["TEST_TARGET_FILE_DE"]
+TEST_BASE_FILE_DE = os.environ["TEST_BASE_FILE_DE"]
+TEST_OUTPUT_FILE_DE = os.environ["TEST_OUTPUT_FILE_DE"]
 
 
 def main():
@@ -12,10 +19,7 @@ def main():
     logging.info('** Start of scoring No-Most-Common **')
 
     most_common_de = initialize_most_common(args.de_file)
-    # limit to the number defined in config
 
-    # TODO open test.base.de => go through each line
-    # TODO if word is in most common then add all four lines to a four new created files, else ignore
     input_path = args.input
     output_path = args.output
     with open(input_path + TEST_BASE_FILE_DE) as bases_de, \

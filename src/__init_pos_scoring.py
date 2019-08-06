@@ -1,8 +1,16 @@
 import sys
+import os
 import logging
 from generation.command_line_parser import parse_scoring_pos_scoring
-from config import TEST_SOURCE_FILE_EN, TEST_SOURCE_FILE_DE, TEST_TARGET_FILE_DE, \
-    TEST_BASE_FILE_DE, TEST_OUTPUT_FILE_DE, TEST_POS_FILE_DE, DEFAULT_POS_LIST
+
+# read configs
+pos_list = os.environ["POS_LIST"].split(",")
+TEST_BASE_FILE_DE = os.environ["TEST_BASE_FILE_DE"]
+TEST_TARGET_FILE_DE = os.environ["TEST_TARGET_FILE_DE"]
+TEST_SOURCE_FILE_DE = os.environ["TEST_SOURCE_FILE_DE"]
+TEST_SOURCE_FILE_EN = os.environ["TEST_SOURCE_FILE_EN"]
+TEST_OUTPUT_FILE_DE = os.environ["TEST_OUTPUT_FILE_DE"]
+TEST_POS_FILE_DE = os.environ["TEST_POS_FILE_DE"]
 
 
 def main():
@@ -11,7 +19,7 @@ def main():
 
     input_path = args.input
     output_path = args.output
-    pos_list = DEFAULT_POS_LIST
+
 
     with open(input_path + TEST_BASE_FILE_DE) as bases_de, \
             open(input_path + TEST_TARGET_FILE_DE) as targets_de, \

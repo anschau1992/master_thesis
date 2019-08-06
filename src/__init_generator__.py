@@ -1,4 +1,5 @@
 import sys
+import os
 import logging
 import random
 from generation.command_line_parser import parse_command_line_generator
@@ -6,12 +7,26 @@ from moses_file_reader import MosesFileReader
 from generation.generator import generate_train_data
 from generation.validation_test_divider import ValidationTestDivider
 
-from config import VALIDATION_FRACTION_PERCENTAGE, TEST_FRACTION_PERCENTAGE, \
-    TRAIN_SOURCE_FILE_DE, TRAIN_SOURCE_FILE_EN, TRAIN_TARGET_FILE_DE, \
-    VAL_SOURCE_FILE_EN, VAL_SOURCE_FILE_DE, VAL_TARGET_FILE_DE, \
-    TEST_SOURCE_FILE_EN, TEST_SOURCE_FILE_DE, TEST_TARGET_FILE_DE, \
-    TRAIN_BASE_FILE_DE, VAL_BASE_FILE_DE, TEST_BASE_FILE_DE, \
-    TRAIN_POS_FILE_DE, VAL_POS_FILE_DE, TEST_POS_FILE_DE
+# read configs
+VALIDATION_FRACTION_PERCENTAGE = os.environ["VALIDATION_FRACTION_PERCENTAGE"]
+TEST_FRACTION_PERCENTAGE = os.environ["TEST_FRACTION_PERCENTAGE"]
+TRAIN_SOURCE_FILE_DE = os.environ["TRAIN_SOURCE_FILE_DE"]
+TRAIN_SOURCE_FILE_EN = os.environ["TRAIN_SOURCE_FILE_EN"]
+TRAIN_TARGET_FILE_DE = os.environ["TRAIN_TARGET_FILE_DE"]
+VAL_SOURCE_FILE_EN = os.environ["VAL_SOURCE_FILE_EN"]
+VAL_SOURCE_FILE_DE = os.environ["VAL_SOURCE_FILE_DE"]
+VAL_TARGET_FILE_DE = os.environ["VAL_TARGET_FILE_DE"]
+TEST_SOURCE_FILE_EN = os.environ["TEST_SOURCE_FILE_EN"]
+TEST_SOURCE_FILE_DE = os.environ["TEST_SOURCE_FILE_DE"]
+TEST_TARGET_FILE_DE = os.environ["TEST_TARGET_FILE_DE"]
+TRAIN_BASE_FILE_DE = os.environ["TRAIN_BASE_FILE_DE"]
+VAL_BASE_FILE_DE = os.environ["VAL_BASE_FILE_DE"]
+TEST_BASE_FILE_DE = os.environ["TEST_BASE_FILE_DE"]
+TRAIN_POS_FILE_DE = os.environ["TRAIN_POS_FILE_DE"]
+VAL_POS_FILE_DE = os.environ["VAL_POS_FILE_DE"]
+TEST_POS_FILE_DE = os.environ["TEST_POS_FILE_DE"]
+
+
 
 
 def main():

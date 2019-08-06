@@ -4,11 +4,23 @@ import argparse
 import os.path
 from pathlib import Path
 
-from config import DEFAULT_TRAINING_PATH, DEFAULT_DATA_PATH_DE, DEFAULT_DATA_PATH_EN, \
-    DEFAULT_EVAL_SOURCE_PATH, DEFAULT_EVAL_TARGET_PATH, DEFAULT_SCORING_PATH, \
-    VALIDATION_FRACTION_PERCENTAGE, TEST_FRACTION_PERCENTAGE, SOURCE_DATA_PATH, \
-    DEFAULT_MOST_COMMON_PATH, MOST_COMMON_NUMBER, DEFAULT_MOST_COMMON_LIST_DE, \
-    DEFAULT_POS_PATH, DEFAULT_POS_LIST
+# read configs
+
+TRAINING_PATH = os.environ["TRAINING_PATH"]
+DATA_PATH_DE = os.environ["DATA_PATH_DE"]
+DATA_PATH_EN = os.environ["DATA_PATH_EN"]
+EVAL_SOURCE_PATH = os.environ["EVAL_SOURCE_PATH"]
+EVAL_TARGET_PATH = os.environ["EVAL_TARGET_PATH"]
+VALIDATION_FRACTION_PERCENTAGE = os.environ["VALIDATION_FRACTION_PERCENTAGE"]
+TEST_FRACTION_PERCENTAGE = os.environ["TEST_FRACTION_PERCENTAGE"]
+TEST_TARGET_FILE_DE = os.environ["TEST_TARGET_FILE_DE"]
+TEST_OUTPUT_FILE_DE = os.environ["TEST_OUTPUT_FILE_DE"]
+SOURCE_DATA_PATH = os.environ["SOURCE_DATA_PATH"]
+MOST_COMMON_PATH = os.environ["MOST_COMMON_PATH"]
+MOST_COMMON_NUMBER = int(os.environ["MOST_COMMON_NUMBER"])
+MOST_COMMON_LIST_DE = os.environ["MOST_COMMON_LIST_DE"]
+POS_PATH = os.environ["POS_PATH"]
+SCORING_FILE = os.environ["SCORING_FILE"]
 
 root_path = Path().resolve().parent
 
@@ -23,17 +35,17 @@ def parse_command_line_generator(argv):
     parser.add_argument("-v", "--verbose", dest="verbose", action="count",
                         default=0, help="increase output verbosity (e.g., -vv is more than -v)")
     parser.add_argument("-ien", "--inputEn",
-                        dest="file_en", default=DEFAULT_DATA_PATH_EN,
+                        dest="file_en", default=DATA_PATH_EN,
                         help="input file with english sentences",
                         metavar="FILE",
                         type=lambda x: _is_valid_file(parser, x))
     parser.add_argument("-ide", "--inputDe",
-                        dest="file_de", default=DEFAULT_DATA_PATH_DE,
+                        dest="file_de", default=DATA_PATH_DE,
                         help="input file with german sentences",
                         metavar="FILE",
                         type=lambda x: _is_valid_file(parser, x))
     parser.add_argument("-o", "--output",
-                        dest="output", default=DEFAULT_TRAINING_PATH, help="training data folder location",
+                        dest="output", default=TRAINING_PATH, help="training data folder location",
                         metavar="DIR",
                         type=lambda x: _check_and_create_folder(x))
     parser.add_argument("-pv", "--percentageValidation",
@@ -61,17 +73,18 @@ def parse_command_line_evaluator(argv):
     parser.add_argument("-v", "--verbose", dest="verbose", action="count",
                         default=0, help="increase output verbosity (e.g., -vv is more than -v)")
     parser.add_argument("-s", "--source",
-                        dest="file_source", default=DEFAULT_EVAL_SOURCE_PATH,
+                        dest="file_source", default=(TRAINING_PATH + TEST_OUTPUT_FILE_DE),
                         help="source file with output of the testing phase",
                         metavar="FILE",
                         type=lambda x: _is_valid_file(parser, x))
     parser.add_argument("-t", "--target",
-                        dest="file_target", default=DEFAULT_EVAL_TARGET_PATH,
+                        dest="file_target", default=(TRAINING_PATH + TEST_TARGET_FILE_DE),
                         help="target file with the gold data the model has to predict",
                         metavar="FILE",
                         type=lambda x: _is_valid_file(parser, x))
     parser.add_argument("-o", "--output",
-                        dest="output", default=DEFAULT_SCORING_PATH, help="scoring file location path",
+                        dest="output", default=(TRAINING_PATH + SCORING_FILE),
+                        help="scoring file location path",
                         metavar="FILE",
                         type=lambda x: _is_valid_file(parser, x))
     args = parser.parse_args()
@@ -98,7 +111,7 @@ def parse_command_line_true_caser(argv):
                         metavar="FOLDER",
                         type=lambda x: _is_valid_folder(parser, x))
     parser.add_argument("-td", "--training_data",
-                        dest="training_data", default=DEFAULT_TRAINING_PATH,
+                        dest="training_data", default=TRAINING_PATH,
                         help="training data folder location",
                         metavar="FOLDER",
                         type=lambda x: _add_root_path(x))
@@ -119,12 +132,12 @@ def parse_scoring_no_most_common(argv):
     parser.add_argument("-v", "--verbose", dest="verbose", action="count",
                         default=0, help="increase output verbosity (e.g., -vv is more than -v)")
     parser.add_argument("-i", "--input",
-                        dest="input", default=DEFAULT_TRAINING_PATH,
+                        dest="input", default=TRAINING_PATH,
                         help="folder-location for input data, must point to root folder of all test files",
                         metavar="DIR",
                         type=lambda x: _is_valid_folder(parser, x))
     parser.add_argument("-o", "--output",
-                        dest="output", default=DEFAULT_MOST_COMMON_PATH, help="folder-location for the results",
+                        dest="output", default=MOST_COMMON_PATH, help="folder-location for the results",
                         metavar="DIR",
                         type=lambda x: _check_and_create_folder(x))
     parser.add_argument("-mc", "--most-common",
@@ -133,7 +146,7 @@ def parse_scoring_no_most_common(argv):
                              " Number of the most common ignored is defined by the parameter.",
                         type=lambda x: _is_positive_int(parser, x))
     parser.add_argument("-df", "--de-file",
-                        dest="de_file", default=DEFAULT_MOST_COMMON_LIST_DE,
+                        dest="de_file", default=MOST_COMMON_LIST_DE,
                         help="file with the most common german words. Descending ordered",
                         metavar="FILE",
                         type=lambda x: _is_valid_file(parser, x))
@@ -154,12 +167,12 @@ def parse_scoring_pos_scoring(argv):
     parser.add_argument("-v", "--verbose", dest="verbose", action="count",
                         default=0, help="increase output verbosity (e.g., -vv is more than -v)")
     parser.add_argument("-i", "--input",
-                        dest="input", default=DEFAULT_TRAINING_PATH,
+                        dest="input", default=TRAINING_PATH,
                         help="folder-location for input data, must point to root folder of all test files",
                         metavar="DIR",
                         type=lambda x: _is_valid_folder(parser, x))
     parser.add_argument("-o", "--output",
-                        dest="output", default=DEFAULT_POS_PATH, help="folder-location for the results",
+                        dest="output", default=POS_PATH, help="folder-location for the results",
                         metavar="DIR",
                         type=lambda x: _check_and_create_folder(x))
     args = parser.parse_args()
@@ -167,6 +180,7 @@ def parse_scoring_pos_scoring(argv):
                         format='%(asctime)s %(levelname)s: %(message)s')
     logging.info('Finished parsing command line arguments for the POS scoring')
     return args
+
 
 def _check_and_create_folder(path):
     file_path = _add_root_path(path)
