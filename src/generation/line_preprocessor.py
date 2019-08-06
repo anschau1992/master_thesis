@@ -1,11 +1,16 @@
 import string
 import re
+import os
 from pathlib import Path
-from config import TRUE_CASER_COUNT_FILE, DEFAULT_TRAINING_PATH,\
-    PREPROCESS_REMOVE_PUNCTUATION, PREPROCESS_REMOVE_NUMBERS
+
+# import configs
+TRUE_CASER_COUNT_FILE = os.environ['TRUE_CASER_COUNT_FILE']
+TRAINING_PATH = os.environ['TRAINING_PATH']
+PREPROCESS_REMOVE_PUNCTUATION = os.environ['PREPROCESS_REMOVE_PUNCTUATION']
+PREPROCESS_REMOVE_NUMBERS = os.environ['PREPROCESS_REMOVE_NUMBERS']
 
 root_path = Path(__file__).parent.parent
-true_caser_path = str(root_path.parent) + DEFAULT_TRAINING_PATH + TRUE_CASER_COUNT_FILE
+true_caser_path = str(root_path.parent) + TRAINING_PATH + TRUE_CASER_COUNT_FILE
 
 
 def preprocess(line):

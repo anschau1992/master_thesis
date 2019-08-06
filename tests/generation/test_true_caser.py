@@ -1,5 +1,5 @@
 import unittest
-from generation.true_caser import TrueCaser
+from src.generation.true_caser import TrueCaser
 
 
 class TestTrueCaser(unittest.TestCase):

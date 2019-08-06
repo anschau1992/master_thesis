@@ -40,6 +40,16 @@ test_base_de = [
     'Die Nutzung von Dateien und Anwendungen aufzeichnen',
 ]
 
+test_pos_de = [
+    'DET',
+    'NOUN',
+    'ADP',
+    'NOUN',
+    'CONJ',
+    'NOUN',
+    'VERB',
+]
+
 test_wrong_length = [
     'only',
     'length',
@@ -141,7 +151,8 @@ class TestSplitValidationTestData(unittest.TestCase):
 
         self.assertRaises(Exception,
                           valtest_divider.divide_data, test_source_en,
-                          test_source_de, test_wrong_length, test_base_de
+                          test_source_de, test_wrong_length,
+                          test_base_de, test_base_de
                           )
 
     def test_non_equal_params_length_04(self):
@@ -154,7 +165,8 @@ class TestSplitValidationTestData(unittest.TestCase):
 
         self.assertRaises(Exception,
                           valtest_divider.divide_data, test_source_en,
-                          test_source_de, test_targets_de, test_wrong_length
+                          test_source_de, test_targets_de, test_base_de,
+                          test_pos_de, test_wrong_length
                           )
 
     def test_proper_divide_multiple(self):
@@ -175,7 +187,7 @@ class TestSplitValidationTestData(unittest.TestCase):
         for i in range(0, 14):
             new_train, new_val, new_test = \
                 valtest_divider.divide_data(
-                    test_source_en, test_source_de, test_targets_de, test_base_de, 90
+                    test_source_en, test_source_de, test_targets_de, test_base_de, test_pos_de, 90
                 )
             training_sources_de = training_sources_de + new_train.sources_de
             validation_sources_de = validation_sources_de + new_val.sources_de
@@ -199,7 +211,7 @@ class TestSplitValidationTestData(unittest.TestCase):
         for i in range(0, 100):
             new_train, new_val, new_test = \
                 valtest_divider.divide_data(
-                    test_source_en, test_source_de, test_targets_de, test_base_de, 4
+                    test_source_en, test_source_de, test_targets_de, test_base_de, test_pos_de, 4
                 )
             training_sources_de = training_sources_de + new_train.sources_de
             validation_sources_de = validation_sources_de + new_val.sources_de

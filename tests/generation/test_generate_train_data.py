@@ -9,24 +9,26 @@ class TestGenerateTrainData(unittest.TestCase):
         Empty strings should return empty lists back
         :return:
         """
-        sources_en, sources_de, targets_de, bases_de = generate_train_data('', '')
+        sources_en, sources_de, targets_de, bases_de, pos_de = generate_train_data('', '')
 
         self.assertEqual(len(sources_en), 0, '"sources_en" has lenght of 0.')
         self.assertEqual(len(sources_de), 0, '"sources_de" has lenght of 0.')
         self.assertEqual(len(targets_de), 0, '"targets_de" has lenght of 0.')
         self.assertEqual(len(bases_de), 0, '"bases_de" has lenght of 0.')
+        self.assertEqual(len(pos_de), 0, '"pos_de" has lenght of 0.')
 
     def test_whitespace_parameter(self):
         """
         Only withespace in strings should return empty lists back
         :return:
         """
-        sources_en, sources_de, targets_de, bases_de = generate_train_data(' ', ' ')
+        sources_en, sources_de, targets_de, bases_de,  pos_de= generate_train_data(' ', ' ')
 
         self.assertEqual(len(sources_en), 0, '"sources_en" has lenght of 0.')
         self.assertEqual(len(sources_de), 0, '"sources_de" has lenght of 0.')
         self.assertEqual(len(targets_de), 0, '"targets_de" has lenght of 0.')
         self.assertEqual(len(bases_de), 0, '"bases_de" has lenght of 0.')
+        self.assertEqual(len(pos_de), 0, '"pos_de" has lenght of 0.')
 
     def test_not_string_param(self):
         """
@@ -41,7 +43,7 @@ class TestGenerateTrainData(unittest.TestCase):
         Checks if the returning values have all the length as expected.
         :return:
         """
-        sources_en, sources_de, targets_de, bases_de = generate_train_data(
+        sources_en, sources_de, targets_de, bases_de, pos_de = generate_train_data(
             'Record file and application usage',
             'Die Nutzung von Dateien und Anwendungen aufzeichnen')
 
@@ -49,6 +51,7 @@ class TestGenerateTrainData(unittest.TestCase):
         self.assertEqual(len(sources_de), 7, '"sources_de" has lenght of 7.')
         self.assertEqual(len(targets_de), 7, '"targets_de" has lenght of 7.')
         self.assertEqual(len(bases_de), 7, '"bases_de" has lenght of 7.')
+        self.assertEqual(len(pos_de), 7, '"pos_de" has lenght of 7.')
 
     def test_unequal_token_length(self):
         """
@@ -56,7 +59,7 @@ class TestGenerateTrainData(unittest.TestCase):
         even if the
         :return:
         """
-        sources_en, sources_de, targets_de, bases_de = generate_train_data(
+        sources_en, sources_de, targets_de, bases_de, pos_de = generate_train_data(
             'test short translation',
             'Dieser Schlüssel legt fest, ob die Karten per Ziehen-und-Ablegen oder per Anklicken gelegt werden sollen.')
 
@@ -64,13 +67,14 @@ class TestGenerateTrainData(unittest.TestCase):
         self.assertEqual(len(sources_de), 15, '"sources_de" has lenght of 15.')
         self.assertEqual(len(targets_de), 15, '"targets_de" has lenght of 15.')
         self.assertEqual(len(bases_de), 15, '"bases_de" has lenght of 15.')
+        self.assertEqual(len(pos_de), 15, '"pos_de" has lenght of 15.')
 
     def test_source_en_contains_en(self):
         """
         The source_en return actually all the whole english sentence.
         :return:
         """
-        sources_en, sources_de, targets_de, bases_de = generate_train_data(
+        sources_en, sources_de, targets_de, bases_de, pos_de = generate_train_data(
             'Record file and application usage',
             'Die Nutzung von Dateien und Anwendungen aufzeichnen')
         for source_en in sources_en:
@@ -81,7 +85,7 @@ class TestGenerateTrainData(unittest.TestCase):
         The base_de return actually the whole german sentence.
         :return:
         """
-        sources_en, sources_de, targets_de, bases_de = generate_train_data(
+        sources_en, sources_de, targets_de, bases_de, pos_de = generate_train_data(
             'Record file and application usage',
             'Die Nutzung von Dateien und Anwendungen aufzeichnen')
         for base_de in bases_de:
@@ -93,7 +97,7 @@ class TestGenerateTrainData(unittest.TestCase):
          of the corresponding word of the whole sentence at each position.
         :return:
         """
-        sources_en, sources_de, targets_de, bases_de = generate_train_data(
+        sources_en, sources_de, targets_de, bases_de, pos_de = generate_train_data(
             'Record file and application usage',
             'Die Nutzung von Dateien und Anwendungen aufzeichnen')
 
@@ -116,11 +120,11 @@ class TestGenerateTrainData(unittest.TestCase):
         The targets_de contains the actual german token inflected in their original form. at each position
         :return:
         """
-        sources_en, sources_de, targets_de, bases_de = generate_train_data(
+        sources_en, sources_de, targets_de, bases_de, pos_de = generate_train_data(
             'Record file and application usage',
             'Die Nutzung von Dateien und Anwendungen aufzeichnen')
 
-        targets_tokens = ['Die\n',
+        targets_tokens = ['die\n',
                           'Nutzung\n',
                           'von\n',
                           'Dateien\n',

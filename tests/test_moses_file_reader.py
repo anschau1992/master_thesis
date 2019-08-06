@@ -1,10 +1,6 @@
 import unittest
+import os
 from src.moses_file_reader import MosesFileReader
-from src.config import TRAIN_TARGET_FILE_DE, RESULT_FILE_DE
-
-resultPath_t = "./test_result" + RESULT_FILE_DE
-targetPath_t = "./test_training" + TRAIN_TARGET_FILE_DE
-differentLengthPath = "./test_length" + RESULT_FILE_DE
 
 
 class TestMosesFileReader(unittest.TestCase):
@@ -21,33 +17,37 @@ class TestMosesFileReader(unittest.TestCase):
         Initialize class without enough file_paths throws an error
         :return:
         """
-        self.assertRaises(Exception, MosesFileReader, ['./test_file.en'])
+        print(os.path.dirname(__file__))
+        self.assertRaises(Exception, MosesFileReader, [os.path.dirname(__file__) + '/test_file.en'])
 
     def test_wrong_file_path(self):
         """
         Initialize class without file_paths throws an error.
         :return:
         """
-        self.assertRaises(SystemExit, MosesFileReader, ['./test_not_existing.en', './test_file.de'])
+        self.assertRaises(SystemExit, MosesFileReader, [ os.path.dirname(__file__) + '/test_not_existing.en',
+                                                         os.path.dirname(__file__) + '/test_file.de'])
 
     def test_not_equal_line_numbers(self):
         """
         Providing files with different number of lines will raise an Error, when reached
         :return: ImportError
         """
-        moses_file_reader = MosesFileReader(['./test_wrong_length.en', './test_file.de'])
+        moses_file_reader = MosesFileReader([os.path.dirname(__file__) + '/test_wrong_length.en',
+                                             os.path.dirname(__file__) + '/test_file.de'])
 
         for i in range(0, 10):
             moses_file_reader.read_next_lines()
 
-        self.assertRaises(ImportError, moses_file_reader.read_next_lines)
+        self.assertRaises(Exception, moses_file_reader.read_next_lines)
 
     def test_first_line(self):
         """
         Function returns the first line of all files provided.
         :return:
         """
-        moses_file_reader = MosesFileReader(['./test_file.en', './test_file.de'])
+        moses_file_reader = MosesFileReader([os.path.dirname(__file__) + '/test_file.en',
+                                             os.path.dirname(__file__) + '/test_file.de'])
 
         first_lines = moses_file_reader.read_next_lines()
 
@@ -60,7 +60,8 @@ class TestMosesFileReader(unittest.TestCase):
         A while-loop over read_next_lines terminates after reaching the end of file-lines.
         :return:
         """
-        moses_file_reader = MosesFileReader(['./test_file.en', './test_file.de'])
+        moses_file_reader = MosesFileReader([os.path.dirname(__file__) + '/test_file.en',
+                                             os.path.dirname(__file__) + '/test_file.de'])
         line_count = 0
 
         next_lines = moses_file_reader.read_next_lines()

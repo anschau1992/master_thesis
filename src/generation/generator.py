@@ -1,14 +1,19 @@
 import sys
+import os
 import logging
 import spacy
 from pathlib import Path
-from generation.true_caser import TrueCaser
+from src.generation.true_caser import TrueCaser
 from spacy.tokenizer import Tokenizer
-from config import PREPROCESS_TRUE_CASER, DEFAULT_TRAINING_PATH, TRUE_CASER_COUNT_FILE
-from generation.line_preprocessor import preprocess
+from src.generation.line_preprocessor import preprocess
+
+# import configs
+PREPROCESS_TRUE_CASER = os.environ['PREPROCESS_TRUE_CASER']
+TRAINING_PATH = os.environ['TRAINING_PATH']
+TRUE_CASER_COUNT_FILE = os.environ['TRUE_CASER_COUNT_FILE']
 
 root_path = Path(__file__).parent.parent
-true_caser_path = str(root_path.parent) + DEFAULT_TRAINING_PATH + TRUE_CASER_COUNT_FILE
+true_caser_path = str(root_path.parent) + TRAINING_PATH + TRUE_CASER_COUNT_FILE
 
 module = sys.modules['__main__'].__file__
 log = logging.getLogger(module)

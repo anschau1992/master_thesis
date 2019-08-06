@@ -41,7 +41,7 @@ class TestChrfEvaluator(unittest.TestCase):
 
     def test_almost_zero_score(self):
         score = self.chrfEvaluator.evaluate(none_results, one_results)
-        self.assertEqual(([1.0000000000000001e-16] * 5, 1.0000000000000001e-16), score, msg='When totally different input, score is almost 0.0')
+        self.assertEqual(([1e-16,] * 5, 1.0000000000000001e-16), score, msg='When totally different input, score is almost 0.0')
 
     def test_one_score(self):
         score = self.chrfEvaluator.evaluate(one_results, one_results)
@@ -49,5 +49,6 @@ class TestChrfEvaluator(unittest.TestCase):
 
     def test_similiar_high_score(self):
         score = self.chrfEvaluator.evaluate(one_results, almost_targets)
-        self.assertEqual(([1.0, 1.0, 0.9726275669616798, 0.9760616328957457, 0.9269309319712545], 0.975124026365736), score,
+        self.assertEqual(([1.0, 1.0, 0.9803921568627452, 0.9821428571428572, 0.967741935483871],
+                          0.9860553898978945), score,
                          msg='When entries are very similiar, score is high')
