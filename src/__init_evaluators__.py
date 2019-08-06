@@ -9,7 +9,6 @@ from evaluators.chrf_evaluator import ChrfEvaluator
 def main():
     args = parse_command_line_evaluator(sys.argv)
     logging.info('** Start of scoring calculation **')
-
     input_files = read_moses_files([args.file_source, args.file_target])
 
     # evaluation

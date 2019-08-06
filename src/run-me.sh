@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 source ./scripts/shell-logger.sh
+## import config variables
+source config.sh
+export $(cut -d= -f1 config.sh)
 
 MARIAN=${MARIAN_PATH}
 
@@ -60,13 +63,13 @@ fi
 shell-log "train" "Start Model Training"
 ${MARIAN_TRAIN} \
     --model ../model/model.npz --type multi-transformer \
-    --train-sets ../data/train.src.en ../data/train.src.de  ../data/train.trg.de\
+    --train-sets "..${DEFAULT_TRAINING_PATH}${TRAIN_SOURCE_FILE_EN}"  "..${DEFAULT_TRAINING_PATH}${TRAIN_SOURCE_FILE_DE}" "..${DEFAULT_TRAINING_PATH}${TRAIN_TARGET_FILE_DE}" \
     --max-length 100 \
     --mini-batch-fit -w 9000 --maxi-batch 1000 \
     --valid-freq 5000 --save-freq 5000 --disp-freq 500 \
     --valid-metrics ce-mean-words perplexity\
-    --valid-translation-output ../data/validation.de.output \
-    --valid-sets ../data/validation.src.en ../data/validation.src.de ../data/validation.trg.de \
+    --valid-translation-output "..${DEFAULT_TRAINING_PATH}${VAL_OUTPUT_DE}" \
+    --valid-sets "..${DEFAULT_TRAINING_PATH}${VAL_SOURCE_FILE_EN}" "..${DEFAULT_TRAINING_PATH}${VAL_SOURCE_FILE_DE}" "..${DEFAULT_TRAINING_PATH}${VAL_TARGET_FILE_DE}" \
     --valid-mini-batch 64 \
     --beam-size 12 --normalize=0 \
     --overwrite --keep-best \
@@ -95,7 +98,7 @@ then
         -b 6 --normalize=0 -w 1500 -d ${GPUS} \
         --mini-batch 64 --maxi-batch 100 --maxi-batch-sort src \
         --vocabs ../model/vocab.deen.spm ../model/vocab.deen.spm ../model/vocab.deen.spm \
-        --output ../data/test.trg.de.output \
+        --output "..${DEFAULT_TRAINING_PATH}${TEST_OUTPUT_FILE_DE}" \
         --log ../model/test.log \
         --max-length 200 \
         --max-length-crop
@@ -105,40 +108,35 @@ else
 fi
 
 ######## Scoring without most common words ########
-python3 __init_scoring_no_most_common.py
+ python3 __init_scoring_no_most_common.py
 
 shell-log "score" "Calculate Lower bound for no most common words"
-touch ../data/lowerbound-no-most-common-scoring.output
-python3 __init_evaluators__.py -s /data/no_most_common/test.src.de -t /data/no_most_common/test.trg.de -o /data/lowerbound-no-most-common-scoring.output -vv
+touch "..${DEFAULT_MOST_COMMON_PATH}${DEFAULT_LOW_BOUND_SCORING_FILE}"
+python3 __init_evaluators__.py -s "${DEFAULT_MOST_COMMON_PATH}${TEST_SOURCE_FILE_DE}" -t "${DEFAULT_MOST_COMMON_PATH}${TEST_TARGET_FILE_DE}" -o "${DEFAULT_MOST_COMMON_PATH}${DEFAULT_LOW_BOUND_SCORING_FILE}" -vv
 
 shell-log "score" "Calculate Score for no most common words"
-touch ../data/no-most-common-scoring.output
-python3 __init_evaluators__.py -s /data/no_most_common/test.trg.de.output -t /data/no_most_common/test.trg.de -o /data/no-most-common-scoring.output -vv
-
+touch "..${DEFAULT_MOST_COMMON_PATH}${DEFAULT_SCORING_FILE}"
+python3 __init_evaluators__.py -s "${DEFAULT_MOST_COMMON_PATH}${TEST_OUTPUT_FILE_DE}" -t  "${DEFAULT_MOST_COMMON_PATH}${TEST_TARGET_FILE_DE}" -o "${DEFAULT_MOST_COMMON_PATH}${DEFAULT_SCORING_FILE}" -vv
 
 
 
 ######## Scoring with only specific POS ########
-python3 __init_pos_scoring.py -vv  -i /data -o /data/only_noun
+python3 __init_pos_scoring.py -vv  -i ${DEFAULT_TRAINING_PATH} -o ${DEFAULT_POS_PATH}
 
 shell-log "score" "Calculate Lower bound for pos scoring"
-touch ../data/lowerbound-only-noun-scoring.output
-python3 __init_evaluators__.py -s /data/only_noun/test.src.de -t /data/only_noun/test.trg.de -o /data/lowerbound-only-noun-scoring.output -vv
+touch "..${DEFAULT_POS_PATH}${DEFAULT_LOW_BOUND_SCORING_FILE}"
+python3 __init_evaluators__.py -s "${DEFAULT_POS_PATH}${TEST_SOURCE_FILE_DE}" -t "${DEFAULT_POS_PATH}${TEST_TARGET_FILE_DE}" -o "${DEFAULT_POS_PATH}${DEFAULT_LOW_BOUND_SCORING_FILE}" -vv
 
 shell-log "score" "Calculate Score for pos scoring"
-touch ../data/only-noun-scoring.output
-python3 __init_evaluators__.py -s /data/only_noun/test.trg.de.output -t /data/only_noun/test.trg.de -o /data/only-noun-scoring.output -vv
+touch "..${DEFAULT_POS_PATH}${DEFAULT_SCORING_FILE}"
+python3 __init_evaluators__.py -s "${DEFAULT_POS_PATH}${TEST_OUTPUT_FILE_DE}" -t "${DEFAULT_POS_PATH}${TEST_TARGET_FILE_DE}" -o "${DEFAULT_POS_PATH}${DEFAULT_SCORING_FILE}" -vv
 
 
-# Calculates the score if no inflection, instead copying the base form
-shell-log "score" "Calculate Lower bound"
-touch ../data/lowerbound-score.output
-python3 __init_evaluators__.py -s /data/test.src.de -t /data/test.trg.de -o /data/lowerbound-score.output -vv
+######### Overall Scoring #########
+shell-log "score" "Calculate overall Lower bound"
+touch "..${DEFAULT_TRAINING_PATH}${DEFAULT_LOW_BOUND_SCORING_FILE}"
+python3 __init_evaluators__.py -s "${DEFAULT_TRAINING_PATH}${TEST_SOURCE_FILE_DE}" -t  "${DEFAULT_TRAINING_PATH}${TEST_TARGET_FILE_DE}" -o "${DEFAULT_TRAINING_PATH}${DEFAULT_LOW_BOUND_SCORING_FILE}" -vv
 
-shell-log "score" "Calculate Score"
-touch ../data/scoring.output
-python3 __init_evaluators__.py -s /data/test.trg.de.output -t /data/test.trg.de -o /data/scoring.output -vv
-
-
-
-
+shell-log "score" "Calculate overall Score"
+touch "..${DEFAULT_TRAINING_PATH}${DEFAULT_SCORING_FILE}"
+python3 __init_evaluators__.py -s "${DEFAULT_TRAINING_PATH}${TEST_OUTPUT_FILE_DE}" -t "${DEFAULT_TRAINING_PATH}${TEST_TARGET_FILE_DE}" -o "${DEFAULT_TRAINING_PATH}${DEFAULT_SCORING_FILE}" -vv

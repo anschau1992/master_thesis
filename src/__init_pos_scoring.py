@@ -7,7 +7,6 @@ from config import TEST_SOURCE_FILE_EN, TEST_SOURCE_FILE_DE, TEST_TARGET_FILE_DE
 
 def main():
     args = parse_scoring_pos_scoring(sys.argv)
-    print(args)
     logging.info('** Start of scoring with only specific POS **')
 
     input_path = args.input
