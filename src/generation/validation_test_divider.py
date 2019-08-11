@@ -5,6 +5,9 @@ import random
 class ValidationTestDivider:
 
     def __init__(self, validation_ratio, test_ratio):
+        validation_ratio = validation_ratio/100
+        test_ratio = test_ratio/100
+
         if not (0.00 <= validation_ratio <= 1.00) or not (0.00 <= test_ratio <= 1.00):
             raise Exception('Ratios can not be smaller than 0.00 and bigger than 1.00')
         if (validation_ratio + test_ratio) > 1.00:

@@ -3,9 +3,9 @@ import os
 import logging
 import spacy
 from pathlib import Path
-from src.generation.true_caser import TrueCaser
+from generation.true_caser import TrueCaser
 from spacy.tokenizer import Tokenizer
-from src.generation.line_preprocessor import preprocess
+from generation.line_preprocessor import preprocess
 
 # import configs
 PREPROCESS_TRUE_CASER = os.environ['PREPROCESS_TRUE_CASER']

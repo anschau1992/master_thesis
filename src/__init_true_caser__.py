@@ -7,7 +7,7 @@ from generation.command_line_parser import parse_command_line_true_caser
 
 PREPROCESS_TRUE_CASER = os.environ['PREPROCESS_TRUE_CASER']
 TRUE_CASER_COUNT_FILE = os.environ['TRUE_CASER_COUNT_FILE']
-DEFAULT_TRAINING_PATH = os.environ['DEFAULT_TRAINING_PATH']
+DEFAULT_TRAINING_PATH = os.environ['TRAINING_PATH']
 
 def main():
     args = parse_command_line_true_caser(sys.argv)

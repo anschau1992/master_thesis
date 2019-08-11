@@ -25,7 +25,7 @@ SCORING_FILE = os.environ["SCORING_FILE"]
 root_path = Path().resolve().parent
 
 
-def parse_command_line_generator(argv):
+def  parse_command_line_generator(argv):
     """
     Parse command line argument for the data generation.
      See -h option

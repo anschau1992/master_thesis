@@ -44,5 +44,5 @@ POS_PATH="$TRAINING_PATH/only_noun"  # scoring, when only nouns are considered
 POS_LIST="NOUN" # POS considered for the POS-scoring --> see https://spacy.io for POS-definition. Split by ',' -> "NOUN,ADJ"
 
 MOST_COMMON_NUMBER=500
-VALIDATION_FRACTION_PERCENTAGE=0.025
-TEST_FRACTION_PERCENTAGE=0.10
+VALIDATION_FRACTION_PERCENTAGE=2
+TEST_FRACTION_PERCENTAGE=10
