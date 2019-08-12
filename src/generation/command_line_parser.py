@@ -25,7 +25,7 @@ SCORING_FILE = os.environ["SCORING_FILE"]
 root_path = Path().resolve().parent
 
 
-def  parse_command_line_generator(argv):
+def parse_command_line_generator(argv):
     """
     Parse command line argument for the data generation.
      See -h option
@@ -181,6 +181,21 @@ def parse_scoring_pos_scoring(argv):
     logging.info('Finished parsing command line arguments for the POS scoring')
     return args
 
+
+def parse_oversampling(argv):
+    parser = argparse.ArgumentParser()
+    parser.add_argument("-v", "--verbose", dest="verbose", action="count",
+                        default=0, help="increase output verbosity (e.g., -vv is more than -v)")
+    parser.add_argument("-p", "--path",
+                        dest="path", default=TRAINING_PATH,
+                        help="folder-location for input data, must point to root folder of all training files",
+                        metavar="DIR",
+                        type=lambda x: _is_valid_folder(parser, x))
+    args = parser.parse_args()
+    logging.basicConfig(filename='run-me.log', level=(max(3 - args.verbose, 0) * 10),
+                        format='%(asctime)s %(levelname)s: %(message)s')
+    logging.info('Finished parsing command line arguments for the oversampler')
+    return args
 
 def _check_and_create_folder(path):
     file_path = _add_root_path(path)

@@ -43,7 +43,7 @@ def generate_train_data(line_en, line_de):
     tokens = nlp(line_de, disable=['parser', 'ner'])
     for token in tokens:
         # skip too short tokens like e.g. 'it'
-        if len(token) >= 2:
+        if len(token) >= 2 and token.pos_ == "NOUN":  # only NOUNS
 
             line_en = __assure_line_break(line_en)
             pos_de.append(__assure_line_break(token.pos_))

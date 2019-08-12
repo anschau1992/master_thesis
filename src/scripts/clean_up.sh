@@ -28,7 +28,7 @@ mv ./data/test.trg.de.output ./generated_approaches/${i}/test.trg.de.output
 cp ./data/test.src.en ./generated_approaches/${i}/test.src.en
 cp ./data/test.src.de ./generated_approaches/${i}/test.src.de
 cp ./data/test.trg.de ./generated_approaches/${i}/test.trg.de
-cp ./data/test.trg.de ./generated_approaches/${i}/test.base.de
+cp ./data/test.base.de ./generated_approaches/${i}/test.base.de
 
 # move different scorings
 mv  ./data/no_most_common ./generated_approaches/${i}/no_most_common
