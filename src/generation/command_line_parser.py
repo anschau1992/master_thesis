@@ -182,7 +182,7 @@ def parse_scoring_pos_scoring(argv):
     return args
 
 
-def parse_oversampling(argv):
+def parse_sampling(argv):
     parser = argparse.ArgumentParser()
     parser.add_argument("-v", "--verbose", dest="verbose", action="count",
                         default=0, help="increase output verbosity (e.g., -vv is more than -v)")

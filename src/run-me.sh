@@ -49,7 +49,7 @@ mkdir -p ../model
 
 if [[ ! -e "../data/train.src.en" ]] || [[ ! -e "../data/train.src.de" ]] || [[ ! -e "../data/train.trg.de" ]]
 then
-    # delete potential old training data
+     delete potential old training data
     rm -r -f ../data
     shell-log "data" "missing training data. Will be downloaded and prepared..."
     ./scripts/download-source-data.sh
@@ -60,12 +60,17 @@ else
 fi
 
 
+if [ ! -e "../model/vocab.deen.yml" ]
+
+
+# TODO: Parametrize no sampling/oversampling/undersampling
+
 if [[ ! -e "../model/model.npz.decoder.yml" ]]
 then
     shell-log "train" "Start Model Training"
     ${MARIAN_TRAIN} \
         --model ../model/model.npz --type multi-transformer \
-        --train-sets "..${TRAINING_PATH}/oversampling${TRAIN_SOURCE_FILE_EN}"  "..${TRAINING_PATH}/oversampling${TRAIN_SOURCE_FILE_DE}" "..${TRAINING_PATH}/oversampling${TRAIN_TARGET_FILE_DE}" \
+        --train-sets "..${TRAINING_PATH}/undersampling${TRAIN_SOURCE_FILE_EN}"  "..${TRAINING_PATH}/undersampling${TRAIN_SOURCE_FILE_DE}" "..${TRAINING_PATH}/undersampling${TRAIN_TARGET_FILE_DE}" \
         --max-length 100 \
         --mini-batch-fit -w 9000 --maxi-batch 1000 \
         --valid-freq 5000 --save-freq 5000 --disp-freq 500 \
@@ -76,7 +81,7 @@ then
         --beam-size 12 --normalize=0 \
         --overwrite --keep-best \
         --vocabs ../model/vocab.deen.spm ../model/vocab.deen.spm ../model/vocab.deen.spm \
-        --dim-vocabs 500 500 500 \
+        --dim-vocabs 250 250 250 \
         --early-stopping 10 --after-epochs 40 --cost-type=ce-mean-words \
         --log ../model/train.log --valid-log ../model/valid.log \
         --enc-depth 6 --dec-depth 6 \

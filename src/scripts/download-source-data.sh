@@ -25,9 +25,9 @@ unzip -o oo-de-en.txt.zip -d ./oo
 unzip -o php-de-en.txt.zip -d ./php
 unzip -o paracrawl-de-en.txt.zip -d ./paracrawl
 
-shell-log "download" "Truncate the ParaCrawl data to 2 Mio lines"
-sed -i '2000001,$ d' ./paracrawl/ParaCrawl.de-en.en
-sed -i '2000001,$ d' ./paracrawl/ParaCrawl.de-en.de
+shell-log "download" "Truncate the ParaCrawl data to 10 Mio lines"
+sed -i '10000001,$ d' ./paracrawl/ParaCrawl.de-en.en
+sed -i '10000001,$ d' ./paracrawl/ParaCrawl.de-en.de
 paraen=`wc -l < ./paracrawl/ParaCrawl.de-en.en | awk '{print $1}'`
 parade=`wc -l < ./paracrawl/ParaCrawl.de-en.de | awk '{print $1}'`
 shell-log "download" "Length ParaCrlaw.de-en.en: $paraen"
