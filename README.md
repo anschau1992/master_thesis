@@ -2,17 +2,19 @@
 
 
 ## Introduction
-This is my general repository considering all my work for my master thesis. It consist of:
-* Proposal (proposal.zip)
-* Project itself:
-  * Generator - generates training data out of translation data
-  * Predictor (TODO)
-  * Evaluator - evaluates the results of the predictor using gold data from the generator
+Recently proposed constrained decoding approaches
+ allow the inclusion of pre-defined terms in neural machine translation output.
+  Even though neural machine translation systems generally achieve remarkable translation quality,
+   the appropriate inflection of these terms is an open problem: their base form is placed without
+    any modification in the output, which may lead to grammatically incorrect results.
+     We examine the use of a stand-alone sequence-to-sequence model to predict the correct inflected form
+      of a term given its base form and the source sentence. We show that good results can be achieved in
+       terms of overall accuracy, and that the method has limited success in handling rare word forms.
 
 ## Prerequisites 
 1. Install python 3.7: https://www.python.org/downloads/
 2. Install pip3
-3. Make sure you have pip installed : https://pip.pypa.io/en/stable/installing/
+3. Install MARIAN-NMT with SequencPiece according to its [Setup](https://marian-nmt.github.io/docs/)
 
 ## Setup
 1. Clone the repository
@@ -25,7 +27,7 @@ This is my general repository considering all my work for my master thesis. It c
     cd master-thesis/tools
     make
     ```
-4. Install the depending python libraries: (TODO: überprüfen der benötigten Libraries)
+4. Install the depending python libraries:
     ```
         pip3 install -r requirements.txt
     ```
@@ -33,13 +35,13 @@ This is my general repository considering all my work for my master thesis. It c
     ```
     python3 -m spacy download de
     ```
-6. Run the program:
+6. Download the AutoDesk corpus manually from [here](http://www.islrn.org/resources/identify_islrn/). ISLRN is 290-859-676-529-5
+
+7. Run the program (e.g. 1 2 3 for \[GPUS\]):
     ```
     cd src
-    ./run-me.sh
+    ./run-me.sh [GPUS]
     ```
-## Useful commands
- TODO
 
 ## Useful links
 
@@ -59,4 +61,4 @@ This is my general repository considering all my work for my master thesis. It c
 - [Attention Is All You Need](https://arxiv.org/abs/1706.03762)
 - [SentencePiece: A simple and language independent subword tokenizer and detoniker for Neural Text Processing](https://arxiv.org/pdf/1808.06226.pdf)
 - [CHRF: character n-gram F-score for automatic MT evaluation](http://www.statmt.org/wmt15/pdf/WMT49.pdf)
-- [ParaCrawl: a collection of parallel corpora](http://www.lrec-conf.org/proceedings/lrec2012/pdf/463_Paper.pdf) --> cite it if you use ParaCrawl corpora!  
+- [ParaCrawl: a collection of parallel corpora](http://www.lrec-conf.org/proceedings/lrec2012/pdf/463_Paper.pdf)

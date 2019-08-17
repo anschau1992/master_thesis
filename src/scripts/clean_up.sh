@@ -1,4 +1,6 @@
-# Clean up after training and testing. Set everything up for a new round of Model-training
+## Clean up after training and testing.
+## All relevant data get moved into a numerated folder under /generated_approaches
+## Set everything up for a new round of Model-training
 #!/usr/bin/env bash
 
 # set parent folder as starting point

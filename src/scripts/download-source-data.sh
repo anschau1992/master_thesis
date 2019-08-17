@@ -1,3 +1,6 @@
+##
+## Downloads the different source data and prepares them for data generation.
+##
 #!/usr/bin/env bash
 
 

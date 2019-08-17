@@ -2,16 +2,36 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a8b3cd4a-de82-47be-b871-ccb5813b5602" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/master_thesis.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/master_thesis.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/__init_true_caser__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/__init_true_caser__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/generated_approaches/._model_17.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/generated_approaches/model_10.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/generated_approaches/model_11.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/generated_approaches/model_12.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/generated_approaches/model_13.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/generated_approaches/model_14.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/generated_approaches/model_15.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/generated_approaches/model_16.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/generated_approaches/model_17.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/generated_approaches/model_18.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/generated_approaches/model_4.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/generated_approaches/model_5.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/generated_approaches/model_6.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/generated_approaches/model_7.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/generated_approaches/model_8.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/generated_approaches/model_9.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/proposal.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/proposal.zip" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/config.sh" beforeDir="false" afterPath="$PROJECT_DIR$/src/config.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/evaluators/accuracy_evaluator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/evaluators/accuracy_evaluator.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/evaluators/chrf_evaluator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/evaluators/chrf_evaluator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/data/oversampling/train.base.de" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/data/oversampling/train.src.de" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/generation/command_line_parser.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/generation/command_line_parser.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/generation/validation_test_divider.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/generation/validation_test_divider.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/run-me.sh" beforeDir="false" afterPath="$PROJECT_DIR$/src/run-me.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/scripts/generate-training-data.sh" beforeDir="false" afterPath="$PROJECT_DIR$/src/scripts/generate-training-data.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/scripts/clean_up.sh" beforeDir="false" afterPath="$PROJECT_DIR$/src/scripts/clean_up.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/scripts/download-source-data.sh" beforeDir="false" afterPath="$PROJECT_DIR$/src/scripts/download-source-data.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/scripts/eintrag_17.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/scripts/nouns-300.csv" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -33,25 +53,6 @@
     <SUITE FILE_PATH="coverage/master_thesis$Unittests_for_test_moses_file_reader_TestMosesFileReader_test_not_enough_file_paths.coverage" NAME="Unittests for test_moses_file_reader.TestMosesFileReader.test_not_enough_file_paths Coverage Results" MODIFIED="1565097256651" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests" />
     <SUITE FILE_PATH="coverage/master_thesis$Unittests_for_test_true_caser_TestTrueCaser_test_even_count_true_case.coverage" NAME="Unittests for test_true_caser.TestTrueCaser.test_even_count_true_case Coverage Results" MODIFIED="1564756730276" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tests/generation" />
   </component>
-  <component name="DockManager">
-    <window id="1">
-      <content type="file-editors">
-        <state>
-          <leaf>
-            <file pinned="false" current-in-tab="true">
-              <entry file="file://$PROJECT_DIR$/src/config.sh">
-                <provider selected="true" editor-type-id="text-editor">
-                  <state relative-caret-position="705">
-                    <caret line="47" column="27" selection-start-line="47" selection-start-column="27" selection-end-line="47" selection-end-column="27" />
-                  </state>
-                </provider>
-              </entry>
-            </file>
-          </leaf>
-        </state>
-      </content>
-    </window>
-  </component>
   <component name="FUSProjectUsageTrigger">
     <session id="-561294081">
       <usages-collector id="statistics.lifecycle.project">
@@ -70,7 +71,7 @@
           <entry key="project.open.time.18" value="1" />
           <entry key="project.open.time.19" value="1" />
           <entry key="project.open.time.20" value="1" />
-          <entry key="project.open.time.22" value="1" />
+          <entry key="project.open.time.22" value="2" />
           <entry key="project.open.time.23" value="2" />
           <entry key="project.open.time.24" value="1" />
           <entry key="project.open.time.25" value="2" />
@@ -84,34 +85,36 @@
           <entry key="project.open.time.5" value="2" />
           <entry key="project.open.time.7" value="3" />
           <entry key="project.open.time.78" value="1" />
-          <entry key="project.opened" value="42" />
+          <entry key="project.opened" value="43" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
           <entry key="bz2" value="2" />
           <entry key="csv" value="71" />
-          <entry key="de" value="70" />
-          <entry key="en" value="18" />
+          <entry key="de" value="71" />
+          <entry key="en" value="20" />
           <entry key="gitignore" value="1" />
           <entry key="log" value="21" />
-          <entry key="md" value="1" />
+          <entry key="md" value="3" />
+          <entry key="mt" value="1" />
           <entry key="output" value="89" />
-          <entry key="py" value="200" />
+          <entry key="py" value="203" />
           <entry key="pyi" value="1" />
-          <entry key="sh" value="76" />
+          <entry key="sh" value="82" />
           <entry key="spm" value="1" />
+          <entry key="temp" value="1" />
           <entry key="txt" value="5" />
           <entry key="xml" value="1" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="Bash" value="76" />
+          <entry key="Bash" value="82" />
           <entry key="Log" value="21" />
-          <entry key="Markdown" value="1" />
-          <entry key="PLAIN_TEXT" value="257" />
-          <entry key="Python" value="200" />
+          <entry key="Markdown" value="3" />
+          <entry key="PLAIN_TEXT" value="262" />
+          <entry key="Python" value="203" />
           <entry key="PythonStub" value="1" />
           <entry key="XML" value="1" />
         </counts>
@@ -121,16 +124,16 @@
           <entry key="csv" value="8" />
           <entry key="dummy" value="31" />
           <entry key="gitignore" value="3" />
-          <entry key="md" value="56" />
+          <entry key="md" value="281" />
           <entry key="output" value="4" />
           <entry key="py" value="6282" />
-          <entry key="sh" value="3442" />
+          <entry key="sh" value="3919" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="Bash" value="3442" />
-          <entry key="Markdown" value="56" />
+          <entry key="Bash" value="3919" />
+          <entry key="Markdown" value="281" />
           <entry key="PLAIN_TEXT" value="46" />
           <entry key="Python" value="6282" />
         </counts>
@@ -143,45 +146,33 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/train/test-out.py">
+        <entry file="file://$PROJECT_DIR$/src/config.sh">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="450">
-              <caret line="30" column="50" selection-start-line="30" selection-start-column="50" selection-end-line="30" selection-end-column="50" />
+            <state relative-caret-position="225">
+              <caret line="15" column="36" lean-forward="true" selection-start-line="15" selection-start-column="36" selection-end-line="15" selection-end-column="36" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/README.md">
+          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+            <state split_layout="SPLIT">
+              <first_editor relative-caret-position="497">
+                <caret line="37" column="7" selection-start-line="37" selection-start-column="7" selection-end-line="37" selection-end-column="7" />
+              </first_editor>
+              <second_editor />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/__init_generator__.py">
+        <entry file="file://$PROJECT_DIR$/src/generation/line_preprocessor.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="310">
-              <caret line="32" column="27" selection-start-line="32" selection-start-column="27" selection-end-line="32" selection-end-column="27" />
+            <state relative-caret-position="153">
+              <caret line="17" selection-start-line="17" selection-end-line="20" selection-end-column="36" />
               <folding>
-                <element signature="e#0#10#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/generation/generator.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="911">
-              <caret line="64" column="24" selection-start-line="64" selection-start-column="24" selection-end-line="64" selection-end-column="24" />
-              <folding>
-                <element signature="e#0#10#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/__init_true_caser__.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="420">
-              <caret line="28" column="43" selection-start-line="28" selection-start-column="43" selection-end-line="28" selection-end-column="43" />
-              <folding>
-                <element signature="e#0#10#0" expanded="true" />
+                <element signature="e#0#13#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -190,8 +181,31 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/run-me.sh">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="783">
-              <caret line="140" column="96" selection-start-line="140" selection-start-column="96" selection-end-line="140" selection-end-column="96" />
+            <state relative-caret-position="-151">
+              <caret line="12" column="4" selection-start-line="12" selection-start-column="4" selection-end-line="12" selection-end-column="4" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/scripts/clean_up.sh">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="300">
+              <caret line="20" column="28" selection-start-line="20" selection-start-column="28" selection-end-line="20" selection-end-column="28" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/train/autodesk.output.de">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/scripts/download-source-data.sh">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="30">
+              <caret line="2" column="2" selection-start-line="2" selection-start-column="2" selection-end-line="2" selection-end-column="2" />
             </state>
           </provider>
         </entry>
@@ -199,8 +213,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/generation/command_line_parser.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="236">
-              <caret line="199" column="9" selection-start-line="199" selection-start-column="9" selection-end-line="199" selection-end-column="9" />
+            <state relative-caret-position="150">
+              <caret line="10" column="41" selection-start-line="10" selection-start-column="41" selection-end-line="10" selection-end-column="41" />
               <folding>
                 <element signature="e#0#10#0" expanded="true" />
               </folding>
@@ -209,38 +223,12 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/evaluators/accuracy_evaluator.py">
+        <entry file="file://$PROJECT_DIR$/src/__init_generator__.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="480">
-              <caret line="32" selection-start-line="32" selection-end-line="32" />
+            <state relative-caret-position="261">
+              <caret line="32" column="27" selection-start-line="32" selection-start-column="27" selection-end-line="32" selection-end-column="27" />
               <folding>
-                <element signature="e#0#14#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/evaluators/evaluator_base.py">
-          <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/evaluators/chrf_evaluator.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="15">
-              <caret line="1" column="5" selection-start-line="1" selection-start-column="5" selection-end-line="1" selection-end-column="5" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/generation/validation_test_divider.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="705">
-              <caret line="47" column="29" selection-start-line="46" selection-start-column="29" selection-end-line="47" selection-end-column="29" />
-              <folding>
-                <element signature="e#0#12#0" expanded="true" />
+                <element signature="e#0#10#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -257,9 +245,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>optimi</find>
-      <find>batch</find>
-      <find>cross</find>
       <find>beam</find>
       <find>planet</find>
       <find>a*s</find>
@@ -287,6 +272,9 @@
       <find>Betriebssystem</find>
       <find>DEFAULT_TRAINING_PATH</find>
       <find>Ratios can not be smaller than 0.00 and bigger than 1.00</find>
+      <find>EVAL_SOURCE_PATH</find>
+      <find>EVAL_TARGET_PATH</find>
+      <find>PREPROCESS_REMOVE_PUNCTUATION</find>
     </findStrings>
     <replaceStrings>
       <replace>&quot;</replace>
@@ -303,7 +291,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/scripts/download-source-data.sh" />
         <option value="$PROJECT_DIR$/src/scripts/shell-logger.sh" />
         <option value="$PROJECT_DIR$/src/__init_without_most_common.py" />
         <option value="$PROJECT_DIR$/most_common_de_2.txt" />
@@ -335,23 +322,24 @@
         <option value="$PROJECT_DIR$/tests/generation/test_generate_train_data.py" />
         <option value="$PROJECT_DIR$/src/run-tests.sh" />
         <option value="$PROJECT_DIR$/run-tests.sh" />
-        <option value="$PROJECT_DIR$/src/scripts/clean_up.sh" />
         <option value="$PROJECT_DIR$/src/scripts/compare-random.sh" />
         <option value="$PROJECT_DIR$/src/scripts/extract-random.sh" />
         <option value="$PROJECT_DIR$/src/scripts/extract-base-word.sh" />
         <option value="$PROJECT_DIR$/src/scripts/datum.csv" />
         <option value="$PROJECT_DIR$/src/scripts/information.csv" />
-        <option value="$PROJECT_DIR$/README.md" />
-        <option value="$PROJECT_DIR$/src/scripts/generate-training-data.sh" />
-        <option value="$PROJECT_DIR$/src/run-me.sh" />
         <option value="$PROJECT_DIR$/src/evaluators/accuracy_evaluator.py" />
         <option value="$PROJECT_DIR$/src/evaluators/chrf_evaluator.py" />
         <option value="$PROJECT_DIR$/src/generation/generator.py" />
         <option value="$PROJECT_DIR$/src/__init_true_caser__.py" />
-        <option value="$PROJECT_DIR$/src/generation/command_line_parser.py" />
         <option value="$PROJECT_DIR$/train/test-out.py" />
-        <option value="$PROJECT_DIR$/src/config.sh" />
         <option value="$PROJECT_DIR$/src/generation/validation_test_divider.py" />
+        <option value="$PROJECT_DIR$/src/scripts/generate-training-data.sh" />
+        <option value="$PROJECT_DIR$/src/run-me.sh" />
+        <option value="$PROJECT_DIR$/src/scripts/clean_up.sh" />
+        <option value="$PROJECT_DIR$/src/scripts/download-source-data.sh" />
+        <option value="$PROJECT_DIR$/src/generation/command_line_parser.py" />
+        <option value="$PROJECT_DIR$/src/config.sh" />
+        <option value="$PROJECT_DIR$/README.md" />
       </list>
     </option>
   </component>
@@ -365,7 +353,7 @@
     <option name="x" value="-1" />
     <option name="y" value="22" />
     <option name="width" value="1920" />
-    <option name="height" value="990" />
+    <option name="height" value="992" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -390,6 +378,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -402,28 +391,10 @@
               <item name="master_thesis" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="master_thesis" type="b2602c69:ProjectViewProjectNode" />
-              <item name="master_thesis" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="evaluators" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="master_thesis" type="b2602c69:ProjectViewProjectNode" />
-              <item name="master_thesis" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="generation" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="master_thesis" type="b2602c69:ProjectViewProjectNode" />
-              <item name="master_thesis" type="462c0819:PsiDirectoryNode" />
-              <item name="train" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -603,13 +574,14 @@
     </history-entry>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-1" y="22" width="1920" height="990" extended-state="6" />
+    <frame x="0" y="22" width="1920" height="1058" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.4988864" visible="true" weight="0.2736954" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.4988864" visible="true" weight="0.27635783" />
       <window_info id="Structure" order="1" sideWeight="0.5011136" side_tool="true" weight="0.2550586" />
       <window_info id="Favorites" order="2" side_tool="true" weight="0.32962668" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.35055643" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.3498965" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.84075725" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.3585746" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
@@ -621,6 +593,7 @@
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.5023828" side_tool="true" weight="0.4753577" />
       <window_info anchor="bottom" id="Terminal" order="11" sideWeight="0.49761716" weight="0.3429844" />
       <window_info anchor="bottom" id="Python Console" order="12" weight="0.32919255" />
+      <window_info anchor="right" x="0" y="0" width="430" height="858" id="Documentation" side_tool="true" weight="0.32960597" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -703,48 +676,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/scripts/generate-training-data.sh">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="20" column="1" selection-start-line="20" selection-start-column="1" selection-end-line="22" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/scripts/betriebsystem.csv" />
-    <entry file="file://$PROJECT_DIR$/src/scripts/extract-random.sh">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="17" column="16" selection-start-line="17" selection-start-column="16" selection-end-line="17" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/scripts/extract-base-word.sh">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="14" selection-start-line="14" selection-end-line="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/scripts/specific_nouns/argument.csv" />
-    <entry file="file://$PROJECT_DIR$/src/scripts/download-source-data.sh">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/generated_approaches/16/only_noun/test.src.de">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="281">
-          <caret line="11244" column="6" selection-start-line="11244" selection-end-line="11244" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/scripts/specific_nouns/wert.csv" />
-    <entry file="file://$PROJECT_DIR$/src/scripts/._nouns-300.csv">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/generated_approaches/16/no_most_common/test.trg.de.output">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1282" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/generated_approaches/16/run-me.log">
       <provider selected="true" editor-type-id="LogFileEditorProvider">
         <state relative-caret-position="843">
@@ -811,52 +742,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/generation/line_preprocessor.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <folding>
-            <element signature="e#0#13#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/evaluators/accuracy_evaluator.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="480">
-          <caret line="32" selection-start-line="32" selection-end-line="32" />
-          <folding>
-            <element signature="e#0#14#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/evaluators/chrf_evaluator.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="1" column="5" selection-start-line="1" selection-start-column="5" selection-end-line="1" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/evaluators/evaluator_base.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/run-me.sh">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="783">
-          <caret line="140" column="96" selection-start-line="140" selection-start-column="96" selection-end-line="140" selection-end-column="96" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/__init_true_caser__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="420">
-          <caret line="28" column="43" selection-start-line="28" selection-start-column="43" selection-end-line="28" selection-end-column="43" />
-          <folding>
-            <element signature="e#0#10#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$APPLICATION_HOME_DIR$/helpers/typeshed/stdlib/2and3/argparse.pyi">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="291">
@@ -873,7 +758,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/generation/generator.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="911">
+        <state relative-caret-position="855">
           <caret line="64" column="24" selection-start-line="64" selection-start-column="24" selection-end-line="64" selection-end-column="24" />
           <folding>
             <element signature="e#0#10#0" expanded="true" />
@@ -881,32 +766,38 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/__init_generator__.py">
+    <entry file="file://$PROJECT_DIR$/src/__init_true_caser__.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="310">
-          <caret line="32" column="27" selection-start-line="32" selection-start-column="27" selection-end-line="32" selection-end-column="27" />
+        <state relative-caret-position="420">
+          <caret line="28" column="43" selection-start-line="28" selection-start-column="43" selection-end-line="28" selection-end-column="43" />
           <folding>
             <element signature="e#0#10#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/config.sh">
+    <entry file="file://$PROJECT_DIR$/src/evaluators/accuracy_evaluator.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="705">
-          <caret line="47" column="27" selection-start-line="47" selection-start-column="27" selection-end-line="47" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/generation/command_line_parser.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="236">
-          <caret line="199" column="9" selection-start-line="199" selection-start-column="9" selection-end-line="199" selection-end-column="9" />
+        <state relative-caret-position="480">
+          <caret line="32" selection-start-line="32" selection-end-line="32" />
           <folding>
-            <element signature="e#0#10#0" expanded="true" />
+            <element signature="e#0#14#0" expanded="true" />
           </folding>
         </state>
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/evaluators/evaluator_base.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/evaluators/chrf_evaluator.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="1" column="5" selection-start-line="1" selection-start-column="5" selection-end-line="1" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/load_config.sh">
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/src/generation/validation_test_divider.py">
       <provider selected="true" editor-type-id="text-editor">
@@ -915,6 +806,96 @@
           <folding>
             <element signature="e#0#12#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/__init_generator__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="261">
+          <caret line="32" column="27" selection-start-line="32" selection-start-column="27" selection-end-line="32" selection-end-column="27" />
+          <folding>
+            <element signature="e#0#10#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/scripts/generate-training-data.sh">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="776">
+          <caret line="57" column="18" lean-forward="true" selection-start-line="57" selection-start-column="18" selection-end-line="57" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/run-me.sh">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-151">
+          <caret line="12" column="4" selection-start-line="12" selection-start-column="4" selection-end-line="12" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/scripts/download-source-data.sh">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="2" column="2" selection-start-line="2" selection-start-column="2" selection-end-line="2" selection-end-column="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/temp">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test-true-case-export.en">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test-true-case-import.en">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/scripts/clean_up.sh">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="20" column="28" selection-start-line="20" selection-start-column="28" selection-end-line="20" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.!3439!deu.mt">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/train/autodesk.output.de">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/generation/command_line_parser.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="10" column="41" selection-start-line="10" selection-start-column="41" selection-end-line="10" selection-end-column="41" />
+          <folding>
+            <element signature="e#0#10#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/generation/line_preprocessor.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="17" selection-start-line="17" selection-end-line="20" selection-end-column="36" />
+          <folding>
+            <element signature="e#0#13#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/config.sh">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="15" column="36" lean-forward="true" selection-start-line="15" selection-start-column="36" selection-end-line="15" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="497">
+            <caret line="37" column="7" selection-start-line="37" selection-start-column="7" selection-end-line="37" selection-end-column="7" />
+          </first_editor>
+          <second_editor />
         </state>
       </provider>
     </entry>

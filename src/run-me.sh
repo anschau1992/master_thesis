@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 source ./scripts/shell-logger.sh
+
 ## import config variables
 source config.sh
 export $(cut -d= -f1 config.sh)
@@ -26,18 +27,13 @@ then
 fi
 shell-log "config" "Using GPUs: ${GPUS}"
 
-WORKSPACE=8500
-N=4
-EPOCHS=5
-B=12
 
-if [[ ! -e $MARIAN_TRAIN ]]
+if [[ ! -e ${MARIAN_TRAIN} ]]
 then
     log "config" "marian is not installed in $MARIAN, you need to compile the toolkit first"
     exit 1
 fi
 
-#if [[ ! -e ../tools/moses-scripts ]] || [[ ! -e ../tools/subword-nmt ]] || [[ ! -e ../tools/sacreBLEU ]]
 if [[ ! -e ../tools/moses-scripts ]]
 then
     log "config" "missing tools in ../tools, you need to download them first"
@@ -46,7 +42,15 @@ fi
 
 
 mkdir -p ../model
+sampling_mode=""
+if [${SAMPLING_MODE} == 'oversampling']; then
+    sampling_mode="/oversampling"
+elif [${SAMPLING_MODE} == 'undersampling']; then
+    sampling_mode="/undersampling"
+fi
 
+
+################  Data Generation ################
 if [[ ! -e "../data/train.src.en" ]] || [[ ! -e "../data/train.src.de" ]] || [[ ! -e "../data/train.trg.de" ]]
 then
      delete potential old training data
@@ -60,17 +64,18 @@ else
 fi
 
 
-if [ ! -e "../model/vocab.deen.yml" ]
+if [[ ! -e "../model/vocab.deen.yml" ]]
 
 
-# TODO: Parametrize no sampling/oversampling/undersampling
 
+################ Model Training ################
 if [[ ! -e "../model/model.npz.decoder.yml" ]]
 then
+
     shell-log "train" "Start Model Training"
     ${MARIAN_TRAIN} \
         --model ../model/model.npz --type multi-transformer \
-        --train-sets "..${TRAINING_PATH}/undersampling${TRAIN_SOURCE_FILE_EN}"  "..${TRAINING_PATH}/undersampling${TRAIN_SOURCE_FILE_DE}" "..${TRAINING_PATH}/undersampling${TRAIN_TARGET_FILE_DE}" \
+        --train-sets "..${TRAINING_PATH}${sampling_mode}/${TRAIN_SOURCE_FILE_EN}"  "..${TRAINING_PATH}${sampling_mode}/${TRAIN_SOURCE_FILE_DE}" "..${TRAINING_PATH}${sampling_mode}/${TRAIN_TARGET_FILE_DE}" \
         --max-length 100 \
         --mini-batch-fit -w 9000 --maxi-batch 1000 \
         --valid-freq 5000 --save-freq 5000 --disp-freq 500 \
@@ -96,7 +101,7 @@ else
         shell-log "train" "Found trained model under '../model'"
 fi
 
-# Testing phase
+################ Testing phase ################
 if [[ ! -e "../data/test.trg.de.output" ]]
 then
     shell-log "test" "Start of Testing"
