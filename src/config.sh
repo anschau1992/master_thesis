@@ -1,3 +1,4 @@
+# various file paths
 DATA_PATH_EN="/data/data.en"
 DATA_PATH_DE="/data/data.de"
 TRAINING_PATH="/data"
